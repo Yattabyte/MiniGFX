@@ -2,7 +2,7 @@
 ### Mini GFX ###
 ################
 cmake_minimum_required(VERSION 3.9.2)
-project(MiniGFX VERSION 0.0.1 DESCRIPTION "Basic utilities to assist in OpenGL rendering applications.")
+project(MiniGFX VERSION 0.0.2 DESCRIPTION "Basic utilities to assist in OpenGL rendering applications.")
 include(ExternalProject)
 
 # Set mandatory requirements

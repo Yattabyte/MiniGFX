@@ -1,7 +1,7 @@
-###########
-### SRC ###
-###########
-set(Module srcCode)
+###################
+### MiniGFX Lib ###
+###################
+set(Module MiniGFXLib)
 
 # Configure and acquire files
 set(FILES
@@ -22,8 +22,8 @@ set(FILES
 
 # Create Library using the supplied files
 add_library(${Module} STATIC ${FILES})
-target_include_directories(${Module}
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+target_include_directories(${Module} 
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} 
     PUBLIC ${PROJECT_SOURCE_DIR}/external
 )
 
