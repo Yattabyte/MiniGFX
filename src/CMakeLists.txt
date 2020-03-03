@@ -1,7 +1,7 @@
 ###################
 ### MiniGFX Lib ###
 ###################
-set(Module MiniGFXLib)
+set(Module MiniGFXCore)
 
 # Configure and acquire files
 set(FILES

@@ -2,14 +2,13 @@
 ### Mini GFX ###
 ################
 cmake_minimum_required(VERSION 3.9.2)
-project(MiniGFX VERSION 0.0.2 DESCRIPTION "Basic utilities to assist in OpenGL rendering applications.")
+project(MiniGFX VERSION 0.1.0 DESCRIPTION "Basic utilities to assist in OpenGL rendering applications.")
 include(ExternalProject)
 
 # Set mandatory requirements
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CXX_EXTENSIONS YES)
-
 
 # Set compilation flags per-compiler
 if(MSVC)
@@ -28,18 +27,10 @@ elseif(CMAKE_COMPILER_IS_GNUCC)
     set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} -fno-omit-frame-pointer -fno-optimize-sibling-calls")
 endif()
 
-
 # Add source files
 find_package(OpenGL REQUIRED)
 add_subdirectory(external/glfw)
 add_subdirectory(src)
-
-
-# Optionally build examples
-if(EXAMPLES)
-    #add_subdirectory( examples/... )
-endif()
-
 
 # Optionally perform static code analysis tests
 if (STATIC_ANALYSIS)
@@ -50,20 +41,17 @@ if (STATIC_ANALYSIS)
     endif()
 endif()
 
-
 #################
 # DOXYGEN CHECK #
 #################
+option(MiniGFX_BUILD_DOCS "Generate documentation for MiniGFX" true)
 find_package(Doxygen QUIET)
-if(DOXYGEN_FOUND)
-    option(GENERATE_DOCS "Generate documentation using Doxygen" true)
-    if(GENERATE_DOCS)
-        set(DOXYGEN_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/)
-        set(DOXYGEN_MARKDOWN_SUPPORT YES)
-        set(DOXYGEN_BUILTIN_STL_SUPPORT YES)
-        set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
-        set(DOXYGEN_USE_MDFILE_AS_MAINPAGE ${PROJECT_SOURCE_DIR}/README.md)
-        set(DOXYGEN_EXCLUDE ${PROJECT_SOURCE_DIR}/external/ ${PROJECT_SOURCE_DIR}/external/glfw)
-        doxygen_add_docs(Documentation ${PROJECT_SOURCE_DIR} COMMENT "Generate docs")
-    endif()
+if(DOXYGEN_FOUND AND MiniGFX_BUILD_DOCS)
+    set(DOXYGEN_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/docs/)
+    set(DOXYGEN_MARKDOWN_SUPPORT YES)
+    set(DOXYGEN_BUILTIN_STL_SUPPORT YES)
+    set(DOXYGEN_JAVADOC_AUTOBRIEF YES)
+    set(DOXYGEN_USE_MDFILE_AS_MAINPAGE ${PROJECT_SOURCE_DIR}/README.md)
+    set(DOXYGEN_EXCLUDE ${PROJECT_SOURCE_DIR}/external/ ${PROJECT_SOURCE_DIR}/external/glfw)
+    doxygen_add_docs(MiniGFX_BUILD_DOCS ${PROJECT_SOURCE_DIR} COMMENT "Generate documentation for MiniGFX")
 endif()
