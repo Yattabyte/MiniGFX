@@ -29,7 +29,7 @@ class mat4 {
     /** Retrieve the row at the index specified.
     @param  index   the row number to retrieve.
     @return         reference to the row specified. */
-    vec4& operator[](const size_t& index) { return m_data[index]; }
+    vec4& operator[](const size_t& index) noexcept { return m_data[index]; }
     /** Compare against another matrix.
     @param  o       the other matrix.
     @return         true if this equals the other matrix, false otherwise. */

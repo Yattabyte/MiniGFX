@@ -7,16 +7,24 @@ set(Module MiniGFXCore)
 set(FILES
     # Header files
     ${PROJECT_SOURCE_DIR}/external/glad/glad.h
-    vec.hpp
+    image.hpp
     mat.hpp
     model.hpp
     shader.hpp
+    texture1D.hpp
+    texture2D.hpp
+    texture3D.hpp
+    vec.hpp
     window.hpp
 
     # Source files
     ${PROJECT_SOURCE_DIR}/external/glad/glad.c
+    image.cpp
     model.cpp
     shader.cpp
+    texture1D.cpp
+    texture2D.cpp
+    texture3D.cpp
     window.cpp
 )
 
