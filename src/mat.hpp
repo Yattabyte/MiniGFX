@@ -40,8 +40,9 @@ class mat4 {
         return true;
     }
     /** Compare against another matrix.
-    @param  o   the other vector.
-    @return     true if this doesn't equal the other matrix, false otherwise. */
+    @param  o       the other vector.
+    @return         true if this doesn't equal the other matrix, false
+    otherwise. */
     bool operator!=(const mat4& o) const noexcept { return !(*this == o); }
 
     // Public Methods

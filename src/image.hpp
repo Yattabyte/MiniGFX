@@ -21,8 +21,8 @@ class Image {
     /** Default Constructor. */
     Image() = default;
     /** Construct an image with a specific size and pixels.
-    @param  pixelData   the image pixels.
-    @param  size        the image size. */
+    @param  pixelData       the image pixels.
+    @param  size            the image size. */
     Image(const std::vector<float>& pixelData, const vec2& size);
     /** Default move constructor. */
     Image(Image&& o) noexcept = default;
@@ -33,7 +33,7 @@ class Image {
 
     // Methods
     /** Fill this image with pixels of the supplied policy.
-    @param  fillPolicy  directive to fill solid, checkered, etc.
+    @param  fillPolicy      directive to fill solid, checkered, etc.
     @param	primaryColor	the primary color to use.
     @param	secondaryColor	the secondary color to use. */
     void fill(

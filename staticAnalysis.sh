@@ -20,6 +20,6 @@ echo "
 **************************************************
 Starting OCLint
 **************************************************"
-cmake -DCMAKE_CXX_FLAGS="-g -O0" -DCMAKE_EXE_LINKER_FLAGS="-g -O0" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+cmake -DCMAKE_CXX_FLAGS="-g -O0" -DCMAKE_EXE_LINKER_FLAGS="-g -O0" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DSTATIC_ANALYSIS=OFF -UCMAKE_CXX_CLANG_TIDY .
 cmake --build . --clean-first -- -j $(nproc)
 oclint-json-compilation-database -i src -i tests -e external

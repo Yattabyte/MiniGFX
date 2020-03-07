@@ -23,7 +23,7 @@ class ModelGroup {
     /** Destroy this model-group. */
     ~ModelGroup();
     /** Construct a model-group container.
-    @param  count   how many vertices to pre-allocate. */
+    @param  count       how many vertices to pre-allocate. */
     ModelGroup(const size_t count = 1024) noexcept;
     /** Default copy constructor. */
     ModelGroup(const ModelGroup& o) = default;

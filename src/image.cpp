@@ -24,10 +24,7 @@ Image Image::generate(
         size_t pxComponent = 0;
         std::generate(
             pixelData.begin(), pixelData.begin() + componentCount,
-            [&]() noexcept {
-                const unsigned int ID = (pxComponent++) % 4;
-                return primaryColor[ID];
-            });
+            [&]() noexcept { return primaryColor[(pxComponent++) % 4]; });
     } else if (fillPolicy == Fill_Policy::CHECKERED) {
         // How many pixels wide and tall the checkers should be
         constexpr auto checkerSize = 32ULL;
