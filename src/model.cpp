@@ -1,5 +1,4 @@
 #include "model.hpp"
-#include <glad/glad.h>
 
 Model::~Model() {
     glDeleteBuffers(1, &m_vboID);

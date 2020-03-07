@@ -10,6 +10,7 @@ set(FILES
     image.hpp
     mat.hpp
     model.hpp
+    modelGroup.hpp
     shader.hpp
     texture1D.hpp
     texture2D.hpp
@@ -21,6 +22,7 @@ set(FILES
     ${PROJECT_SOURCE_DIR}/external/glad/glad.c
     image.cpp
     model.cpp
+    modelGroup.cpp
     shader.cpp
     texture1D.cpp
     texture2D.cpp

@@ -58,10 +58,10 @@ class vec2 {
     /** Compare this vector against another for sorting purposes.
     @param  o   the other vector.
     @return     true if this vector is less than the other vector. */
-    bool operator<(const vec2& other) const noexcept {
-        if (x() == other.x())
-            return y() < other.y();
-        return x() < other.x();
+    bool operator<(const vec2& o) const noexcept {
+        if (x() == o.x())
+            return y() < o.y();
+        return x() < o.x();
     }
     /** Compare against another vector.
     @param  o   the other vector.
@@ -186,13 +186,13 @@ class vec3 {
     /** Compare this vector against another for sorting purposes.
     @param  o   the other vector.
     @return     true if this vector is less than the other vector. */
-    bool operator<(const vec3& other) const noexcept {
-        if (z() == other.z()) {
-            if (x() == other.x())
-                return y() < other.y();
-            return x() < other.x();
+    bool operator<(const vec3& o) const noexcept {
+        if (z() == o.z()) {
+            if (x() == o.x())
+                return y() < o.y();
+            return x() < o.x();
         }
-        return z() < other.z();
+        return z() < o.z();
     };
     /** Compare against another vector.
     @param  o   the other vector.

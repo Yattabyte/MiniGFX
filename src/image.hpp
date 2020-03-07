@@ -24,14 +24,10 @@ class Image {
     @param  pixelData   the image pixels.
     @param  size        the image size. */
     Image(const std::vector<float>& pixelData, const vec2& size);
-    /** Default copy constructor. */
-    Image(const Image& o) = default;
     /** Default move constructor. */
     Image(Image&& o) noexcept = default;
 
     // Operators
-    /** Default copy-assignment operator. */
-    Image& operator=(const Image& p) = default;
     /** Default move-assignment operator. */
     Image& operator=(Image&& p) noexcept = default;
 
@@ -54,12 +50,18 @@ class Image {
         const vec4& primaryColor, const vec4& secondaryColor);
     /** Retrieve a pointer to the underlying pixel data.
     @return     pointer to underlying pixel data. */
-    const float *data() const noexcept;
+    const float* data() const noexcept;
     /** Retrieve the image size.
     @return     the size of the image. */
     vec2 size() const noexcept;
 
     private:
+    // Private Deleted
+    /** Default copy constructor. */
+    Image(const Image& o) = delete;
+    /** Default copy-assignment operator. */
+    Image& operator=(const Image& p) = delete;
+
     // Private Attributes
     std::unique_ptr<float[]> m_pixelData;
     vec2 m_size;

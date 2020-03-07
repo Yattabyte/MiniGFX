@@ -54,7 +54,7 @@ class mat4 {
     /** Create a transform matrix looking at a point a given another point.
     @param  eye     the eye position.
     @param  center  the center of the target to look at.
-    @aram   up      the up direction.
+    @param  up      the up direction.
     @return         a view matrix looking at center from eye. */
     static mat4
     lookAt(const vec3& eye, const vec3& center, const vec3& up) noexcept {

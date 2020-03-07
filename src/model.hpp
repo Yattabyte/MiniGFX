@@ -4,6 +4,7 @@
 
 #include "mat.hpp"
 #include "vec.hpp"
+#include <glad/glad.h>
 #include <vector>
 
 /** A representation of an OpenGL model. */
@@ -35,8 +36,8 @@ class Model {
 
     private:
     // Private Attributes
-    unsigned int m_vaoID = 0U;
-    unsigned int m_vboID = 0U;
+    GLuint m_vaoID = 0U;
+    GLuint m_vboID = 0U;
     size_t m_vertexCount = 0ULL;
 };
 
