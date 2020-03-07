@@ -65,6 +65,18 @@ jobs:
       env: COMPILER_CXX=clang++-9 COMPILER_C=clang-9
       script: bash ./build.sh
       
+    ##############
+    # Misc Tasks #
+    ##############
+    - addons: &static_analysis
+        apt:
+          sources: *apt_sources
+          packages: ["clang-9", "clang-tidy-9", "g++-9", "g++-9-multilib", "libc6-dbg", "libc6-dbg:i386", "linux-libc-dev", "linux-libc-dev:i386", "libc++-9-dev", "libc++abi-9-dev", "libstdc++-9-dev", "xorg-dev", "libgl1-mesa-dev"]
+          update: true
+      env: COMPILER_CXX=clang++-9 COMPILER_C=clang-9 STATIC_ANALYSIS=true
+      script:
+        - export ASAN_SYMBOLIZER_PATH=$(which llvm-symbolizer) ASAN_OPTIONS=symbolize=1
+        - bash ./staticAnalysis.sh
 
 install:
   # Export Environment Variables
@@ -85,9 +97,6 @@ install:
       export OCLINT_HOME="$HOME/oclint"
       export PATH="$OCLINT_HOME/bin:$PATH"
       oclint -version
-      # Download latest valgrind
-      wget https://sourceware.org/pub/valgrind/valgrind-3.15.0.tar.bz2 && tar xjf valgrind-3.15.0.tar.bz2 && cd valgrind-3.15.0 && ./configure && make && sudo make install && cd ..
-      valgrind --version
       # Download latest cppcheck
       wget https://github.com/danmar/cppcheck/archive/1.90.tar.gz && tar xzvf 1.90.tar.gz && cd cppcheck-1.90
       sudo make MATCHCOMPILER=yes FILESDIR=/usr/share/cppcheck HAVE_RULES=yes install && cd ..
