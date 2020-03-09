@@ -21,7 +21,7 @@ Image Image::generate(
     const auto componentCount = pixelCount * 4ULL;
     std::vector<float> pixelData(componentCount);
     if (fillPolicy == Fill_Policy::SOLID) {
-        size_t pxComponent = 0;
+        size_t pxComponent(0ULL);
         std::generate(
             pixelData.begin(), pixelData.begin() + componentCount,
             [&]() noexcept { return primaryColor[(pxComponent++) % 4]; });

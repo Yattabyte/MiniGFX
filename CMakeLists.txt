@@ -2,7 +2,7 @@
 ### Mini GFX ###
 ################
 cmake_minimum_required(VERSION 3.9.2)
-project(MiniGFX VERSION 0.3.2 DESCRIPTION "Basic utilities to assist in OpenGL rendering applications.")
+project(MiniGFX VERSION 0.3.3 DESCRIPTION "Basic utilities to assist in OpenGL rendering applications.")
 include(ExternalProject)
 
 # Set mandatory requirements
@@ -44,6 +44,7 @@ endif()
 #################
 # DOXYGEN CHECK #
 #################
+configure_file(Doxyfile.in ${PROJECT_SOURCE_DIR}/Doxyfile.out)
 option(MiniGFX_BUILD_DOCS "Generate documentation for MiniGFX" true)
 find_package(Doxygen QUIET)
 if(DOXYGEN_FOUND AND MiniGFX_BUILD_DOCS)
