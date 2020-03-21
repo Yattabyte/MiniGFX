@@ -15,11 +15,11 @@ IndirectDraw::IndirectDraw(
 
 // Public Methods
 
-void IndirectDraw::bind() noexcept {
+void IndirectDraw::bind() const noexcept {
     m_buffer.bindBuffer(GL_DRAW_INDIRECT_BUFFER);
 }
 
-void IndirectDraw::drawCall(const void* indirect) noexcept {
+void IndirectDraw::drawCall(const void* indirect) const noexcept {
     bind();
     glDrawArraysIndirect(GL_TRIANGLES, indirect);
 }

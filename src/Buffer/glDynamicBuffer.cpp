@@ -1,5 +1,5 @@
 #include "Buffer/glDynamicBuffer.hpp"
-#include <memory>
+#include <cstring>
 
 // Public (De)Constructors
 

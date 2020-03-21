@@ -3,6 +3,7 @@
 #define GLDYNAMICMULTIBUFFER_HPP
 
 #include "Multibuffer/glMultiBuffer.hpp"
+#include <cstring>
 #include <memory>
 #include <utility>
 

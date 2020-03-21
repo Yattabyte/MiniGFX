@@ -22,10 +22,10 @@ class IndirectDraw {
 
     // Public Methods
     /** Bind this draw call to the OpenGL indirect buffer target. */
-    void bind() noexcept;
+    void bind() const noexcept;
     /** Bind this buffer and also perform an indirect draw call.
     @param	indirect		an indirect pointer. */
-    void drawCall(const void* indirect = nullptr) noexcept;
+    void drawCall(const void* indirect = nullptr) const noexcept;
     /** Prepare this buffer for writing, waiting on its sync fence. */
     void beginWriting() const noexcept;
     /** Signal that this buffer has finished being written to. */

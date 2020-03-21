@@ -33,6 +33,8 @@ class Model {
     /** Draw this model.
     @param  drawMode    either GL_TRIANGLES, GL_POINTS, GL_LINES, etc. */
     void draw(const int& drawMode) const noexcept;
+    /** Retrieve this model's vertex count. */
+    size_t vertexCount() const noexcept;
 
     private:
     // Private Attributes

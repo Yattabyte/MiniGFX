@@ -29,3 +29,5 @@ void Model::draw(const int& drawMode) const noexcept {
     glDrawArrays(
         static_cast<GLenum>(drawMode), 0, static_cast<GLsizei>(m_vertexCount));
 }
+
+size_t Model::vertexCount() const noexcept { return m_vertexCount; }

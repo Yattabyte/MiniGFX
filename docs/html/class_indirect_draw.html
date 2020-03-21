@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MiniGFX
-   &#160;<span id="projectnumber">0.4.1</span>
+   &#160;<span id="projectnumber">0.4.2</span>
    </div>
    <div id="projectbrief">Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.</div>
   </td>
@@ -84,12 +84,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af43564389e8813184b4d68c349ee78a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#af43564389e8813184b4d68c349ee78a2">IndirectDraw</a> (const GLuint &amp;count, const GLuint &amp;primitiveCount, const GLuint &amp;first, const GLbitfield &amp;storageFlags=GL_DYNAMIC_STORAGE_BIT) noexcept</td></tr>
 <tr class="memdesc:af43564389e8813184b4d68c349ee78a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an Indirect Draw Object.  <a href="#af43564389e8813184b4d68c349ee78a2">More...</a><br /></td></tr>
 <tr class="separator:af43564389e8813184b4d68c349ee78a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef474f84003df65758363e695fb73bd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#aef474f84003df65758363e695fb73bd9">bind</a> () noexcept</td></tr>
-<tr class="memdesc:aef474f84003df65758363e695fb73bd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this draw call to the OpenGL indirect buffer target.  <a href="#aef474f84003df65758363e695fb73bd9">More...</a><br /></td></tr>
-<tr class="separator:aef474f84003df65758363e695fb73bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4a784fa584e0ce4ac8ed3fe4a630d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#a8f4a784fa584e0ce4ac8ed3fe4a630d7">drawCall</a> (const void *indirect=nullptr) noexcept</td></tr>
-<tr class="memdesc:a8f4a784fa584e0ce4ac8ed3fe4a630d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this buffer and also perform an indirect draw call.  <a href="#a8f4a784fa584e0ce4ac8ed3fe4a630d7">More...</a><br /></td></tr>
-<tr class="separator:a8f4a784fa584e0ce4ac8ed3fe4a630d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04bcabcb709f34fb9bdb397410828ac9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#a04bcabcb709f34fb9bdb397410828ac9">bind</a> () const noexcept</td></tr>
+<tr class="memdesc:a04bcabcb709f34fb9bdb397410828ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this draw call to the OpenGL indirect buffer target.  <a href="#a04bcabcb709f34fb9bdb397410828ac9">More...</a><br /></td></tr>
+<tr class="separator:a04bcabcb709f34fb9bdb397410828ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab995fac3fdf0f2008f783d0aaa58b7a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#ab995fac3fdf0f2008f783d0aaa58b7a5">drawCall</a> (const void *indirect=nullptr) const noexcept</td></tr>
+<tr class="memdesc:ab995fac3fdf0f2008f783d0aaa58b7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this buffer and also perform an indirect draw call.  <a href="#ab995fac3fdf0f2008f783d0aaa58b7a5">More...</a><br /></td></tr>
+<tr class="separator:ab995fac3fdf0f2008f783d0aaa58b7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab08a82f14105ac932d175a649ca89460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#ab08a82f14105ac932d175a649ca89460">beginWriting</a> () const noexcept</td></tr>
 <tr class="memdesc:ab08a82f14105ac932d175a649ca89460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare this buffer for writing, waiting on its sync fence.  <a href="#ab08a82f14105ac932d175a649ca89460">More...</a><br /></td></tr>
 <tr class="separator:ab08a82f14105ac932d175a649ca89460"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,8 +226,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aef474f84003df65758363e695fb73bd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef474f84003df65758363e695fb73bd9">&#9670;&nbsp;</a></span>bind()</h2>
+<a id="a04bcabcb709f34fb9bdb397410828ac9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04bcabcb709f34fb9bdb397410828ac9">&#9670;&nbsp;</a></span>bind()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -239,7 +239,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void IndirectDraw::bind </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -253,8 +253,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8f4a784fa584e0ce4ac8ed3fe4a630d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f4a784fa584e0ce4ac8ed3fe4a630d7">&#9670;&nbsp;</a></span>drawCall()</h2>
+<a id="ab995fac3fdf0f2008f783d0aaa58b7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab995fac3fdf0f2008f783d0aaa58b7a5">&#9670;&nbsp;</a></span>drawCall()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +267,7 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>indirect</em> = <code>nullptr</code></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
