@@ -1,10 +1,18 @@
 var searchData=
 [
+  ['_7eglbuffer',['~glBuffer',['../classgl_buffer.html#a384728602bfee34597bb841fb9b107b6',1,'glBuffer']]],
+  ['_7egldynamicbuffer',['~glDynamicBuffer',['../classgl_dynamic_buffer.html#a64320b6636b5ccded1d6f5e349aee15e',1,'glDynamicBuffer']]],
+  ['_7egldynamicmultibuffer',['~glDynamicMultiBuffer',['../classgl_dynamic_multi_buffer.html#a45cd83f899082bad18c2d570ee70c27a',1,'glDynamicMultiBuffer']]],
+  ['_7eglmultibuffer',['~glMultiBuffer',['../classgl_multi_buffer.html#aa25c3cc2e980581df8dec452046b5868',1,'glMultiBuffer']]],
+  ['_7eglmultivector',['~glMultiVector',['../classgl_multi_vector.html#a06ddce31d6daddc1647a4c850d2cf85f',1,'glMultiVector']]],
+  ['_7eglstaticbuffer',['~glStaticBuffer',['../classgl_static_buffer.html#a876d63a1f1c2aa74db8ac9d72f79a836',1,'glStaticBuffer']]],
+  ['_7eglvector',['~glVector',['../classgl_vector.html#a2da754b35d526935a94f0b962d843def',1,'glVector']]],
   ['_7eimage',['~Image',['../class_image.html#ad9a2b967d96a3ea6278c85a7b1223145',1,'Image']]],
   ['_7emat4',['~mat4',['../classmat4.html#a92b80d24f82c720873b9b3d547f3068e',1,'mat4']]],
   ['_7emodel',['~Model',['../class_model.html#ad6ebd2062a0b823db841a0b88baac4c0',1,'Model']]],
   ['_7emodelgroup',['~ModelGroup',['../class_model_group.html#a2606a8a2324d520c13072a91fa95af9a',1,'ModelGroup']]],
   ['_7eshader',['~Shader',['../class_shader.html#aff01df87e8a102f270b5b135a295e59d',1,'Shader']]],
+  ['_7estaticmultibuffer',['~StaticMultiBuffer',['../class_static_multi_buffer.html#ad1239270c8f4f2296071e643428d06fc',1,'StaticMultiBuffer']]],
   ['_7etexture1d',['~Texture1D',['../class_texture1_d.html#a6ac1d14a6241899d419032d93b3382a2',1,'Texture1D']]],
   ['_7etexture2d',['~Texture2D',['../class_texture2_d.html#a84210f27b55799a096b8abc36380a077',1,'Texture2D']]],
   ['_7etexture3d',['~Texture3D',['../class_texture3_d.html#af159a531e3fe3daccf0ee90b6d0291b5',1,'Texture3D']]],

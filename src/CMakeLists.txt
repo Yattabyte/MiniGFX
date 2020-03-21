@@ -7,27 +7,39 @@ set(Module MiniGFXCore)
 set(FILES
     # Header files
     ${PROJECT_SOURCE_DIR}/external/glad/glad.h
-    image.hpp
-    mat.hpp
-    model.hpp
-    modelGroup.hpp
-    shader.hpp
-    texture1D.hpp
-    texture2D.hpp
-    texture3D.hpp
-    vec.hpp
-    window.hpp
+    Buffer/glBuffer.hpp
+    Buffer/glDynamicBuffer.hpp
+    Buffer/glStaticBuffer.hpp
+    Buffer/glVector.hpp
+    Multibuffer/glMultiBuffer.hpp
+    Multibuffer/glDynamicMultiBuffer.hpp
+    Multibuffer/glStaticMultiBuffer.hpp
+    Multibuffer/glMultiVector.hpp
+    Model/model.hpp
+    Model/modelGroup.hpp
+    Texture/image.hpp
+    Texture/texture1D.hpp
+    Texture/texture2D.hpp
+    Texture/texture3D.hpp
+    Utility/indirectDraw.hpp
+    Utility/mat.hpp
+    Utility/shader.hpp
+    Utility/vec.hpp
+    Utility/window.hpp
 
     # Source files
     ${PROJECT_SOURCE_DIR}/external/glad/glad.c
-    image.cpp
-    model.cpp
-    modelGroup.cpp
-    shader.cpp
-    texture1D.cpp
-    texture2D.cpp
-    texture3D.cpp
-    window.cpp
+    Buffer/glDynamicBuffer.cpp
+    Buffer/glStaticBuffer.cpp
+    Model/model.cpp
+    Model/modelGroup.cpp
+    Texture/image.cpp
+    Texture/texture1D.cpp
+    Texture/texture2D.cpp
+    Texture/texture3D.cpp
+    Utility/indirectDraw.cpp
+    Utility/shader.cpp
+    Utility/window.cpp
 )
 
 # Create Library using the supplied files
@@ -48,10 +60,4 @@ endif()
 
 # Set all project settings
 target_compile_Definitions(${Module} PRIVATE $<$<CONFIG:DEBUG>:DEBUG>)
-set_target_properties(${Module} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}
-    LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}
-    ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}
-    PDB_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}
-    VERSION ${PROJECT_VERSION}
-)
+set_target_properties(${Module} PROPERTIES VERSION ${PROJECT_VERSION})
