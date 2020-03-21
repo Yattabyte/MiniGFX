@@ -19,9 +19,10 @@ void IndirectDraw::bind() const noexcept {
     m_buffer.bindBuffer(GL_DRAW_INDIRECT_BUFFER);
 }
 
-void IndirectDraw::drawCall(const void* indirect) const noexcept {
+void IndirectDraw::drawCall(const int& drawMode, const void* indirect) const
+    noexcept {
     bind();
-    glDrawArraysIndirect(GL_TRIANGLES, indirect);
+    glDrawArraysIndirect(drawMode, indirect);
 }
 
 void IndirectDraw::beginWriting() const noexcept { m_buffer.beginWriting(); }

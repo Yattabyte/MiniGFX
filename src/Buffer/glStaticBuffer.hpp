@@ -3,6 +3,7 @@
 #define GLSTATICBUFFER_HPP
 
 #include "Buffer/glBuffer.hpp"
+#include <stddef.h>
 
 /** Encapsulates an OpenGL buffer that is fixed in size. */
 class glStaticBuffer final : public glBuffer {

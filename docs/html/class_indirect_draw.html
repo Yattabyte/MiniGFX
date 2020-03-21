@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MiniGFX
-   &#160;<span id="projectnumber">0.4.2</span>
+   &#160;<span id="projectnumber">0.4.3</span>
    </div>
    <div id="projectbrief">Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.</div>
   </td>
@@ -87,9 +87,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a04bcabcb709f34fb9bdb397410828ac9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#a04bcabcb709f34fb9bdb397410828ac9">bind</a> () const noexcept</td></tr>
 <tr class="memdesc:a04bcabcb709f34fb9bdb397410828ac9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this draw call to the OpenGL indirect buffer target.  <a href="#a04bcabcb709f34fb9bdb397410828ac9">More...</a><br /></td></tr>
 <tr class="separator:a04bcabcb709f34fb9bdb397410828ac9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab995fac3fdf0f2008f783d0aaa58b7a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#ab995fac3fdf0f2008f783d0aaa58b7a5">drawCall</a> (const void *indirect=nullptr) const noexcept</td></tr>
-<tr class="memdesc:ab995fac3fdf0f2008f783d0aaa58b7a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this buffer and also perform an indirect draw call.  <a href="#ab995fac3fdf0f2008f783d0aaa58b7a5">More...</a><br /></td></tr>
-<tr class="separator:ab995fac3fdf0f2008f783d0aaa58b7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ed1e267b5e6e2dd6fe82c19ddc8e57b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#a0ed1e267b5e6e2dd6fe82c19ddc8e57b">drawCall</a> (const int &amp;drawMode, const void *indirect=nullptr) const noexcept</td></tr>
+<tr class="memdesc:a0ed1e267b5e6e2dd6fe82c19ddc8e57b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind this buffer and also perform an indirect draw call.  <a href="#a0ed1e267b5e6e2dd6fe82c19ddc8e57b">More...</a><br /></td></tr>
+<tr class="separator:a0ed1e267b5e6e2dd6fe82c19ddc8e57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab08a82f14105ac932d175a649ca89460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_indirect_draw.html#ab08a82f14105ac932d175a649ca89460">beginWriting</a> () const noexcept</td></tr>
 <tr class="memdesc:ab08a82f14105ac932d175a649ca89460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare this buffer for writing, waiting on its sync fence.  <a href="#ab08a82f14105ac932d175a649ca89460">More...</a><br /></td></tr>
 <tr class="separator:ab08a82f14105ac932d175a649ca89460"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,8 +253,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab995fac3fdf0f2008f783d0aaa58b7a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab995fac3fdf0f2008f783d0aaa58b7a5">&#9670;&nbsp;</a></span>drawCall()</h2>
+<a id="a0ed1e267b5e6e2dd6fe82c19ddc8e57b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ed1e267b5e6e2dd6fe82c19ddc8e57b">&#9670;&nbsp;</a></span>drawCall()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,9 +265,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void IndirectDraw::drawCall </td>
           <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>drawMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>indirect</em> = <code>nullptr</code></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>indirect</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -280,6 +290,7 @@ Public Member Functions</h2></td></tr>
 <p>Bind this buffer and also perform an indirect draw call. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">drawMode</td><td>either GL_TRIANGLES, GL_POINTS, GL_LINES, etc. </td></tr>
     <tr><td class="paramname">indirect</td><td>an indirect pointer. </td></tr>
   </table>
   </dd>

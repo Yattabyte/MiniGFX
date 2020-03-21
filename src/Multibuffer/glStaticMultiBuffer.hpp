@@ -3,6 +3,7 @@
 #define GLSTATICMULTIBUFFER_HPP
 
 #include "Multibuffer/glMultiBuffer.hpp"
+#include <stddef.h>
 #include <utility>
 
 /** Encapsulates an OpenGL multi-buffer that is fixed in size. */
