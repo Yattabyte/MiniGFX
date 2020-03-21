@@ -44,6 +44,7 @@ void IndirectDraw::setPrimitiveCount(const GLuint& primitiveCount) noexcept {
 
 void IndirectDraw::setFirst(const GLuint& first) noexcept {
     m_first = first;
-    m_buffer.write((GLsizeiptr)(sizeof(GLuint)) * 2ULL,
-                   (GLsizeiptr)(sizeof(GLuint)), &first);
+    m_buffer.write(
+        (GLsizeiptr)(sizeof(GLuint)) * 2ULL, (GLsizeiptr)(sizeof(GLuint)),
+        &first);
 }
