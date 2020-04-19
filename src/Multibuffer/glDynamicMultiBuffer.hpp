@@ -15,11 +15,11 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
     /** Wait for all fences to complete, then destroy this buffer. */
     ~glDynamicMultiBuffer() {
         for (int x = 0; x < BufferCount; ++x) {
-            WaitForFence(m_writeFence[x]);
-            WaitForFence(m_readFence[x]);
-            if (m_bufferID[x]) {
-                glUnmapNamedBuffer(m_bufferID[x]);
-                glDeleteBuffers(1, &m_bufferID[x]);
+            this->WaitForFence(this->m_writeFence[x]);
+            this->WaitForFence(this->m_readFence[x]);
+            if (this->m_bufferID[x]) {
+                glUnmapNamedBuffer(this->m_bufferID[x]);
+                glDeleteBuffers(1, &this->m_bufferID[x]);
             }
         }
     }
@@ -32,13 +32,13 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
         const GLbitfield& mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
                                      GL_MAP_COHERENT_BIT) noexcept
         : m_maxCapacity(capacity), m_mapFlags(mapFlags) {
-        glCreateBuffers(BufferCount, m_bufferID);
+        glCreateBuffers(BufferCount, this->m_bufferID);
         for (int x = 0; x < BufferCount; ++x) {
             glNamedBufferStorage(
-                m_bufferID[x], m_maxCapacity, data,
+                this->m_bufferID[x], m_maxCapacity, data,
                 GL_DYNAMIC_STORAGE_BIT | m_mapFlags);
             m_bufferPtr[x] = glMapNamedBufferRange(
-                m_bufferID[x], 0, m_maxCapacity, m_mapFlags);
+                this->m_bufferID[x], 0, m_maxCapacity, m_mapFlags);
         }
     }
     /** Construct a new Dynamic buffer, from another buffer.
@@ -47,7 +47,7 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
         : glDynamicMultiBuffer(other.m_maxCapacity, 0, other.m_mapFlags) {
         for (int x = 0; x < BufferCount; ++x)
             glCopyNamedBufferSubData(
-                other.m_bufferID[x], m_bufferID[x], 0, 0, m_maxCapacity);
+                other.m_bufferID[x], this->m_bufferID[x], 0, 0, m_maxCapacity);
     }
     /** Assignment constructor.
     @param	other			another buffer to move from. */
@@ -60,10 +60,10 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
     @param	other			another buffer to move the data from, to here. */
     glDynamicMultiBuffer& operator=(glDynamicMultiBuffer&& other) noexcept {
         for (int x = 0; x < BufferCount; ++x) {
-            m_bufferID[x] = std::move(other.m_bufferID[x]);
+            this->m_bufferID[x] = std::move(other.m_bufferID[x]);
             m_bufferPtr[x] = std::move(other.m_bufferPtr[x]);
-            m_writeFence[x] = std::move(other.m_writeFence[x]);
-            m_readFence[x] = std::move(other.m_readFence[x]);
+            this->m_writeFence[x] = std::move(other.m_writeFence[x]);
+            this->m_readFence[x] = std::move(other.m_readFence[x]);
             other.m_bufferID[x] = 0;
             other.m_bufferPtr[x] = nullptr;
             other.m_writeFence[x] = nullptr;
@@ -72,7 +72,7 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
 
         m_mapFlags = (std::move(other.m_mapFlags));
         m_maxCapacity = (std::move(other.m_maxCapacity));
-        m_index = std::move(other.m_index);
+        this->m_index = std::move(other.m_index);
         other.m_mapFlags = 0;
         other.m_maxCapacity = 0;
         other.m_index = 0;
@@ -86,7 +86,7 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
         m_maxCapacity = other.m_maxCapacity;
         for (int x = 0; x < BufferCount; ++x)
             glCopyNamedBufferSubData(
-                other.m_bufferID[x], m_bufferID[x], 0, 0, m_maxCapacity);
+                other.m_bufferID[x], this->m_bufferID[x], 0, 0, m_maxCapacity);
         return *this;
     }
 
@@ -103,8 +103,8 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
         const void* data) noexcept {
         expandToFit(offset, size);
         std::memcpy(
-            static_cast<unsigned char*>(m_bufferPtr[m_index]) + offset, data,
-            size);
+            static_cast<unsigned char*>(m_bufferPtr[this->m_index]) + offset,
+            data, size);
     }
     /** Write the supplied data to GPU memory.
     @param	offset		byte offset from the beginning.
@@ -115,7 +115,7 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
         const void* data) noexcept {
         expandToFit(offset, size);
 
-        for (const auto& buffer : m_bufferID)
+        for (const auto& buffer : this->m_bufferID)
             glNamedBufferSubData(buffer, offset, size, data);
     }
     /** Expands this buffer's container if it can't fit the specified range to
@@ -134,8 +134,8 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
             // Wait for and transfer data from old buffers into new buffers of
             // the new size
             for (int x = 0; x < BufferCount; ++x) {
-                WaitForFence(m_writeFence[x]);
-                WaitForFence(m_readFence[x]);
+                this->WaitForFence(this->m_writeFence[x]);
+                this->WaitForFence(this->m_readFence[x]);
 
                 // Create new buffer
                 GLuint newBuffer = 0;
@@ -147,16 +147,16 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
                 // Copy old buffer
                 if (oldSize)
                     glCopyNamedBufferSubData(
-                        m_bufferID[x], newBuffer, 0, 0, oldSize);
+                        this->m_bufferID[x], newBuffer, 0, 0, oldSize);
 
                 // Delete old buffer
-                glUnmapNamedBuffer(m_bufferID[x]);
-                glDeleteBuffers(1, &m_bufferID[x]);
+                glUnmapNamedBuffer(this->m_bufferID[x]);
+                glDeleteBuffers(1, &this->m_bufferID[x]);
 
                 // Migrate new buffer
-                m_bufferID[x] = newBuffer;
+                this->m_bufferID[x] = newBuffer;
                 m_bufferPtr[x] = glMapNamedBufferRange(
-                    m_bufferID[x], 0, m_maxCapacity, m_mapFlags);
+                    this->m_bufferID[x], 0, m_maxCapacity, m_mapFlags);
             }
         }
     }

@@ -16,15 +16,15 @@ class Window {
     @param  height  the height to make the window. */
     Window(const int& width, const int& height) noexcept;
     /** Default copy constructor. */
-    Window(const Window& o) = delete;
+    Window(const Window& other) = delete;
     /** Default move constructor. */
-    Window(Window&& o) noexcept;
+    Window(Window&& other) noexcept;
 
     // Public Operators
     /** Default copy-assignment operator. */
-    Window& operator=(const Window& p) = delete;
+    Window& operator=(const Window& other) = delete;
     /** Default move-assignment operator. */
-    Window& operator=(Window&& p) noexcept;
+    Window& operator=(Window&& other) noexcept;
 
     // Public Methods
     /** Check whether or not this window exists and is valid.

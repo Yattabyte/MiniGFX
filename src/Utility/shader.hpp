@@ -12,6 +12,8 @@ class Shader {
     // Public (De)Constructors
     /** Destroy this shader program. */
     ~Shader();
+    /** Construct am empty shader. */
+    Shader() = default;
     /** Construct a shader program.
     @param  vertexSource    the source code for the vertex shader.
     @param  fragmentSource  the source code for the fragment shader.*/
@@ -19,13 +21,13 @@ class Shader {
         const std::string& vertexSource,
         const std::string& fragmentSource) noexcept;
     /** Default copy constructor. */
-    Shader(const Shader& o) = default;
+    Shader(const Shader& o) = delete;
     /** Default move constructor. */
     Shader(Shader&& o) noexcept = default;
 
     // Public Operators
     /** Default copy-assignment operator. */
-    Shader& operator=(const Shader& p) = default;
+    Shader& operator=(const Shader& p) = delete;
     /** Default move-assignment operator. */
     Shader& operator=(Shader&& p) noexcept = default;
 
