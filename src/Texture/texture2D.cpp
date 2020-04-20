@@ -39,6 +39,6 @@ Texture2D::Texture2D(
           image.data(), static_cast<GLsizei>(image.size().x()),
           static_cast<GLsizei>(image.size().y()), linear, anisotropy, mipmap) {}
 
-void Texture2D::bind(const unsigned int& textureUnit) noexcept {
-    glBindTextureUnit(textureUnit, m_glTexID);
+void Texture2D::bind(const unsigned int &textureUnit) const noexcept {
+  glBindTextureUnit(textureUnit, m_glTexID);
 }

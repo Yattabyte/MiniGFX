@@ -11,54 +11,88 @@ class vec2 {
     /** Default destruct this vector. */
     ~vec2() = default;
     /** Default construct this vector. */
-    vec2() = default;
+    constexpr vec2() = default;
     /** Construct a vector using 1 specific value. */
-    explicit vec2(const float& value) noexcept : m_data{ value, value } {}
+    constexpr explicit vec2(const float& value) noexcept
+        : m_data{ value, value } {}
     /** Construct a vector using 2 specific attributes.
     @param  _x  the x value to use.
     @param  _y  the y value to use. */
-    vec2(const float& _x, const float& _y) noexcept : m_data{ _x, _y } {}
+    constexpr vec2(const float& _x, const float& _y) noexcept
+        : m_data{ _x, _y } {}
     /** Default copy constructor. */
-    vec2(const vec2& o) = default;
+    constexpr vec2(const vec2& o) = default;
     /** Default move constructor. */
-    vec2(vec2&& o) noexcept = default;
+    constexpr vec2(vec2&& o) noexcept = default;
 
     // Operators
     /** Default copy-assignment operator. */
-    vec2& operator=(const vec2& p) = default;
+    constexpr vec2& operator=(const vec2& p) = default;
     /** Default move-assignment operator. */
-    vec2& operator=(vec2&& p) noexcept = default;
+    constexpr vec2& operator=(vec2&& p) noexcept = default;
     /** Add another vector to this one.
     @param  o   the other vector.
     @return     this vector plus the other vector. */
-    vec2 operator+(const vec2& o) const noexcept {
+    constexpr vec2 operator+(const vec2& o) const noexcept {
         return vec2{ x() + o.x(), y() + o.y() };
+    }
+    /** Add another vector to this one.
+    @param  o   the other vector.
+    @return     this vector plus the other vector. */
+    constexpr vec2& operator+=(const vec2& o) noexcept {
+        m_data[0] += o.m_data[0];
+        m_data[1] += o.m_data[1];
+        return *this;
     }
     /** Subtract another vector from this one.
     @param  o   the other vector.
     @return     this vector minus the other vector. */
-    vec2 operator-(const vec2& o) const noexcept {
+    constexpr vec2 operator-(const vec2& o) const noexcept {
         return vec2{ x() - o.x(), y() - o.y() };
+    }
+    /** Subtract another vector from this one.
+    @param  o   the other vector.
+    @return     this vector minus the other vector. */
+    constexpr vec2& operator-=(const vec2& o) noexcept {
+        m_data[0] -= o.m_data[0];
+        m_data[1] -= o.m_data[1];
+        return *this;
     }
     /** Multiply by another vector.
     @param  o   the other vector.
     @return     this vector multiplied by the other vector. */
-    vec2 operator*(const vec2& o) const noexcept {
+    constexpr vec2 operator*(const vec2& o) const noexcept {
         return vec2{ x() * o.x(), y() * o.y() };
+    }
+    /** Multiply by another vector.
+    @param  o   the other vector.
+    @return     this vector multiplied by the other vector. */
+    constexpr vec2& operator*=(const vec2& o) noexcept {
+        m_data[0] *= o.m_data[0];
+        m_data[1] *= o.m_data[1];
+        return *this;
     }
     /** Divide by another vector.
     @param  o   the other vector.
     @return     this vector divided by the other vector. */
-    vec2 operator/(const vec2& o) const noexcept {
+    constexpr vec2 operator/(const vec2& o) const noexcept {
         return vec2{ x() / o.x(), y() / o.y() };
+    }
+    /** Divide by another vector.
+    @param  o   the other vector.
+    @return     this vector divided by the other vector. */
+    constexpr vec2& operator/(const vec2& o) noexcept {
+        m_data[0] /= o.m_data[0];
+        m_data[1] /= o.m_data[1];
+        return *this;
     }
     /** Negative Operator
     @return     negative version of this vector. */
-    vec2 operator-() const noexcept { return vec2{ -x(), -y() }; }
+    constexpr vec2 operator-() const noexcept { return vec2{ -x(), -y() }; }
     /** Compare this vector against another for sorting purposes.
     @param  o   the other vector.
     @return     true if this vector is less than the other vector. */
-    bool operator<(const vec2& o) const noexcept {
+    constexpr bool operator<(const vec2& o) const noexcept {
         if (x() == o.x())
             return y() < o.y();
         return x() < o.x();
@@ -66,43 +100,45 @@ class vec2 {
     /** Compare against another vector.
     @param  o   the other vector.
     @return     true if this equals the other vector, false otherwise. */
-    bool operator==(const vec2& o) const noexcept {
+    constexpr bool operator==(const vec2& o) const noexcept {
         return x() == o.x() && y() == o.y();
     }
     /** Compare against another vector.
     @param  o   the other vector.
     @return     true if this doesn't equal the other vector, false otherwise. */
-    bool operator!=(const vec2& o) const noexcept { return !(*this == o); }
+    constexpr bool operator!=(const vec2& o) const noexcept {
+        return !(*this == o);
+    }
     /** Index operator.
     @param  i   the index.
     @return     reference to the data found at index; */
-    float& operator[](const size_t& i) noexcept { return m_data[i]; }
+    constexpr float& operator[](const size_t& i) noexcept { return m_data[i]; }
     /** Const Index operator.
     @param  i   the index.
     @return     reference to the data found at index; */
-    const float& operator[](const size_t& i) const noexcept {
+    constexpr const float& operator[](const size_t& i) const noexcept {
         return m_data[i];
     }
 
     // Methods
     /** Get the X component of this vector.
     @return     reference to the X component. */
-    float& x() noexcept { return m_data[0]; }
+    constexpr float& x() noexcept { return m_data[0]; }
     /** Get the const X component of this vector.
     @return     const reference to the X component. */
-    const float& x() const noexcept { return m_data[0]; }
+    constexpr const float& x() const noexcept { return m_data[0]; }
     /** Get the Y component of this vector.
     @return     reference to the Y component. */
-    float& y() noexcept { return m_data[1]; }
+    constexpr float& y() noexcept { return m_data[1]; }
     /** Get the const Y component of this vector.
     @return     const reference to the Y component. */
-    const float& y() const noexcept { return m_data[1]; }
+    constexpr const float& y() const noexcept { return m_data[1]; }
     /** Get a pointer to the underlying data container.
     @return     pointer to the data array. */
-    float* data() noexcept { return &m_data[0]; }
+    constexpr float* data() noexcept { return &m_data[0]; }
     /** Get a const pointer to the underlying data container.
     @return     pointer to the data array. */
-    const float* data() const noexcept { return &m_data[0]; }
+    constexpr const float* data() const noexcept { return &m_data[0]; }
     /** Normalize this vector.
     @return     normalized version of this vector. */
     vec2 normalize() const noexcept { return normalize(*this); }
@@ -121,7 +157,7 @@ class vec2 {
     @param  a   the first vector to dot against.
     @param  b   the second vector to dot against.
     @return     dot product of a and b. */
-    static float dot(const vec2& a, const vec2& b) noexcept {
+    constexpr static float dot(const vec2& a, const vec2& b) noexcept {
         return (a.x() * b.x()) + (a.y() * b.y());
     }
 
@@ -138,57 +174,95 @@ class vec3 {
     /** Default destruct this vector. */
     ~vec3() = default;
     /** Default construct this vector. */
-    vec3() = default;
+    constexpr vec3() = default;
     /** Construct a vector using 1 specific value. */
-    explicit vec3(const float& value) noexcept
+    constexpr explicit vec3(const float& value) noexcept
         : m_data{ value, value, value } {}
     /** Construct a vector using 3 specific attributes.
     @param  _x  the x value to use.
     @param  _y  the y value to use.
     @param  _z  the z value to use. */
-    vec3(const float& _x, const float& _y, const float& _z) noexcept
+    constexpr vec3(const float& _x, const float& _y, const float& _z) noexcept
         : m_data{ _x, _y, _z } {}
     /** Default copy constructor. */
-    vec3(const vec3& o) = default;
+    constexpr vec3(const vec3& o) = default;
     /** Default move constructor. */
-    vec3(vec3&& o) noexcept = default;
+    constexpr vec3(vec3&& o) noexcept = default;
 
     // Operators
     /** Default copy-assignment operator. */
-    vec3& operator=(const vec3& p) = default;
+    constexpr vec3& operator=(const vec3& p) = default;
     /** Default move-assignment operator. */
-    vec3& operator=(vec3&& p) noexcept = default;
+    constexpr vec3& operator=(vec3&& p) noexcept = default;
     /** Add another vector to this one.
     @param  o   the other vector.
     @return     this vector plus the other vector. */
-    vec3 operator+(const vec3& o) const noexcept {
+    constexpr vec3 operator+(const vec3& o) const noexcept {
         return vec3{ x() + o.x(), y() + o.y(), z() + o.z() };
+    }
+    /** Add another vector to this one.
+    @param  o   the other vector.
+    @return     this vector plus the other vector. */
+    constexpr vec3& operator+=(const vec3& o) noexcept {
+        m_data[0] += o.m_data[0];
+        m_data[1] += o.m_data[1];
+        m_data[2] += o.m_data[2];
+        return *this;
     }
     /** Subtract another vector from this one.
     @param  o   the other vector.
     @return     this vector minus the other vector. */
-    vec3 operator-(const vec3& o) const noexcept {
+    constexpr vec3 operator-(const vec3& o) const noexcept {
         return vec3{ x() - o.x(), y() - o.y(), z() - o.z() };
+    }
+    /** Subtract another vector from this one.
+    @param  o   the other vector.
+    @return     this vector minus the other vector. */
+    constexpr vec3& operator-(const vec3& o) noexcept {
+        m_data[0] -= o.m_data[0];
+        m_data[1] -= o.m_data[1];
+        m_data[2] -= o.m_data[2];
+        return *this;
     }
     /** Multiply by another vector.
     @param  o   the other vector.
     @return     this vector multiplied by the other vector. */
-    vec3 operator*(const vec3& o) const noexcept {
+    constexpr vec3 operator*(const vec3& o) const noexcept {
         return vec3{ x() * o.x(), y() * o.y(), z() * o.z() };
+    }
+    /** Multiply by another vector.
+    @param  o   the other vector.
+    @return     this vector multiplied by the other vector. */
+    constexpr vec3& operator*(const vec3& o) noexcept {
+        m_data[0] *= o.m_data[0];
+        m_data[1] *= o.m_data[1];
+        m_data[2] *= o.m_data[2];
+        return *this;
     }
     /** Divide by another vector.
     @param  o   the other vector.
     @return     this vector divided by the other vector. */
-    vec3 operator/(const vec3& o) const noexcept {
+    constexpr vec3 operator/(const vec3& o) const noexcept {
         return vec3{ x() / o.x(), y() / o.y(), z() / o.z() };
+    }
+    /** Divide by another vector.
+    @param  o   the other vector.
+    @return     this vector divided by the other vector. */
+    constexpr vec3& operator/=(const vec3& o) noexcept {
+        m_data[0] /= o.m_data[0];
+        m_data[1] /= o.m_data[1];
+        m_data[2] /= o.m_data[2];
+        return *this;
     }
     /** Negative Operator
     @return     negative version of this vector. */
-    vec3 operator-() const noexcept { return vec3{ -x(), -y(), -z() }; }
+    constexpr vec3 operator-() const noexcept {
+        return vec3{ -x(), -y(), -z() };
+    }
     /** Compare this vector against another for sorting purposes.
     @param  o   the other vector.
     @return     true if this vector is less than the other vector. */
-    bool operator<(const vec3& o) const noexcept {
+    constexpr bool operator<(const vec3& o) const noexcept {
         if (z() == o.z()) {
             if (x() == o.x())
                 return y() < o.y();
@@ -199,49 +273,51 @@ class vec3 {
     /** Compare against another vector.
     @param  o   the other vector.
     @return     true if this equals the other vector, false otherwise. */
-    bool operator==(const vec3& o) const noexcept {
+    constexpr bool operator==(const vec3& o) const noexcept {
         return x() == o.x() && y() == o.y() && z() == o.z();
     }
     /** Compare against another vector.
     @param  o   the other vector.
     @return     true if this doesn't equal the other vector, false otherwise. */
-    bool operator!=(const vec3& o) const noexcept { return !(*this == o); }
+    constexpr bool operator!=(const vec3& o) const noexcept {
+        return !(*this == o);
+    }
     /** Index operator.
     @param  i   the index.
     @return     reference to the data found at index; */
-    float& operator[](const size_t& i) noexcept { return m_data[i]; }
+    constexpr float& operator[](const size_t& i) noexcept { return m_data[i]; }
     /** Const Index operator.
     @param  i   the index.
     @return     reference to the data found at index; */
-    const float& operator[](const size_t& i) const noexcept {
+    constexpr const float& operator[](const size_t& i) const noexcept {
         return m_data[i];
     }
 
     // Methods
     /** Get the X component of this vector.
     @return     reference to the X component. */
-    float& x() noexcept { return m_data[0]; }
+    constexpr float& x() noexcept { return m_data[0]; }
     /** Get the const X component of this vector.
     @return     const reference to the X component. */
-    const float& x() const noexcept { return m_data[0]; }
+    constexpr const float& x() const noexcept { return m_data[0]; }
     /** Get the Y component of this vector.
     @return     reference to the Y component. */
-    float& y() noexcept { return m_data[1]; }
+    constexpr float& y() noexcept { return m_data[1]; }
     /** Get the const Y component of this vector.
     @return     const reference to the Y component. */
-    const float& y() const noexcept { return m_data[1]; }
+    constexpr const float& y() const noexcept { return m_data[1]; }
     /** Get the Z component of this vector.
     @return     reference to the Z component. */
-    float& z() noexcept { return m_data[2]; }
+    constexpr float& z() noexcept { return m_data[2]; }
     /** Get the const Z component of this vector.
     @return     const reference to the Z component. */
-    const float& z() const noexcept { return m_data[2]; }
+    constexpr const float& z() const noexcept { return m_data[2]; }
     /** Get a pointer to the underlying data container.
     @return     pointer to the data array. */
-    float* data() noexcept { return &m_data[0]; }
+    constexpr float* data() noexcept { return &m_data[0]; }
     /** Get a const pointer to the underlying data container.
     @return     pointer to the data array. */
-    const float* data() const noexcept { return &m_data[0]; }
+    constexpr const float* data() const noexcept { return &m_data[0]; }
     /** Normalize this vector.
     @return     normalized version of this vector. */
     vec3 normalize() const noexcept { return normalize(*this); }
@@ -262,7 +338,7 @@ class vec3 {
     @param  a   the first vector to cross against.
     @param  b   the second vector to cross against.
     @return     cross product of a and b. */
-    static vec3 cross(const vec3& a, const vec3& b) noexcept {
+    constexpr static vec3 cross(const vec3& a, const vec3& b) noexcept {
         return vec3{ a.y() * b.z() - a.z() * b.y(),
                      a.z() * b.x() - a.x() * b.z(),
                      a.x() * b.y() - a.y() * b.x() };
@@ -275,7 +351,7 @@ class vec3 {
     @param  a   the first vector to dot against.
     @param  b   the second vector to dot against.
     @return     dot product of a and b. */
-    static float dot(const vec3& a, const vec3& b) noexcept {
+    constexpr static float dot(const vec3& a, const vec3& b) noexcept {
         return (a.x() * b.x()) + (a.y() * b.y()) + (a.z() * b.z());
     }
 
@@ -292,108 +368,112 @@ class vec4 {
     /** Default destruct this vector. */
     ~vec4() = default;
     /** Default construct this vector. */
-    vec4() = default;
+    constexpr vec4() = default;
     /** Construct a vector using 1 specific value. */
-    explicit vec4(const float& value) noexcept
+    constexpr explicit vec4(const float& value) noexcept
         : m_data{ value, value, value, value } {}
     /** Construct a vector using 3 specific attributes.
     @param  _x  the x value to use.
     @param  _y  the y value to use.
     @param  _z  the z value to use.
     @param  _w  the z value to use. */
-    vec4(
+    constexpr vec4(
         const float& _x, const float& _y, const float& _z,
         const float& _w) noexcept
         : m_data{ _x, _y, _z, _w } {}
     /** Default copy constructor. */
-    vec4(const vec4& o) = default;
+    constexpr vec4(const vec4& o) = default;
     /** Default move constructor. */
-    vec4(vec4&& o) noexcept = default;
+    constexpr vec4(vec4&& o) noexcept = default;
 
     // Public Operators
     /** Default copy-assignment operator. */
-    vec4& operator=(const vec4& p) = default;
+    constexpr vec4& operator=(const vec4& p) = default;
     /** Default move-assignment operator. */
-    vec4& operator=(vec4&& p) noexcept = default;
+    constexpr vec4& operator=(vec4&& p) noexcept = default;
     /** Add another vector to this one.
     @param  o   the other vector.
     @return     this vector plus the other vector. */
-    vec4 operator+(const vec4& o) const noexcept {
+    constexpr vec4 operator+(const vec4& o) const noexcept {
         return vec4{ x() + o.x(), y() + o.y(), z() + o.z(), w() + o.w() };
     }
     /** Subtract another vector from this one.
     @param  o   the other vector.
     @return     this vector minus the other vector. */
-    vec4 operator-(const vec4& o) const noexcept {
+    constexpr vec4 operator-(const vec4& o) const noexcept {
         return vec4{ x() - o.x(), y() - o.y(), z() - o.z(), w() - o.w() };
     }
     /** Multiply by another vector.
     @param  o   the other vector.
     @return     this vector multiplied by the other vector. */
-    vec4 operator*(const vec4& o) const noexcept {
+    constexpr vec4 operator*(const vec4& o) const noexcept {
         return vec4{ x() * o.x(), y() * o.y(), z() * o.z(), w() * o.w() };
     }
     /** Divide by another vector.
     @param  o   the other vector.
     @return     this vector divided by the other vector. */
-    vec4 operator/(const vec4& o) const noexcept {
+    constexpr vec4 operator/(const vec4& o) const noexcept {
         return vec4{ x() / o.x(), y() / o.y(), z() / o.z(), w() / o.w() };
     }
     /** Negative Operator
     @return     negative version of this vector. */
-    vec4 operator-() const noexcept { return vec4{ -x(), -y(), -z(), -w() }; }
+    constexpr vec4 operator-() const noexcept {
+        return vec4{ -x(), -y(), -z(), -w() };
+    }
     /** Compare against another vector.
     @param  o   the other vector.
     @return     true if this equals the other vector, false otherwise. */
-    bool operator==(const vec4& o) const noexcept {
+    constexpr bool operator==(const vec4& o) const noexcept {
         return x() == o.x() && y() == o.y() && z() == o.z() && w() == o.w();
     }
     /** Compare against another vector.
     @param  o   the other vector.
     @return     true if this doesn't equal the other vector, false otherwise. */
-    bool operator!=(const vec4& o) const noexcept { return !(*this == o); }
+    constexpr bool operator!=(const vec4& o) const noexcept {
+        return !(*this == o);
+    }
     /** Index operator.
     @param  i   the index.
     @return     reference to the data found at index; */
-    float& operator[](const size_t& i) noexcept { return m_data[i]; }
+    constexpr float& operator[](const size_t& i) noexcept { return m_data[i]; }
     /** Const Index operator.
     @param  i   the index.
     @return     reference to the data found at index; */
-    const float& operator[](const size_t& i) const noexcept {
+    constexpr const float& operator[](const size_t& i) const noexcept {
         return m_data[i];
     }
 
     // Public Methods
     /** Get the X component of this vector.
     @return     reference to the X component. */
-    float& x() noexcept { return m_data[0]; }
+    constexpr float& x() noexcept { return m_data[0]; }
     /** Get the const X component of this vector.
     @return     const reference to the X component. */
-    const float& x() const noexcept { return m_data[0]; }
+    constexpr const float& x() const noexcept { return m_data[0]; }
     /** Get the Y component of this vector.
     @return     reference to the Y component. */
-    float& y() noexcept { return m_data[1]; }
+    constexpr float& y() noexcept { return m_data[1]; }
     /** Get the const Y component of this vector.
     @return     const reference to the Y component. */
-    const float& y() const noexcept { return m_data[1]; }
+    constexpr const float& y() const noexcept { return m_data[1]; }
     /** Get the Z component of this vector.
     @return     reference to the Z component. */
-    float& z() noexcept { return m_data[2]; }
+    constexpr float& z() noexcept { return m_data[2]; }
     /** Get the const Z component of this vector.
     @return     const reference to the Z component. */
-    const float& z() const noexcept { return m_data[2]; }
+    constexpr const float& z() const noexcept { return m_data[2]; }
     /** Get the W component of this vector.
     @return     reference to the W component. */
-    float& w() noexcept { return m_data[3]; }
+    constexpr float& w() noexcept { return m_data[3]; }
     /** Get the const W component of this vector.
     @return     const reference to the W component. */
-    const float& w() const noexcept { return m_data[3]; }
+    constexpr const float& w() const noexcept { return m_data[3]; }
     /** Get a pointer to the underlying data container.
     @return     pointer to the data array. */
-    float* data() noexcept { return &m_data[0]; }
+    constexpr float* data() noexcept { return &m_data[0]; }
     /** Get a const pointer to the underlying data container.
     @return     pointer to the data array. */
-    const float* data() const noexcept { return &m_data[0]; }
+    constexpr const float* data() const noexcept { return &m_data[0]; }
     /** Normalize this vector.
     @return     normalized version of this vector. */
     vec4 normalize() const noexcept { return normalize(*this); }

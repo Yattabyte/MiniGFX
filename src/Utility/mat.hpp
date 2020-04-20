@@ -11,29 +11,31 @@ class mat4 {
     /** Default destruct this vector. */
     ~mat4() = default;
     /** Default construct this vector. */
-    mat4() = default;
+    constexpr mat4() = default;
     /** Construct an explicit matrix of vectors, row major. */
-    mat4(
+    constexpr mat4(
         const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3) noexcept
         : m_data{ v0, v1, v2, v3 } {}
     /** Default copy constructor. */
-    mat4(const mat4& o) = default;
+    constexpr mat4(const mat4& o) = default;
     /** Default move constructor. */
-    mat4(mat4&& o) noexcept = default;
+    constexpr mat4(mat4&& o) noexcept = default;
 
     // Public Operators
     /** Default copy-assignment operator. */
-    mat4& operator=(const mat4& p) = default;
+    constexpr mat4& operator=(const mat4& p) = default;
     /** Default move-assignment operator. */
-    mat4& operator=(mat4&& p) noexcept = default;
+    constexpr mat4& operator=(mat4&& p) noexcept = default;
     /** Retrieve the row at the index specified.
     @param  index   the row number to retrieve.
     @return         reference to the row specified. */
-    vec4& operator[](const size_t& index) noexcept { return m_data[index]; }
+    constexpr vec4& operator[](const size_t& index) noexcept {
+        return m_data[index];
+    }
     /** Compare against another matrix.
     @param  o       the other matrix.
     @return         true if this equals the other matrix, false otherwise. */
-    bool operator==(const mat4& o) const noexcept {
+    constexpr bool operator==(const mat4& o) const noexcept {
         for (int x = 0; x < 4; ++x)
             if (m_data[x] != o.m_data[x])
                 return false;
@@ -43,15 +45,17 @@ class mat4 {
     @param  o       the other vector.
     @return         true if this doesn't equal the other matrix, false
     otherwise. */
-    bool operator!=(const mat4& o) const noexcept { return !(*this == o); }
+    constexpr bool operator!=(const mat4& o) const noexcept {
+        return !(*this == o);
+    }
 
     // Public Methods
     /** Get a pointer to the underlying data container.
     @return         pointer to the data array. */
-    float* data() noexcept { return m_data[0].data(); }
+    constexpr float* data() noexcept { return m_data[0].data(); }
     /** Get a const pointer to the underlying data container.
     @return         pointer to the data array. */
-    const float* data() const noexcept { return m_data[0].data(); }
+    constexpr const float* data() const noexcept { return m_data[0].data(); }
     /** Create a transform matrix looking at a point a given another point.
     @param  eye     the eye position.
     @param  center  the center of the target to look at.

@@ -23,7 +23,7 @@ class Texture1D {
     // Public Methods
     /** Makes this texture active at a specific texture unit.
     @param	textureUnit	the texture unit to make this texture active at. */
-    void bind(const unsigned int& textureUnit) noexcept;
+    void bind(const unsigned int& textureUnit) const noexcept;
 
     private:
     // Private Deleted Constructors

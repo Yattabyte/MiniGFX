@@ -2,7 +2,7 @@
 ### Mini GFX ###
 ################
 cmake_minimum_required(VERSION 3.9.2)
-project(MiniGFX VERSION 0.4.5 DESCRIPTION "Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.")
+project(MiniGFX VERSION 0.4.6 DESCRIPTION "Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.")
 include(ExternalProject)
 
 # Set mandatory requirements

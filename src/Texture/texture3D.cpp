@@ -34,6 +34,6 @@ Texture3D::Texture3D(
     }
 }
 
-void Texture3D::bind(const unsigned int& textureUnit) noexcept {
-    glBindTextureUnit(textureUnit, m_glTexID);
+void Texture3D::bind(const unsigned int &textureUnit) const noexcept {
+  glBindTextureUnit(textureUnit, m_glTexID);
 }

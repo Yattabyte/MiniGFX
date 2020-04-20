@@ -31,6 +31,6 @@ Texture1D::Texture1D(
     }
 }
 
-void Texture1D::bind(const unsigned int& textureUnit) noexcept {
+void Texture1D::bind(const unsigned int& textureUnit) const noexcept {
     glBindTextureUnit(textureUnit, m_glTexID);
 }
