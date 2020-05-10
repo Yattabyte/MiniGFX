@@ -34,6 +34,8 @@ endif()
 
 # Add source files
 find_package(OpenGL REQUIRED)
+add_subdirectory(external/glad)
+add_subdirectory(external/KHR)
 add_subdirectory(src)
 
 # Optionally perform static code analysis tests
