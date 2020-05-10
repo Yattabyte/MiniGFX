@@ -34,7 +34,6 @@ endif()
 
 # Add source files
 find_package(OpenGL REQUIRED)
-add_subdirectory(external/glfw)
 add_subdirectory(src)
 
 # Optionally perform static code analysis tests

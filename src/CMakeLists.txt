@@ -44,7 +44,6 @@ set(FILES
 add_library(${Module} STATIC ${FILES})
 target_include_directories(${Module}
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
-    PUBLIC ${PROJECT_SOURCE_DIR}/external
 )
 
 # Add library dependencies

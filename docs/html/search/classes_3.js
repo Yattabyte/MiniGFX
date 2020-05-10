@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['shader',['Shader',['../class_shader.html',1,'']]],
-  ['staticmultibuffer',['StaticMultiBuffer',['../class_static_multi_buffer.html',1,'']]]
+  ['shader',['Shader',['../classmini_1_1_shader.html',1,'mini']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x',['x',['../classvec2.html#a914b48f642ef83dad6a9599e680d1e7e',1,'vec2::x() noexcept'],['../classvec2.html#a8cd42d60403ba7f13df764a0715792be',1,'vec2::x() const noexcept'],['../classvec3.html#a872723358537583e6c3dea43478bbc25',1,'vec3::x() noexcept'],['../classvec3.html#a5144b5fcf239212f9eae21340cc63c2d',1,'vec3::x() const noexcept'],['../classvec4.html#ad3112d9ae756fa6ea9fdf250771308d0',1,'vec4::x() noexcept'],['../classvec4.html#aceb057e2d4682282eaa116cdcdd7905c',1,'vec4::x() const noexcept']]]
+  ['x',['x',['../classmini_1_1vec2.html#a84c3ed9b61673c213b97a2501e491bf0',1,'mini::vec2::x() noexcept'],['../classmini_1_1vec2.html#aa6c33f96ceb346dbd720bfb4b5b569c9',1,'mini::vec2::x() const noexcept'],['../classmini_1_1vec3.html#a59772909166027daf8c4985612c90b4e',1,'mini::vec3::x() noexcept'],['../classmini_1_1vec3.html#a46eb761f6e76ff3e92bc31a0ff0a24e7',1,'mini::vec3::x() const noexcept'],['../classmini_1_1vec4.html#a8bf6597ffbe289372dc1b82bbf403400',1,'mini::vec4::x() noexcept'],['../classmini_1_1vec4.html#a272f9fd603b546dac2aae6481d9e2ac4',1,'mini::vec4::x() const noexcept']]]
 ];

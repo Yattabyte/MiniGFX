@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['perspective',['perspective',['../classmat4.html#a2e31d0c9e1faa38282fdcefedcc3d424',1,'mat4']]],
-  ['pointer',['pointer',['../class_window.html#a32bb8bbb1fd518167cfce1b88e8f52d9',1,'Window']]]
+  ['perspective',['perspective',['../classmini_1_1mat4.html#a07b2f2ab0b6ca853a73a4effe3e9f3a7',1,'mini::mat4']]]
 ];

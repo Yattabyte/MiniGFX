@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['endreading',['endReading',['../classgl_buffer.html#a54c8de0bf15ca20645892a6d34c61ba6',1,'glBuffer::endReading()'],['../classgl_multi_buffer.html#a28df9a3b8519355fa85eba65dfe9b3d6',1,'glMultiBuffer::endReading()'],['../class_indirect_draw.html#a976b57c85e23bb9e0bf4dd999f78ee12',1,'IndirectDraw::endReading()']]],
-  ['endwriting',['endWriting',['../classgl_buffer.html#a8e3ce41b393667a0cc0df1ead5057f5d',1,'glBuffer::endWriting()'],['../classgl_multi_buffer.html#a615da4e6a5b4d71c838cba497b71ff53',1,'glMultiBuffer::endWriting()'],['../class_indirect_draw.html#ae48cc16ffd55e027e1b737cf33321abd',1,'IndirectDraw::endWriting()']]],
-  ['errorlog',['errorLog',['../class_shader.html#ae3e483b57983c8d041eddab84ebd94b7',1,'Shader']]],
-  ['exists',['exists',['../class_window.html#a4aa362dfe94dbf2f904463954e01a3f9',1,'Window']]],
-  ['expandtofit',['expandToFit',['../classgl_dynamic_buffer.html#a5a9e6e760e090ba5cf63987aedbe7d4e',1,'glDynamicBuffer::expandToFit()'],['../classgl_dynamic_multi_buffer.html#a1b75fea83b6a9d56e49b57c93f71a2c7',1,'glDynamicMultiBuffer::expandToFit()']]]
+  ['endreading',['endReading',['../classmini_1_1gl_buffer.html#a445bf4c0706c3363107a9c9987d9c189',1,'mini::glBuffer::endReading()'],['../classmini_1_1gl_multi_buffer.html#ade7da6af7a8502f024e9602c92d6c33b',1,'mini::glMultiBuffer::endReading()'],['../classmini_1_1_indirect_draw.html#a6c27ab19c4890be711bd1cae1d722c5f',1,'mini::IndirectDraw::endReading()']]],
+  ['endwriting',['endWriting',['../classmini_1_1gl_buffer.html#a24ee357bc07f04de4babe6944da76b6a',1,'mini::glBuffer::endWriting()'],['../classmini_1_1gl_multi_buffer.html#ad1af5a3c79a431f365328c6b2a30fde7',1,'mini::glMultiBuffer::endWriting()'],['../classmini_1_1_indirect_draw.html#a4ee77db71284bab7eb53385926b2b153',1,'mini::IndirectDraw::endWriting()']]],
+  ['errorlog',['errorLog',['../classmini_1_1_shader.html#ace5ba8236d58f7c28dbd94f45b1dc904',1,'mini::Shader']]],
+  ['expandtofit',['expandToFit',['../classmini_1_1gl_dynamic_buffer.html#a5a9e6e760e090ba5cf63987aedbe7d4e',1,'mini::glDynamicBuffer::expandToFit()'],['../classmini_1_1gl_dynamic_multi_buffer.html#a1ec98c3017f2840788ad5af03a745afb',1,'mini::glDynamicMultiBuffer::expandToFit()']]]
 ];

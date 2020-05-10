@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lookat',['lookAt',['../classmat4.html#a15134d95f684c133705553888cf8e7f3',1,'mat4']]]
+  ['lookat',['lookAt',['../classmini_1_1mat4.html#aff103d27b1f35fc8cb7abe1230f599c7',1,'mini::mat4']]]
 ];

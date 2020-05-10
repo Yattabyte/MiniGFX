@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['image',['Image',['../class_image.html',1,'']]],
-  ['indirectdraw',['IndirectDraw',['../class_indirect_draw.html',1,'']]]
+  ['image',['Image',['../classmini_1_1_image.html',1,'mini']]],
+  ['indirectdraw',['IndirectDraw',['../classmini_1_1_indirect_draw.html',1,'mini']]]
 ];
