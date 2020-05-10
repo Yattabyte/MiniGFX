@@ -25,7 +25,6 @@ set(FILES
     Utility/mat.hpp
     Utility/shader.hpp
     Utility/vec.hpp
-    Utility/window.hpp
 
     # Source files
     ${PROJECT_SOURCE_DIR}/external/glad/glad.c
@@ -39,7 +38,6 @@ set(FILES
     Texture/texture3D.cpp
     Utility/indirectDraw.cpp
     Utility/shader.cpp
-    Utility/window.cpp
 )
 
 # Create Library using the supplied files
