@@ -1,6 +1,8 @@
 #include "Texture/texture2D.hpp"
 
-Texture2D::~Texture2D() { glDeleteTextures(1, &m_glTexID); }
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 Texture2D::Texture2D(
     const float* pixelData, const GLsizei& width, const GLsizei& height,
@@ -32,13 +34,11 @@ Texture2D::Texture2D(
     }
 }
 
+//////////////////////////////////////////////////////////////////////
+
 Texture2D::Texture2D(
     const Image& image, const bool& linear, const bool& anisotropy,
     const bool& mipmap) noexcept
     : Texture2D(
           image.data(), static_cast<GLsizei>(image.size().x()),
           static_cast<GLsizei>(image.size().y()), linear, anisotropy, mipmap) {}
-
-void Texture2D::bind(const unsigned int &textureUnit) const noexcept {
-  glBindTextureUnit(textureUnit, m_glTexID);
-}

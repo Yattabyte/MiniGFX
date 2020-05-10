@@ -5,7 +5,15 @@
 #include <iostream>
 #include <string>
 
+//////////////////////////////////////////////////////////////////////
+/// Custom Destructor
+//////////////////////////////////////////////////////////////////////
+
 Window::~Window() { glfwDestroyWindow(m_window); }
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 Window::Window(const int& width, const int& height) noexcept
     : m_width(width), m_height(height) {
@@ -32,11 +40,17 @@ Window::Window(const int& width, const int& height) noexcept
     m_window = glfwCreateWindow(width, height, "Window", nullptr, nullptr);
 }
 
+//////////////////////////////////////////////////////////////////////
+
 Window::Window(Window&& other) noexcept
     : m_width(other.m_width), m_height(other.m_height),
       m_window(other.m_window) {
     other.m_window = nullptr;
 }
+
+//////////////////////////////////////////////////////////////////////
+/// operator=
+//////////////////////////////////////////////////////////////////////
 
 Window& Window::operator=(Window&& other) noexcept {
     if (&other != this) {
@@ -47,11 +61,3 @@ Window& Window::operator=(Window&& other) noexcept {
     }
     return *this;
 }
-
-bool Window::exists() const noexcept { return m_window != nullptr; }
-
-GLFWwindow* Window::pointer() const noexcept { return m_window; }
-
-int Window::getWidth() const noexcept { return m_width; }
-
-int Window::getHeight() const noexcept { return m_height; }

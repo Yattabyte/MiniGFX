@@ -1,7 +1,9 @@
 #include "Buffer/glDynamicBuffer.hpp"
 #include <cstring>
 
-// Public (De)Constructors
+//////////////////////////////////////////////////////////////////////
+/// Custom Destructor
+//////////////////////////////////////////////////////////////////////
 
 glDynamicBuffer::~glDynamicBuffer() {
     WaitForFence(m_writeFence);
@@ -11,6 +13,10 @@ glDynamicBuffer::~glDynamicBuffer() {
         glDeleteBuffers(1, &m_bufferID);
     }
 }
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 glDynamicBuffer::glDynamicBuffer(
     const GLsizeiptr& capacity, const void* data,
@@ -23,16 +29,16 @@ glDynamicBuffer::glDynamicBuffer(
         glMapNamedBufferRange(m_bufferID, 0, m_maxCapacity, m_mapFlags);
 }
 
+//////////////////////////////////////////////////////////////////////
+
 glDynamicBuffer::glDynamicBuffer(const glDynamicBuffer& other) noexcept
     : glDynamicBuffer(other.m_maxCapacity, nullptr, other.m_mapFlags) {
     glCopyNamedBufferSubData(other.m_bufferID, m_bufferID, 0, 0, m_maxCapacity);
 }
 
-glDynamicBuffer::glDynamicBuffer(glDynamicBuffer&& other) noexcept {
-    (*this) = std::move(other);
-}
-
-// Public Operators
+//////////////////////////////////////////////////////////////////////
+/// operator=
+//////////////////////////////////////////////////////////////////////
 
 glDynamicBuffer& glDynamicBuffer::operator=(glDynamicBuffer&& other) noexcept {
     if (&other != this) {
@@ -52,6 +58,8 @@ glDynamicBuffer& glDynamicBuffer::operator=(glDynamicBuffer&& other) noexcept {
     return *this;
 }
 
+//////////////////////////////////////////////////////////////////////
+
 glDynamicBuffer&
 glDynamicBuffer::operator=(const glDynamicBuffer& other) noexcept {
     if (&other != this) {
@@ -63,11 +71,9 @@ glDynamicBuffer::operator=(const glDynamicBuffer& other) noexcept {
     return *this;
 }
 
-// Public Methods
-
-void glDynamicBuffer::setMaxSize(const GLsizeiptr& size) noexcept {
-    expandToFit(0, size);
-}
+//////////////////////////////////////////////////////////////////////
+/// write
+//////////////////////////////////////////////////////////////////////
 
 void glDynamicBuffer::write(
     const GLsizeiptr& offset, const GLsizeiptr& size,
@@ -76,12 +82,20 @@ void glDynamicBuffer::write(
     std::memcpy(static_cast<unsigned char*>(m_bufferPtr) + offset, data, size);
 }
 
+//////////////////////////////////////////////////////////////////////
+/// write_immediate
+//////////////////////////////////////////////////////////////////////
+
 void glDynamicBuffer::write_immediate(
     const GLsizeiptr& offset, const GLsizeiptr& size,
     const void* data) noexcept {
     expandToFit(offset, size);
     glNamedBufferSubData(m_bufferID, offset, size, data);
 }
+
+//////////////////////////////////////////////////////////////////////
+/// expandToFit
+//////////////////////////////////////////////////////////////////////
 
 void glDynamicBuffer::expandToFit(
     const GLsizeiptr& offset, const GLsizeiptr& size) noexcept {

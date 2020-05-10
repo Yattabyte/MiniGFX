@@ -1,12 +1,19 @@
 #include "Utility/shader.hpp"
-#include <glad/glad.h>
 #include <vector>
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Destructor
+//////////////////////////////////////////////////////////////////////
 
 Shader::~Shader() {
     glDeleteShader(m_vertexID);
     glDeleteShader(m_fragmentID);
     glDeleteProgram(m_programID);
 }
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 Shader::Shader(
     const std::string& vertexSource, const std::string& fragmentSource) noexcept
@@ -43,6 +50,10 @@ Shader::Shader(
     glDetachShader(m_programID, m_fragmentID);
 }
 
+//////////////////////////////////////////////////////////////////////
+/// valid
+//////////////////////////////////////////////////////////////////////
+
 bool Shader::valid() const noexcept {
     if (m_vertexID == 0 || m_fragmentID == 0 || m_programID == 0)
         return false;
@@ -52,19 +63,23 @@ bool Shader::valid() const noexcept {
     return param != 0;
 }
 
-std::string Shader::errorLog() const { return m_log; }
-
-void Shader::bind() const noexcept { glUseProgram(m_programID); }
+//////////////////////////////////////////////////////////////////////
+/// uniformLocation
+//////////////////////////////////////////////////////////////////////
 
 void Shader::uniformLocation(const int& location, const vec3& vector) const
     noexcept {
     glProgramUniform3fv(m_programID, location, 1U, vector.data());
 }
 
+//////////////////////////////////////////////////////////////////////
+
 void Shader::uniformLocation(const int& location, const vec4& vector) const
     noexcept {
     glProgramUniform4fv(m_programID, location, 1U, vector.data());
 }
+
+//////////////////////////////////////////////////////////////////////
 
 void Shader::uniformLocation(const int& location, const mat4& matrix) const
     noexcept {

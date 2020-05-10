@@ -6,13 +6,15 @@
 #include <stddef.h>
 #include <utility>
 
-/** Encapsulates an OpenGL multi-buffer that is fixed in size. */
+//////////////////////////////////////////////////////////////////////
+/// \class  glStaticMultiBuffer
+/// \brief  Encapsulates an OpenGL multi-buffer that is fixed in size.
 template <int BufferCount = 3>
-class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
+class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
     public:
-    // Public (De)Constructors
-    /** Wait on this buffers fences, then destroy it. */
-    ~StaticMultiBuffer() {
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Wait on this buffers fences, then destroy it.
+    ~glStaticMultiBuffer() {
         for (int x = 0; x < BufferCount; ++x) {
             WaitForFence(m_writeFence[x]);
             WaitForFence(m_readFence[x]);
@@ -22,8 +24,9 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
             }
         }
     }
-    /** Default Constructor. */
-    StaticMultiBuffer() noexcept {
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Default Constructor.
+    glStaticMultiBuffer() noexcept {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
             m_bufferID[x] = 0;
@@ -32,11 +35,12 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
             m_readFence[x] = nullptr;
         }
     }
-    /** Construct a new Static Multi-Buffer.
-    @param	size			the starting size of this buffer.
-    @param	data			optional data buffer, must be at least as large.
-    @param	storageFlags	optional bit-field flags. */
-    explicit StaticMultiBuffer(
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Construct a new Static Multi-Buffer.
+    /// \param  size            the starting size of this buffer.
+    /// \param  data            optional data buffer, must be at least as large.
+    /// \param  storageFlags    optional bit - field flags.
+    explicit glStaticMultiBuffer(
         const GLsizeiptr& size, const void* data = nullptr,
         const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT) noexcept
         : m_size(size) {
@@ -59,9 +63,10 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
                     static_cast<unsigned char*>(m_bufferPtr[x]), data, size);
         }
     }
-    /** Construct a new Static Multi-Buffer, from another buffer. */
-    StaticMultiBuffer(const StaticMultiBuffer& other) noexcept
-        : StaticMultiBuffer(other.m_size, 0) {
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Construct a new Static Multi-Buffer, from another buffer.
+    glStaticMultiBuffer(const glStaticMultiBuffer& other) noexcept
+        : glStaticMultiBuffer(other.m_size, 0) {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
             m_bufferID[x] = 0;
@@ -74,14 +79,15 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
             glCopyNamedBufferSubData(
                 other.m_bufferID[x], m_bufferID[x], 0, 0, m_size);
     }
-    /** Move Constructor. */
-    StaticMultiBuffer(StaticMultiBuffer&& other) noexcept {
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Move Constructor.
+    glStaticMultiBuffer(glStaticMultiBuffer&& other) noexcept {
         (*this) = std::move(other);
     }
 
-    // Public Operators
-    /** Copy GL object from 1 instance in to another. */
-    StaticMultiBuffer& operator=(const StaticMultiBuffer& other) noexcept {
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Copy GL object from 1 instance in to another.
+    glStaticMultiBuffer& operator=(const glStaticMultiBuffer& other) noexcept {
         if (this != &other) {
             m_size = other.m_size;
             m_mapFlags = other.m_mapFlags;
@@ -91,8 +97,9 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
         }
         return *this;
     }
-    /** Move GL object from 1 instance to another. */
-    StaticMultiBuffer& operator=(StaticMultiBuffer&& other) noexcept {
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Move GL object from 1 instance to another.
+    glStaticMultiBuffer& operator=(glStaticMultiBuffer&& other) noexcept {
         if (this != &other) {
             for (int x = 0; x < BufferCount; ++x) {
                 m_bufferID[x] = std::move(other.m_bufferID[x]);
@@ -114,11 +121,11 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
         return *this;
     }
 
-    // Public Methods
-    /** Write the supplied data to GPU memory.
-    @param	offset			byte offset from the beginning.
-    @param	size			the size of the data to write.
-    @param	data			the data to write. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Write the supplied data to GPU memory.
+    /// \param  offset      byte offset from the beginning.
+    /// \param  size        the size of the data to write.
+    /// \param  data        the data to write.
     void write(
         const GLsizeiptr& offset, const GLsizeiptr& size,
         const void* data) noexcept {
@@ -128,14 +135,10 @@ class StaticMultiBuffer final : public glMultiBuffer<BufferCount> {
     }
 
     private:
-    // Private Attributes
-    /** Size of this buffer in bytes. */
-    size_t m_size = 0ull;
-    /** OpenGL map read/write/storage flags. */
-    GLbitfield m_mapFlags =
-        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
-    /** Pointer to underlying buffer data in local memory space. */
-    void* m_bufferPtr[BufferCount]{};
+    size_t m_size = 0ull; ///< Byte-size of this buffer.
+    GLbitfield m_mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
+                            GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
+    void* m_bufferPtr[BufferCount]{};            ///< Pointer to buffer data.
 };
 
 #endif // GLSTATICMULTIBUFFER_HPP

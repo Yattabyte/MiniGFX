@@ -5,12 +5,15 @@
 #include "Buffer/glBuffer.hpp"
 #include <algorithm>
 
-/** An STL-like vector for OpenGL buffered data.
-@tparam	T				the type of element to construct an array of. */
+//////////////////////////////////////////////////////////////////////
+/// \class  glVector
+/// \brief  An STL-like vector for OpenGL buffered data.
+/// \tparam T   the type of element to construct an array of.
 template <typename T> class glVector final : public glBuffer {
     public:
     // Public (De)Constructors
-    /** Destroy this GL Vector. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Destroy this GL Vector.
     ~glVector() {
         // Safely destroy each buffer this class owns
         WaitForFence(m_writeFence);
@@ -20,8 +23,9 @@ template <typename T> class glVector final : public glBuffer {
             glDeleteBuffers(1, &m_bufferID);
         }
     }
-    /** Construct a GL Vector.
-    @param	capacity		the starting capacity (1 or more). */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Construct a GL Vector.
+    /// \param  capacity    the starting capacity (1 or more).
     glVector(const size_t& capacity = 1) noexcept
         : m_capacity(std::max(1ull, capacity)) {
         const auto bufferSize = sizeof(T) * m_capacity;
@@ -32,19 +36,21 @@ template <typename T> class glVector final : public glBuffer {
         m_bufferPtr = static_cast<T*>(
             glMapNamedBufferRange(m_bufferID, 0, bufferSize, BufferFlags));
     }
-    /** Move constructor.
-    @param	other			another buffer to move the data from, to here. */
-    glVector(glVector&& other) noexcept { (*this) = std::move(other); }
-    /** Copy constructor.
-    @param	other			another buffer to move the data from, to here. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Move constructor.
+    /// \param  other   another buffer to move the data from,
+    to here.glVector(glVector&& other) noexcept { (*this) = std::move(other); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Copy constructor.
+    /// \param  other   another buffer to move the data from, to here.
     glVector(const glVector& other) noexcept : glVector(other.m_capacity) {
         glCopyNamedBufferSubData(
             other.m_bufferID, m_bufferID, 0, 0, m_capacity);
     }
 
-    // Public Operators
-    /** Movement operator, for moving another buffer into this one.
-    @param	other			another buffer to move the data from, to here. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Movement operator, for moving another buffer into this one.
+    /// \param  other   another buffer to move the data from, to here.
     glVector& operator=(glVector&& other) noexcept {
         m_bufferID = std::move(other.m_bufferID);
         m_bufferPtr = std::move(other.m_bufferPtr);
@@ -60,27 +66,27 @@ template <typename T> class glVector final : public glBuffer {
         other.m_index = 0;
         return *this;
     }
-    /** Copy operator, for copying another buffer into this one.
-    @param	other			another buffer to copy the data from, to here. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Copy operator, for copying another buffer into this one.
+    /// \param  other   another buffer to copy the data from, to here.
     glVector& operator=(const glVector& other) noexcept {
         m_capacity = other.m_capacity;
         glCopyNamedBufferSubData(
             other.m_bufferID, m_bufferID, 0, 0, m_capacity);
         return *this;
     }
-    /** Index operator, retrieve a reference to the element at the index
-    specified.
-    @param	index			an index to the element desired.
-    @return					reference to the element desired. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief Retrieve a reference to the element at the index specified.
+    /// \param  index   an index to the element desired.
+    /// \return reference to the element desired.
     T& operator[](const size_t& index) noexcept { return m_bufferPtr[index]; }
 
-    // Public Methods
-    /** Resizes the internal capacity of this vector.
-    @note					Does nothing if the capacity is the same
-    @note					Currently, only grows, never shrinks
-    @note					May stall waiting for old buffers to finish,
-    invalidate them.
-    @param	newCapacity		the new desired capacity. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Resizes the internal capacity of this vector.
+    /// \note   Does nothing if the capacity is the same.
+    /// \note   Currently, only grows, never shrinks.
+    /// \note   May stall waiting for old buffers to finish, invalidate them.
+    /// \param	newCapacity		the new desired capacity.
     void resize(const size_t& newCapacity) noexcept {
         // See if we must expand this container
         if (newCapacity > m_capacity) {
@@ -89,8 +95,8 @@ template <typename T> class glVector final : public glBuffer {
             const auto newByteSize = sizeof(T) * newCapacity;
             m_capacity = newCapacity;
 
-            // Wait for and transfer data from old buffers into new buffers of
-            // the new size
+            // Wait for and transfer data from old buffers into new buffers
+            // of the new size
             WaitForFence(m_writeFence);
             WaitForFence(m_readFence);
 
@@ -116,19 +122,17 @@ template <typename T> class glVector final : public glBuffer {
                 m_bufferID, 0, newByteSize, BufferFlags));
         }
     }
-    /** Retrieve the length of this vector (the number of elements in it).
-    @return					the number of elements in this array. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the length of this vector (number of elements in it).
+    /// \return the number of elements in this array.
     size_t getLength() const noexcept { return m_capacity; }
 
     private:
-    // Private Attributes
-    /** Capacity of this buffer in bytes. */
-    size_t m_capacity = 0;
-    /** OpenGL map read/write/storage flags. */
+    size_t m_capacity = 0; ///< Byte-capacity of this buffer.
     constexpr const static GLbitfield BufferFlags =
-        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT;
-    /** Pointer to underlying buffer data in local memory space. */
-    T* m_bufferPtr = nullptr;
+        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
+        GL_MAP_COHERENT_BIT;  ///< OpenGL map storage flags.
+    T* m_bufferPtr = nullptr; ///< Pointer to the underlying data.
 };
 
 #endif // GLVECTOR_HPP

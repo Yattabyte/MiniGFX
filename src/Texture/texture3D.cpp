@@ -1,6 +1,8 @@
 #include "Texture/texture3D.hpp"
 
-Texture3D::~Texture3D() { glDeleteTextures(1, &m_glTexID); }
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 Texture3D::Texture3D(
     const float* pixelData, const GLsizei& width, const GLsizei& depth,
@@ -32,8 +34,4 @@ Texture3D::Texture3D(
             linear ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR_MIPMAP_NEAREST);
         glGenerateTextureMipmap(m_glTexID);
     }
-}
-
-void Texture3D::bind(const unsigned int &textureUnit) const noexcept {
-  glBindTextureUnit(textureUnit, m_glTexID);
 }

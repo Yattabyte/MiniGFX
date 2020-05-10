@@ -5,49 +5,54 @@
 // Forward Declarations
 struct GLFWwindow;
 
-/** A representation of a GLFW window object. */
+//////////////////////////////////////////////////////////////////////
+/// \class  Window
+/// \brief  A representation of a GLFW window object.
 class Window {
     public:
-    // Public (De)Constructors
-    /** Destroy this window. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Destroy this window.
     ~Window();
-    /** Construct a window with a given size.
-    @param  width   the width to make the window.
-    @param  height  the height to make the window. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Construct a window with a given size.
+    /// \param  width       the width to make the window.
+    /// \param  height      the height to make the window.
     Window(const int& width, const int& height) noexcept;
-    /** Default copy constructor. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Default copy constructor.
     Window(const Window& other) = delete;
-    /** Default move constructor. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Default move constructor.
     Window(Window&& other) noexcept;
 
-    // Public Operators
-    /** Default copy-assignment operator. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Default copy-assignment operator.
     Window& operator=(const Window& other) = delete;
-    /** Default move-assignment operator. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Default move-assignment operator.
     Window& operator=(Window&& other) noexcept;
 
-    // Public Methods
-    /** Check whether or not this window exists and is valid.
-    @return     true if window exists, false otherwise. */
-    bool exists() const noexcept;
-    /** Retrieve the underlying window object pointer.
-    @return     the GLFWwindow pointer. */
-    GLFWwindow* pointer() const noexcept;
-    /** Retrieve the window's width.
-    @return     the width of the window. */
-    int getWidth() const noexcept;
-    /** Retrieve the window's height.
-    @return     the height of the window. */
-    int getHeight() const noexcept;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Check whether or not this window exists and is valid.
+    /// \return true if window exists, false otherwise.
+    bool exists() const noexcept { return m_window != nullptr; }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the underlying window object pointer.
+    /// \return the GLFWwindow pointer.
+    GLFWwindow* pointer() const noexcept { return m_window; }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the window's width.
+    /// \return the width of the window.
+    int getWidth() const noexcept { return m_width; }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the window's height.
+    /// \return the height of the window.
+    int getHeight() const noexcept { return m_height; }
 
     private:
-    // Private Attributes
-    /** The window width. */
-    int m_width = 1;
-    /** The window height. */
-    int m_height = 1;
-    /** The GLFW window object pointer. */
-    GLFWwindow* m_window = nullptr;
+    int m_width = 1;                ///< The window width.
+    int m_height = 1;               ///< The window height.
+    GLFWwindow* m_window = nullptr; ///< The GLFW window object pointer.
 };
 
 #endif // WINDOW_HPP

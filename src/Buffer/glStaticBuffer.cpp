@@ -1,12 +1,18 @@
 #include "Buffer/glStaticBuffer.hpp"
 #include <utility>
 
-// Public (de)Constructors
+//////////////////////////////////////////////////////////////////////
+/// Custom Destructor
+//////////////////////////////////////////////////////////////////////
 
 glStaticBuffer::~glStaticBuffer() {
     if (m_bufferID != 0)
         glDeleteBuffers(1, &m_bufferID);
 }
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 glStaticBuffer::glStaticBuffer(
     const GLsizeiptr& size, const void* data,
@@ -16,16 +22,22 @@ glStaticBuffer::glStaticBuffer(
     glNamedBufferStorage(m_bufferID, size, data, storageFlags);
 }
 
+//////////////////////////////////////////////////////////////////////
+
 glStaticBuffer::glStaticBuffer(const glStaticBuffer& other) noexcept
     : glStaticBuffer(other.m_size, nullptr, other.m_storageFlags) {
     glCopyNamedBufferSubData(other.m_bufferID, m_bufferID, 0, 0, other.m_size);
 }
 
+//////////////////////////////////////////////////////////////////////
+
 glStaticBuffer::glStaticBuffer(glStaticBuffer&& other) noexcept {
     (*this) = std::move(other);
 }
 
-// Public Operators
+//////////////////////////////////////////////////////////////////////
+/// operator=
+//////////////////////////////////////////////////////////////////////
 
 glStaticBuffer&
 glStaticBuffer::operator=(const glStaticBuffer& other) noexcept {
@@ -37,6 +49,8 @@ glStaticBuffer::operator=(const glStaticBuffer& other) noexcept {
     }
     return *this;
 }
+
+//////////////////////////////////////////////////////////////////////
 
 glStaticBuffer& glStaticBuffer::operator=(glStaticBuffer&& other) noexcept {
     if (this != &other) {
@@ -50,7 +64,9 @@ glStaticBuffer& glStaticBuffer::operator=(glStaticBuffer&& other) noexcept {
     return *this;
 }
 
-// Public Methods
+//////////////////////////////////////////////////////////////////////
+/// write
+//////////////////////////////////////////////////////////////////////
 
 void glStaticBuffer::write(
     const GLsizeiptr& offset, const GLsizeiptr& size,

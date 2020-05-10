@@ -5,53 +5,60 @@
 #include "Texture/image.hpp"
 #include <glad/glad.h>
 
-/** A wrapper around an OpenGL texture object. */
+//////////////////////////////////////////////////////////////////////
+/// \class  Texture2D
+/// \brief  A wrapper around an OpenGL texture object.
 class Texture2D {
     public:
-    // Public (De)Constructors
-    /** Destroy the Texture. */
-    ~Texture2D();
-    /** Construct a Texture with a given size and data.
-    @param  pixelData   the image pixels.
-    @param  width       the image width.
-    @param  height      the image height.
-    @param  linear      whether to apply linear filtering.
-    @param  anisotropy  whether to use anisotropic filtering.
-    @param  mipmap      whether to apply mipmapping. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Destroy the Texture.
+    ~Texture2D() { glDeleteTextures(1, &m_glTexID); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Construct a Texture with a given size and data.
+    /// \param  pixelData       the image pixels.
+    /// \param  width           the image width.
+    /// \param  height          the image height.
+    /// \param  linear          whether to apply linear filtering.
+    /// \param  anisotropy      whether to use anisotropic filtering.
+    /// \param  mipmap          whether to apply mipmapping.
     Texture2D(
         const float* pixelData, const GLsizei& width, const GLsizei& height,
         const bool& linear, const bool& anisotropy,
         const bool& mipmap) noexcept;
-    /** Construct a Texture using an Image object.
-    @param	image		the image to use.
-    @param  linear      whether to apply linear filtering.
-    @param  anisotropy  whether to use anisotropic filtering.
-    @param  mipmap      whether to apply mipmapping. */
-    explicit Texture2D(
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Construct a Texture using an Image object.
+    /// \param  image           the image to use.
+    /// \param  linear          whether to apply linear filtering.
+    /// \param  anisotropy      whether to use anisotropic filtering.
+    /// \param  mipmap          whether to apply mipmapping.
+    Texture2D(
         const Image& image, const bool& linear, const bool& anisotropy,
         const bool& mipmap) noexcept;
 
-    // Public Methods
-    /** Makes this texture active at a specific texture unit.
-    @param	textureUnit	the texture unit to make this texture active at. */
-    void bind(const unsigned int& textureUnit) const noexcept;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Makes this texture active at a specific texture unit.
+    /// \param  textureUnit     the texture unit to make this texture active at.
+    void bind(const unsigned int& textureUnit) const noexcept {
+        glBindTextureUnit(textureUnit, m_glTexID);
+    }
 
     private:
-    // Private Deleted Constructors
-    /** Disallow asset move constructor. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Disallow asset move constructor.
     Texture2D(Texture2D&&) noexcept = delete;
-    /** Disallow asset copy constructor. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Disallow asset copy constructor.
     Texture2D(const Texture2D&) noexcept = delete;
 
     // Private Deleted Operators
-    /** Disallow asset move assignment. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Disallow asset move assignment.
     Texture2D& operator=(Texture2D&&) noexcept = delete;
-    /** Disallow asset copy assignment. */
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Disallow asset copy assignment.
     Texture2D& operator=(const Texture2D&) noexcept = delete;
 
-    // Private Attributes
-    /** OpenGL texture object ID. */
-    GLuint m_glTexID = 0;
+    GLuint m_glTexID = 0; ///< OpenGL texture object ID.
 };
 
 #endif // TEXTURE2D_HPP

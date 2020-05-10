@@ -1,9 +1,17 @@
 #include "Model/model.hpp"
 
+//////////////////////////////////////////////////////////////////////
+/// Custom Destructor
+//////////////////////////////////////////////////////////////////////
+
 Model::~Model() {
     glDeleteBuffers(1, &m_vboID);
     glDeleteVertexArrays(1, &m_vaoID);
 }
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 Model::Model(const std::vector<vec3>& vertices) noexcept
     : m_vertexCount(vertices.size()) {
@@ -23,11 +31,11 @@ Model::Model(const std::vector<vec3>& vertices) noexcept
     glVertexArrayVertexBuffer(m_vaoID, 0, m_vboID, 0, sizeof(vec3));
 }
 
-void Model::bind() const noexcept { glBindVertexArray(m_vaoID); }
+//////////////////////////////////////////////////////////////////////
+/// draw
+//////////////////////////////////////////////////////////////////////
 
 void Model::draw(const int& drawMode) const noexcept {
     glDrawArrays(
         static_cast<GLenum>(drawMode), 0, static_cast<GLsizei>(m_vertexCount));
 }
-
-size_t Model::vertexCount() const noexcept { return m_vertexCount; }

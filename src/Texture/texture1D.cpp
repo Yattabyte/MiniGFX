@@ -1,6 +1,8 @@
 #include "Texture/texture1D.hpp"
 
-Texture1D::~Texture1D() { glDeleteTextures(1, &m_glTexID); }
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 Texture1D::Texture1D(
     const float* pixelData, const GLsizei& width, const bool& linear,
@@ -29,8 +31,4 @@ Texture1D::Texture1D(
             linear ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR_MIPMAP_NEAREST);
         glGenerateTextureMipmap(m_glTexID);
     }
-}
-
-void Texture1D::bind(const unsigned int& textureUnit) const noexcept {
-    glBindTextureUnit(textureUnit, m_glTexID);
 }

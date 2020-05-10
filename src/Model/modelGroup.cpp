@@ -1,19 +1,12 @@
 #include "Model/modelGroup.hpp"
 
-/** Wait for the supplied fence to complete, then delete it. */
-static void wait_on_fence(GLsync& fence) noexcept {
-    // Do nothing if unassigned
-    if (fence == nullptr)
-        return;
+//////////////////////////////////////////////////////////////////////
+/// Forward Declarations
+static void wait_on_fence(GLsync& fence) noexcept;
 
-    // Wait for data fence to be passed
-    GLenum state = GL_UNSIGNALED;
-    while (state != GL_SIGNALED && state != GL_ALREADY_SIGNALED &&
-           state != GL_CONDITION_SATISFIED)
-        state = glClientWaitSync(fence, GL_SYNC_FLUSH_COMMANDS_BIT, 1);
-    glDeleteSync(fence);
-    fence = nullptr;
-}
+//////////////////////////////////////////////////////////////////////
+/// Custom Destructor
+//////////////////////////////////////////////////////////////////////
 
 ModelGroup::~ModelGroup() {
     // Delete all objects created
@@ -21,6 +14,10 @@ ModelGroup::~ModelGroup() {
     glDeleteVertexArrays(1, &m_vaoID);
     glDeleteSync(m_fence);
 }
+
+//////////////////////////////////////////////////////////////////////
+/// Custom Constructor
+//////////////////////////////////////////////////////////////////////
 
 ModelGroup::ModelGroup(const size_t count) noexcept : m_capacity(count) {
     // Create GL Objects
@@ -38,11 +35,9 @@ ModelGroup::ModelGroup(const size_t count) noexcept : m_capacity(count) {
     glVertexArrayVertexBuffer(m_vaoID, 0, m_vboID, 0, sizeof(vec3));
 }
 
-void ModelGroup::bind() const noexcept { glBindVertexArray(m_vaoID); }
-
-void ModelGroup::draw(const int& drawMode, const GroupEntry& entry) noexcept {
-    glDrawArrays(static_cast<GLenum>(drawMode), entry.offset, entry.count);
-}
+//////////////////////////////////////////////////////////////////////
+/// resize
+//////////////////////////////////////////////////////////////////////
 
 void ModelGroup::resize(const size_t& size) {
     if (size > m_capacity) {
@@ -72,6 +67,10 @@ void ModelGroup::resize(const size_t& size) {
     }
 }
 
+//////////////////////////////////////////////////////////////////////
+/// addModel
+//////////////////////////////////////////////////////////////////////
+
 ModelGroup::GroupEntry ModelGroup::addModel(const std::vector<vec3>& data) {
     // Expand container and ensure data is safe to manipulate
     resize(m_size + data.size());
@@ -88,4 +87,22 @@ ModelGroup::GroupEntry ModelGroup::addModel(const std::vector<vec3>& data) {
 
     // Return entry position
     return ModelGroup::GroupEntry{ offset, count };
+}
+
+//////////////////////////////////////////////////////////////////////
+/// wait_on_fence
+//////////////////////////////////////////////////////////////////////
+
+static void wait_on_fence(GLsync& fence) noexcept {
+    // Do nothing if unassigned
+    if (fence == nullptr)
+        return;
+
+    // Wait for data fence to be passed
+    GLenum state = GL_UNSIGNALED;
+    while (state != GL_SIGNALED && state != GL_ALREADY_SIGNALED &&
+           state != GL_CONDITION_SATISFIED)
+        state = glClientWaitSync(fence, GL_SYNC_FLUSH_COMMANDS_BIT, 1);
+    glDeleteSync(fence);
+    fence = nullptr;
 }
