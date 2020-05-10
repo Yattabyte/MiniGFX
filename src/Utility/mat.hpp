@@ -1,9 +1,10 @@
 #pragma once
-#ifndef MAT_HPP
-#define MAT_HPP
+#ifndef MINIGFX_MAT_HPP
+#define MINIGFX_MAT_HPP
 
 #include "Utility/vec.hpp"
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  mat4
 /// \brief  A 4x4 matrix of floats.
@@ -120,5 +121,6 @@ class mat4 {
         { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 }
     }; ///<  Container for the matrix.
 };
+}; // namespace mini
 
-#endif // MAT_HPP
+#endif // MINIGFX_MAT_HPP

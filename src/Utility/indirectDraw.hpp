@@ -1,9 +1,10 @@
 #pragma once
-#ifndef INDIRECTDRAW_HPP
-#define INDIRECTDRAW_HPP
+#ifndef MINIGFX_INDIRECTDRAW_HPP
+#define MINIGFX_INDIRECTDRAW_HPP
 
 #include "Buffer/glStaticBuffer.hpp"
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  IndirectDraw
 /// \brief  A helper class for performing an indirect-draw-call.
@@ -58,5 +59,6 @@ class IndirectDraw {
     GLuint m_count = 0, m_primitiveCount = 0,
            m_first = 0; ///< Open GL Attributes
 };
+}; // namespace mini
 
-#endif // INDIRECTDRAW_HPP
+#endif // MINIGFX_INDIRECTDRAW_HPP

@@ -1,12 +1,13 @@
 #pragma once
-#ifndef SHADER_HPP
-#define SHADER_HPP
+#ifndef MINIGFX_SHADER_HPP
+#define MINIGFX_SHADER_HPP
 
 #include "Utility/mat.hpp"
 #include "Utility/vec.hpp"
 #include <glad/glad.h>
 #include <string>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  Shader
 /// \brief  A representation of a full OpenGL shader program.
@@ -73,5 +74,6 @@ class Shader {
     GLuint m_vertexID = 0U, m_fragmentID = 0U,
            m_programID = 0U; ///< OpenGL object ID's.
 };
+}; // namespace mini
 
-#endif // SHADER_HPP
+#endif // MINIGFX_SHADER_HPP

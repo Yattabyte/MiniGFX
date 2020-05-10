@@ -1,12 +1,13 @@
 #pragma once
-#ifndef MODEL_HPP
-#define MODEL_HPP
+#ifndef MINIGFX_MODEL_HPP
+#define MINIGFX_MODEL_HPP
 
 #include "Utility/mat.hpp"
 #include "Utility/vec.hpp"
 #include <glad/glad.h>
 #include <vector>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  Model
 /// \brief  A representation of an OpenGL model.
@@ -50,5 +51,6 @@ class Model {
     GLuint m_vaoID = 0U;         ///< The OpenGL vertex array object ID.
     GLuint m_vboID = 0U;         ///< The OpenGL vertex buffer object ID.
 };
+}; // namespace mini
 
-#endif // MODEL_HPP
+#endif // MINIGFX_MODEL_HPP

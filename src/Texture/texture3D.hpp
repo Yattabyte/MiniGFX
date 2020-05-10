@@ -1,9 +1,10 @@
 #pragma once
-#ifndef TEXTURE3D_HPP
-#define TEXTURE3D_HPP
+#ifndef MINIGFX_TEXTURE3D_HPP
+#define MINIGFX_TEXTURE3D_HPP
 
 #include <glad/glad.h>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  Texture3D
 /// \brief  A wrapper around an OpenGL texture object.
@@ -50,5 +51,6 @@ class Texture3D {
 
     GLuint m_glTexID = 0; ///< OpenGL texture object ID.
 };
+}; // namespace mini
 
-#endif // TEXTURE3D_HPP
+#endif // MINIGFX_TEXTURE3D_HPP

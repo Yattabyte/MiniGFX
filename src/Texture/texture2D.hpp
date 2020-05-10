@@ -1,10 +1,11 @@
 #pragma once
-#ifndef TEXTURE2D_HPP
-#define TEXTURE2D_HPP
+#ifndef MINIGFX_TEXTURE2D_HPP
+#define MINIGFX_TEXTURE2D_HPP
 
 #include "Texture/image.hpp"
 #include <glad/glad.h>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  Texture2D
 /// \brief  A wrapper around an OpenGL texture object.
@@ -60,5 +61,6 @@ class Texture2D {
 
     GLuint m_glTexID = 0; ///< OpenGL texture object ID.
 };
+}; // namespace mini
 
-#endif // TEXTURE2D_HPP
+#endif // MINIGFX_TEXTURE2D_HPP

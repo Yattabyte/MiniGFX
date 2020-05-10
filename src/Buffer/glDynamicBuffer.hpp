@@ -1,11 +1,12 @@
 #pragma once
-#ifndef GLDYNAMICBUFFER_HPP
-#define GLDYNAMICBUFFER_HPP
+#ifndef MINIGFX_GLDYNAMICBUFFER_HPP
+#define MINIGFX_GLDYNAMICBUFFER_HPP
 
 #include "Buffer/glBuffer.hpp"
 #include <memory>
 #include <utility>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glDynamicBuffer
 /// \brief  An OpenGL memory buffer which can expand in size.
@@ -76,5 +77,6 @@ class glDynamicBuffer final : public glBuffer {
                             GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
     void* m_bufferPtr = nullptr; ///< Pointer to underlying buffer data.
 };
+}; // namespace mini
 
-#endif // GLDYNAMICBUFFER_HPP
+#endif // MINIGFX_GLDYNAMICBUFFER_HPP

@@ -1,9 +1,10 @@
 #pragma once
-#ifndef GLMULTIBUFFER_HPP
-#define GLMULTIBUFFER_HPP
+#ifndef MINIGFX_GLMULTIBUFFER_HPP
+#define MINIGFX_GLMULTIBUFFER_HPP
 
 #include <glad/glad.h>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glMultiBuffer
 /// \brief  An encapsulation of an OpenGL GPU-backed memory multi-buffer.
@@ -89,5 +90,6 @@ template <int BufferCount = 3> class glMultiBuffer {
     GLuint m_bufferID[BufferCount]{};           ///< OpenGL object IDs.
     int m_index = 0;                            ///< Multi-buffer index.
 };
+}; // namespace mini
 
-#endif // GLMULTIBUFFER_HPP
+#endif // MINIGFX_GLMULTIBUFFER_HPP

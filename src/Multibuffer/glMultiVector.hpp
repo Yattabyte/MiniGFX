@@ -1,10 +1,11 @@
 #pragma once
-#ifndef GLMULTIVECTOR_HPP
-#define GLMULTIVECTOR_HPP
+#ifndef MINIGFX_GLMULTIVECTOR_HPP
+#define MINIGFX_GLMULTIVECTOR_HPP
 
 #include "Multibuffer/glMultiBuffer.hpp"
 #include <algorithm>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glMultiVector
 /// \brief  An STL-like vector for OpenGL multi-buffered data.
@@ -159,5 +160,6 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
         GL_MAP_COHERENT_BIT;       ///< OpenGL map storage flags.
     T* m_bufferPtr[BufferCount]{}; /// < Pointer to buffer data.
 };
+}; // namespace mini
 
-#endif // GLMULTIVECTOR_HPP
+#endif // MINIGFX_GLMULTIVECTOR_HPP

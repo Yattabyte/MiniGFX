@@ -1,9 +1,10 @@
 #pragma once
-#ifndef GLBUFFER_HPP
-#define GLBUFFER_HPP
+#ifndef MINIGFX_GLBUFFER_HPP
+#define MINIGFX_GLBUFFER_HPP
 
 #include <glad/glad.h>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glBuffer
 /// \brief  An encapsulation of an OpenGL GPU-backed memory buffer.
@@ -85,5 +86,6 @@ class glBuffer {
     mutable GLsync m_readFence = nullptr;  ///< Fence for safely reading data.
     GLuint m_bufferID = 0; ///< OpenGL object ID for this buffer.
 };
+}; // namespace mini
 
-#endif // GLBUFFER_HPP
+#endif // MINIGFX_GLBUFFER_HPP

@@ -1,10 +1,11 @@
 #pragma once
-#ifndef GLSTATICBUFFER_HPP
-#define GLSTATICBUFFER_HPP
+#ifndef MINIGFX_GLSTATICBUFFER_HPP
+#define MINIGFX_GLSTATICBUFFER_HPP
 
 #include "Buffer/glBuffer.hpp"
 #include <stddef.h>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glStaticBuffer
 /// \brief  Encapsulates an OpenGL buffer that is fixed in size.
@@ -55,5 +56,6 @@ class glStaticBuffer final : public glBuffer {
     GLbitfield m_storageFlags =
         GL_DYNAMIC_STORAGE_BIT; ///< OpenGL map storage flags.
 };
+}; // namespace mini
 
-#endif // GLSTATICBUFFER_HPP
+#endif // MINIGFX_GLSTATICBUFFER_HPP

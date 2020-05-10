@@ -1,12 +1,13 @@
 #pragma once
-#ifndef GLDYNAMICMULTIBUFFER_HPP
-#define GLDYNAMICMULTIBUFFER_HPP
+#ifndef MINIGFX_GLDYNAMICMULTIBUFFER_HPP
+#define MINIGFX_GLDYNAMICMULTIBUFFER_HPP
 
 #include "Multibuffer/glMultiBuffer.hpp"
 #include <cstring>
 #include <memory>
 #include <utility>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glDynamicMultiBuffer
 /// \brief  An OpenGL memory multi-buffer which can expand in size.
@@ -174,5 +175,6 @@ class glDynamicMultiBuffer final : public glMultiBuffer<BufferCount> {
                             GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
     void* m_bufferPtr[BufferCount]{}; ///< Pointer to underlying buffer data.
 };
+}; // namespace mini
 
-#endif // GLDYNAMICMULTIBUFFER_HPP
+#endif // MINIGFX_GLDYNAMICMULTIBUFFER_HPP

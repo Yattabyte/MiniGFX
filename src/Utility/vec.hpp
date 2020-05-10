@@ -1,9 +1,10 @@
 #pragma once
-#ifndef VEC_HPP
-#define VEC_HPP
+#ifndef MINIGFX_VEC_HPP
+#define MINIGFX_VEC_HPP
 
 #include <cmath>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  vec2
 /// \brief  A vector of 2 floats.
@@ -580,5 +581,6 @@ class vec4 {
     float m_data[4] = { 0.0f, 0.0f, 0.0f,
                         0.0f }; ///< The underlying data container.
 };
+}; // namespace mini
 
-#endif // VEC_HPP
+#endif // MINIGFX_VEC_HPP

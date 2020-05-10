@@ -1,6 +1,10 @@
 #include "Texture/image.hpp"
 #include <algorithm>
 
+//////////////////////////////////////////////////////////////////////
+/// Use our shared namespace mini
+using namespace mini;
+
 Image::Image(const std::vector<float>& pixelData, const vec2& size)
     : m_pixelData(std::make_unique<float[]>(pixelData.size())), m_size(size) {
     std::copy(

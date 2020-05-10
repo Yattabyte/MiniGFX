@@ -1,10 +1,11 @@
 #pragma once
-#ifndef GLVECTOR_HPP
-#define GLVECTOR_HPP
+#ifndef MINIGFX_GLVECTOR_HPP
+#define MINIGFX_GLVECTOR_HPP
 
 #include "Buffer/glBuffer.hpp"
 #include <algorithm>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glVector
 /// \brief  An STL-like vector for OpenGL buffered data.
@@ -134,5 +135,6 @@ template <typename T> class glVector final : public glBuffer {
         GL_MAP_COHERENT_BIT;  ///< OpenGL map storage flags.
     T* m_bufferPtr = nullptr; ///< Pointer to the underlying data.
 };
+}; // namespace mini
 
-#endif // GLVECTOR_HPP
+#endif // MINIGFX_GLVECTOR_HPP

@@ -1,11 +1,12 @@
 #pragma once
-#ifndef IMAGE_HPP
-#define IMAGE_HPP
+#ifndef MINIGFX_IMAGE_HPP
+#define MINIGFX_IMAGE_HPP
 
 #include "Utility/vec.hpp"
 #include <memory>
 #include <vector>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  Image
 /// \brief  A way of expressing and manipulating image data.
@@ -75,5 +76,6 @@ class Image {
         m_pixelData; ///<  Pointer to the underlying pixel data.
     vec2 m_size;     ///< Dimensions of the image.
 };
+}; // namespace mini
 
-#endif // IMAGE_HPP
+#endif // MINIGFX_IMAGE_HPP

@@ -1,12 +1,13 @@
 #pragma once
-#ifndef MODELGROUP_HPP
-#define MODELGROUP_HPP
+#ifndef MINIGFX_MODELGROUP_HPP
+#define MINIGFX_MODELGROUP_HPP
 
 #include "Utility/mat.hpp"
 #include "Utility/vec.hpp"
 #include <glad/glad.h>
 #include <vector>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  ModelGroup
 /// \brief  A vector-like container of models.
@@ -67,5 +68,6 @@ class ModelGroup {
     GLuint m_vboID = 0U;      ///< The OpenGL vertex buffer object ID.
     GLsync m_fence = nullptr; ///< A sync fence to avoid race conditions.
 };
+}; // namespace mini
 
-#endif // MODELGROUP_HPP
+#endif // MINIGFX_MODELGROUP_HPP

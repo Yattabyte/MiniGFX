@@ -1,11 +1,12 @@
 #pragma once
-#ifndef GLSTATICMULTIBUFFER_HPP
-#define GLSTATICMULTIBUFFER_HPP
+#ifndef MINIGFX_GLSTATICMULTIBUFFER_HPP
+#define MINIGFX_GLSTATICMULTIBUFFER_HPP
 
 #include "Multibuffer/glMultiBuffer.hpp"
 #include <stddef.h>
 #include <utility>
 
+namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glStaticMultiBuffer
 /// \brief  Encapsulates an OpenGL multi-buffer that is fixed in size.
@@ -140,5 +141,6 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
                             GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
     void* m_bufferPtr[BufferCount]{};            ///< Pointer to buffer data.
 };
+}; // namespace mini
 
-#endif // GLSTATICMULTIBUFFER_HPP
+#endif // MINIGFX_GLSTATICMULTIBUFFER_HPP
