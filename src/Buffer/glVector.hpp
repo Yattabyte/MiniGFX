@@ -12,7 +12,6 @@ namespace mini {
 /// \tparam T   the type of element to construct an array of.
 template <typename T> class glVector final : public glBuffer {
     public:
-    // Public (De)Constructors
     //////////////////////////////////////////////////////////////////////
     /// \brief  Destroy this GL Vector.
     ~glVector() {
