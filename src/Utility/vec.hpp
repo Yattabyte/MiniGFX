@@ -858,7 +858,7 @@ class vec4 {
     /// \param  v       the vector to normalize.
     /// \return normalize version of the supplied vector.
     static vec4 normalize(const vec4& v) noexcept {
-        const auto length_of_v = std::sqrtf(
+        const auto length_of_v = std::sqrt(
             (v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) +
             (v.w() * v.w()));
         return vec4{ v.x() / length_of_v, v.y() / length_of_v,
