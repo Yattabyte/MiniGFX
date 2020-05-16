@@ -9,8 +9,8 @@
 # MiniGFX
 This library is aimed at providing useful wrappers and abstractions of the OpenGL library, to make it a little easier when starting new rendering projects.
 
-Included is some basic vector math classes, a model class, shader, and a GLFW Window.
+Included is some basic vector math classes, a model class, shader, and a GLFW Window.  
 
-Requires C++17 and CMake. Configured to build dependencies.
-Compiles on GCC 8/9, Clang 7/8/9, MSVC 14/19 (VS 2017/2019)
-Across this library and other of my "Mini" libraries, the namespace "mini" must be used.
+Requires C++17 and CMake. Configured to build dependencies.  
+Compiles on GCC 8/9, Clang 7/8/9, MSVC 14/19 (VS 2017/2019).  
+Across this library and other of my "Mini" libraries, the namespace "mini" must be used.  

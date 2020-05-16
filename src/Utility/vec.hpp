@@ -46,6 +46,13 @@ class vec2 {
         return vec2{ x() + o.x(), y() + o.y() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Add a scalar to this vector
+    /// \param  o       the scalar to add.
+    /// \return this vector plus the scalar.
+    constexpr vec2 operator+(const float& o) const noexcept {
+        return vec2{ x() + o, y() + o };
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
     /// \return this vector plus the other vector.
@@ -55,11 +62,27 @@ class vec2 {
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Add a scalar to this one.
+    /// \param  o       the scalar to add.
+    /// \return this vector plus the scalar.
+    constexpr vec2& operator+=(const float& o) noexcept {
+        m_data[0] += o;
+        m_data[1] += o;
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
     /// \return this vector minus the other vector.
     constexpr vec2 operator-(const vec2& o) const noexcept {
         return vec2{ x() - o.x(), y() - o.y() };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Subtract a scalar from this vector.
+    /// \param  o       the scalar.
+    /// \return this vector minus the scalar.
+    constexpr vec2 operator-(const float& o) const noexcept {
+        return vec2{ x() - o, y() - o };
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
@@ -71,11 +94,27 @@ class vec2 {
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Subtract a scalar from this one.
+    /// \param  o       the scalar to subtract.
+    /// \return this vector minus the scalar.
+    constexpr vec2& operator-=(const float& o) noexcept {
+        m_data[0] -= o;
+        m_data[1] -= o;
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
     /// \return this vector multiplied by the other vector.
     constexpr vec2 operator*(const vec2& o) const noexcept {
         return vec2{ x() * o.x(), y() * o.y() };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector multiplied by the scalar.
+    constexpr vec2 operator*(const float& o) const noexcept {
+        return vec2{ x() * o, y() * o };
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
@@ -87,6 +126,15 @@ class vec2 {
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector multiplied by the scalar.
+    constexpr vec2& operator*=(const float& o) noexcept {
+        m_data[0] *= o;
+        m_data[1] *= o;
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
     /// \return this vector divided by the other vector.
@@ -94,12 +142,28 @@ class vec2 {
         return vec2{ x() / o.x(), y() / o.y() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector divided by the scalar.
+    constexpr vec2 operator/(const float& o) const noexcept {
+        return vec2{ x() / o, y() / o };
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
     /// \return this vector divided by the other vector.
-    constexpr vec2& operator/(const vec2& o) noexcept {
+    constexpr vec2& operator/=(const vec2& o) noexcept {
         m_data[0] /= o.m_data[0];
         m_data[1] /= o.m_data[1];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector divided by the scalar.
+    constexpr vec2& operator/=(const float& o) noexcept {
+        m_data[0] /= o;
+        m_data[1] /= o;
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
@@ -175,14 +239,14 @@ class vec2 {
     /// \param  v       the vector to normalize.
     /// \return normalize version of the supplied vector.
     static vec2 normalize(const vec2& v) noexcept {
-        const auto length_of_v = sqrtf((v.x() * v.x()) + (v.y() * v.y()));
+        const auto length_of_v = std::sqrt((v.x() * v.x()) + (v.y() * v.y()));
         return vec2{ v.x() / length_of_v, v.y() / length_of_v };
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product of this vector.
     /// \param  b       the other vector to dot against.
     /// \return dot product of this and the supplied vector.
-    float dot(const vec2& b) const noexcept { return dot(*this, b); }
+    constexpr float dot(const vec2& b) const noexcept { return dot(*this, b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product the supplied vectors.
     /// \param  a       the first vector to dot against.
@@ -190,6 +254,25 @@ class vec2 {
     /// \return dot product of a and b.
     constexpr static float dot(const vec2& a, const vec2& b) noexcept {
         return (a.x() * b.x()) + (a.y() * b.y());
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the length of this vector.
+    /// \return the length of this vector.
+    float length() const noexcept { return length(*this); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the length of the input vector.
+    /// \param  v       the vector to check the length of.
+    /// \return the length of the supplied vector.
+    static float length(const vec2& v) noexcept {
+        return std::sqrt((v.x() * v.x()) + (v.y() * v.y()));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the distance between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the length of a - b.
+    static float distance(const vec2& a, const vec2& b) noexcept {
+        return length(a - b);
     }
 
     private:
@@ -239,6 +322,13 @@ class vec3 {
         return vec3{ x() + o.x(), y() + o.y(), z() + o.z() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Add a scalar to this vector.
+    /// \param  o       the scalar
+    /// \return this vector plus the scalar.
+    constexpr vec3 operator+(const float& o) const noexcept {
+        return vec3{ x() + o, y() + o, z() + o };
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
     /// \return this vector plus the other vector.
@@ -249,6 +339,16 @@ class vec3 {
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Add a scalar to this one.
+    /// \param  o       the scalar.
+    /// \return this vector plus the scalar.
+    constexpr vec3& operator+=(const float& o) noexcept {
+        m_data[0] += o;
+        m_data[1] += o;
+        m_data[2] += o;
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
     /// \return this vector minus the other vector.
@@ -256,30 +356,64 @@ class vec3 {
         return vec3{ x() - o.x(), y() - o.y(), z() - o.z() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Subtract a scalar from this one.
+    /// \param  o       the scalar.
+    /// \return this vector minus the scalar.
+    constexpr vec3 operator-(const float& o) const noexcept {
+        return vec3{ x() - o, y() - o, z() - o };
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
     /// \return this vector minus the other vector.
-    constexpr vec3& operator-(const vec3& o) noexcept {
+    constexpr vec3& operator-=(const vec3& o) noexcept {
         m_data[0] -= o.m_data[0];
         m_data[1] -= o.m_data[1];
         m_data[2] -= o.m_data[2];
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
-    /// \brief  Multiply by another vector.
-    /// \param  o the other vector.
-    /// \return this vector multiplied by the other vector.
-    constexpr vec3 operator*(const vec3& o) const noexcept {
-        return vec3{ x() * o.x(), y() * o.y(), z() * o.z() };
+    /// \brief  Subtract a scalar from this one.
+    /// \param  o       the scalar.
+    /// \return this vector minus the scalar.
+    constexpr vec3& operator-=(const float& o) noexcept {
+        m_data[0] -= o;
+        m_data[1] -= o;
+        m_data[2] -= o;
+        return *this;
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
     /// \return this vector multiplied by the other vector.
-    constexpr vec3& operator*(const vec3& o) noexcept {
+    constexpr vec3 operator*(const vec3& o) const noexcept {
+        return vec3{ x() * o.x(), y() * o.y(), z() * o.z() };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector multiplied by the scalar.
+    constexpr vec3 operator*(const float& o) const noexcept {
+        return vec3{ x() * o, y() * o, z() * o };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by another vector.
+    /// \param  o       the other vector.
+    /// \return this vector multiplied by the other vector.
+    constexpr vec3& operator*=(const vec3& o) noexcept {
         m_data[0] *= o.m_data[0];
         m_data[1] *= o.m_data[1];
         m_data[2] *= o.m_data[2];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector multiplied by the scalar.
+    constexpr vec3& operator*=(const float& o) noexcept {
+        m_data[0] *= o;
+        m_data[1] *= o;
+        m_data[2] *= o;
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
@@ -290,6 +424,13 @@ class vec3 {
         return vec3{ x() / o.x(), y() / o.y(), z() / o.z() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector divided by the scalar.
+    constexpr vec3 operator/(const float& o) const noexcept {
+        return vec3{ x() / o, y() / o, z() / o };
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
     /// \return this vector divided by the other vector.
@@ -297,6 +438,16 @@ class vec3 {
         m_data[0] /= o.m_data[0];
         m_data[1] /= o.m_data[1];
         m_data[2] /= o.m_data[2];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector divided by the scalar.
+    constexpr vec3& operator/=(const float& o) noexcept {
+        m_data[0] /= o;
+        m_data[1] /= o;
+        m_data[2] /= o;
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
@@ -386,7 +537,7 @@ class vec3 {
     /// \return normalize version of the supplied vector.
     static vec3 normalize(const vec3& v) noexcept {
         const auto length_of_v =
-            sqrtf((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()));
+            std::sqrt((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()));
         return vec3{ v.x() / length_of_v, v.y() / length_of_v,
                      v.z() / length_of_v };
     }
@@ -394,7 +545,9 @@ class vec3 {
     /// \brief  Calculate the cross product of this vector.
     /// \param  b       the other vector to cross against.
     /// \return cross product of this and the supplied vector.
-    vec3 cross(const vec3& b) const noexcept { return cross(*this, b); }
+    constexpr vec3 cross(const vec3& b) const noexcept {
+        return cross(*this, b);
+    }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the cross product the supplied vectors.
     /// \param  a       the first vector to cross against.
@@ -406,10 +559,29 @@ class vec3 {
                      a.x() * b.y() - a.y() * b.x() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the length of this vector.
+    /// \return the length of this vector.
+    float length() const noexcept { return length(*this); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the length of the input vector.
+    /// \param  v       the vector to check the length of.
+    /// \return the length of the supplied vector.
+    static float length(const vec3& v) noexcept {
+        return std::sqrt((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the distance between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the length of a - b.
+    static float distance(const vec3& a, const vec3& b) noexcept {
+        return length(a - b);
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product of this vector.
     /// \param  b       the other vector to dot against.
     /// \return dot product of this and the supplied vector.
-    float dot(const vec3& b) const noexcept { return dot(*this, b); }
+    constexpr float dot(const vec3& b) const noexcept { return dot(*this, b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product the supplied vectors.
     /// \param  a       the first vector to dot against.
@@ -469,11 +641,69 @@ class vec4 {
         return vec4{ x() + o.x(), y() + o.y(), z() + o.z(), w() + o.w() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Add a scalar to this one.
+    /// \param  o       the scalar.
+    /// \return this vector plus the scalar.
+    constexpr vec4 operator+(const float& o) const noexcept {
+        return vec4{ x() + o, y() + o, z() + o, w() + o };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Add another vector to this one.
+    /// \param  o       the other vector.
+    /// \return this vector plus the other vector.
+    constexpr vec4& operator+=(const vec4& o) noexcept {
+        m_data[0] += o.m_data[0];
+        m_data[1] += o.m_data[1];
+        m_data[2] += o.m_data[2];
+        m_data[3] += o.m_data[3];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Add a scalar to this one.
+    /// \param  o       the scalar.
+    /// \return this vector plus the scalar.
+    constexpr vec4& operator+=(const float& o) noexcept {
+        m_data[0] += o;
+        m_data[1] += o;
+        m_data[2] += o;
+        m_data[3] += o;
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
     /// \return this vector minus the other vector.
     constexpr vec4 operator-(const vec4& o) const noexcept {
         return vec4{ x() - o.x(), y() - o.y(), z() - o.z(), w() - o.w() };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Subtract a scalar from this one.
+    /// \param  o       the scalar.
+    /// \return this vector minus the scalar.
+    constexpr vec4 operator-(const float& o) const noexcept {
+        return vec4{ x() - o, y() - o, z() - o, w() - o };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Subtract another vector from this one.
+    /// \param  o       the other vector.
+    /// \return this vector minus the other vector.
+    constexpr vec4& operator-=(const vec4& o) noexcept {
+        m_data[0] -= o.m_data[0];
+        m_data[1] -= o.m_data[1];
+        m_data[2] -= o.m_data[2];
+        m_data[3] -= o.m_data[3];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Subtract a scalar from this one.
+    /// \param  o       the scalar.
+    /// \return this vector minus the scalar.
+    constexpr vec4& operator-=(const float& o) noexcept {
+        m_data[0] -= o;
+        m_data[1] -= o;
+        m_data[2] -= o;
+        m_data[3] -= o;
+        return *this;
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
@@ -483,11 +713,69 @@ class vec4 {
         return vec4{ x() * o.x(), y() * o.y(), z() * o.z(), w() * o.w() };
     }
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector multiplied by the scalar.
+    constexpr vec4 operator*(const float& o) const noexcept {
+        return vec4{ x() * o, y() * o, z() * o, w() * o };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by another vector.
+    /// \param  o       the other vector.
+    /// \return this vector multiplied by the other vector.
+    constexpr vec4& operator*=(const vec4& o) noexcept {
+        m_data[0] *= o.m_data[0];
+        m_data[1] *= o.m_data[1];
+        m_data[2] *= o.m_data[2];
+        m_data[3] *= o.m_data[3];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Multiply by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector multiplied by the scalar.
+    constexpr vec4& operator*=(const float& o) noexcept {
+        m_data[0] *= o;
+        m_data[1] *= o;
+        m_data[2] *= o;
+        m_data[3] *= o;
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
     /// \return this vector divided by the other vector.
     constexpr vec4 operator/(const vec4& o) const noexcept {
         return vec4{ x() / o.x(), y() / o.y(), z() / o.z(), w() / o.w() };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector divided by the scalar.
+    constexpr vec4 operator/(const float& o) const noexcept {
+        return vec4{ x() / o, y() / o, z() / o, w() / o };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by another vector.
+    /// \param  o       the other vector.
+    /// \return this vector divided by the other vector.
+    constexpr vec4& operator/=(const vec4& o) noexcept {
+        m_data[0] /= o.m_data[0];
+        m_data[1] /= o.m_data[1];
+        m_data[2] /= o.m_data[2];
+        m_data[3] /= o.m_data[3];
+        return *this;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Divide by a scalar.
+    /// \param  o       the scalar.
+    /// \return this vector divided by the scalar.
+    constexpr vec4& operator/=(const float& o) noexcept {
+        m_data[0] /= o;
+        m_data[1] /= o;
+        m_data[2] /= o;
+        m_data[3] /= o;
+        return *this;
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Negative Operator
@@ -570,11 +858,32 @@ class vec4 {
     /// \param  v       the vector to normalize.
     /// \return normalize version of the supplied vector.
     static vec4 normalize(const vec4& v) noexcept {
-        const auto length_of_v = sqrtf(
+        const auto length_of_v = std::sqrtf(
             (v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) +
             (v.w() * v.w()));
         return vec4{ v.x() / length_of_v, v.y() / length_of_v,
                      v.z() / length_of_v, v.w() / length_of_v };
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the length of this vector.
+    /// \return the length of this vector.
+    float length() const noexcept { return length(*this); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the length of the input vector.
+    /// \param  v       the vector to check the length of.
+    /// \return the length of the supplied vector.
+    static float length(const vec4& v) noexcept {
+        return std::sqrt(
+            (v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) +
+            (v.w() * v.w()));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Calculate the distance between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the length of a - b.
+    static float distance(const vec4& a, const vec4& b) noexcept {
+        return length(a - b);
     }
 
     private:
