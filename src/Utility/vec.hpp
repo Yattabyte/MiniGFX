@@ -2,6 +2,7 @@
 #ifndef MINIGFX_VEC_HPP
 #define MINIGFX_VEC_HPP
 
+#include <algorithm>
 #include <cmath>
 
 namespace mini {
@@ -273,6 +274,55 @@ class vec2 {
     /// \return the length of a - b.
     static float distance(const vec2& a, const vec2& b) noexcept {
         return length(a - b);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the minimum values between this and the input vector.
+    /// \param  o       the other vector.
+    /// \return the minimum x,y values.
+    vec2 min(const vec2& o) const noexcept { return min(*this, o); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the minimum values between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the minimum x,y values.
+    static vec2 min(const vec2& a, const vec2& b) noexcept {
+        return vec2(
+            std::min(a.m_data[0], b.m_data[0]),
+            std::min(a.m_data[1], b.m_data[1]));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the maximum values between this and the input vector.
+    /// \param  o       the other vector.
+    /// \return the maximum x,y values.
+    vec2 max(const vec2& o) const noexcept { return max(*this, o); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the maximum values between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the maximum x,y values.
+    static vec2 max(const vec2& a, const vec2& b) noexcept {
+        return vec2(
+            std::max(a.m_data[0], b.m_data[0]),
+            std::max(a.m_data[1], b.m_data[1]));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Clamp this vector between the 2 supplied ranges.
+    /// \param  low     the lowest values vector.
+    /// \param  high    the highest values vector.
+    /// \return clamped x,y values between low and high.
+    vec2 clamp(const vec2& low, const vec2& high) const noexcept {
+        return clamp(*this, low, high);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Clamp the input vector between the 2 supplied ranges.
+    /// \param  low     the lowest values vector.
+    /// \param  high    the highest values vector.
+    /// \return clamped x,y values between low and high.
+    static vec2
+    clamp(const vec2& value, const vec2& low, const vec2& high) noexcept {
+        return vec2(
+            std::clamp(value.m_data[0], low.m_data[0], high.m_data[0]),
+            std::clamp(value.m_data[1], low.m_data[1], high.m_data[1]));
     }
 
     private:
@@ -590,6 +640,58 @@ class vec3 {
     constexpr static float dot(const vec3& a, const vec3& b) noexcept {
         return (a.x() * b.x()) + (a.y() * b.y()) + (a.z() * b.z());
     }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the minimum values between this and the input vector.
+    /// \param  o       the other vector.
+    /// \return the minimum x,y,z values.
+    vec3 min(const vec3& o) const noexcept { return min(*this, o); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the minimum values between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the minimum x,y,z values.
+    static vec3 min(const vec3& a, const vec3& b) noexcept {
+        return vec3(
+            std::min(a.m_data[0], b.m_data[0]),
+            std::min(a.m_data[1], b.m_data[1]),
+            std::min(a.m_data[2], b.m_data[2]));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the maximum values between this and the input vector.
+    /// \param  o       the other vector.
+    /// \return the maximum x,y,z values.
+    vec3 max(const vec3& o) const noexcept { return max(*this, o); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the maximum values between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the maximum x,y,z values.
+    static vec3 max(const vec3& a, const vec3& b) noexcept {
+        return vec3(
+            std::max(a.m_data[0], b.m_data[0]),
+            std::max(a.m_data[1], b.m_data[1]),
+            std::max(a.m_data[2], b.m_data[2]));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Clamp this vector between the 2 supplied ranges.
+    /// \param  low     the lowest values vector.
+    /// \param  high    the highest values vector.
+    /// \return clamped x,y,z values between low and high.
+    vec3 clamp(const vec3& low, const vec3& high) const noexcept {
+        return clamp(*this, low, high);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Clamp the input vector between the 2 supplied ranges.
+    /// \param  low     the lowest values vector.
+    /// \param  high    the highest values vector.
+    /// \return clamped x,y,z values between low and high.
+    static vec3
+    clamp(const vec3& value, const vec3& low, const vec3& high) noexcept {
+        return vec3(
+            std::clamp(value.m_data[0], low.m_data[0], high.m_data[0]),
+            std::clamp(value.m_data[1], low.m_data[1], high.m_data[1]),
+            std::clamp(value.m_data[2], low.m_data[2], high.m_data[2]));
+    }
 
     private:
     float m_data[3] = { 0.0f, 0.0f, 0.0f }; ///< The underlying data container.
@@ -884,6 +986,61 @@ class vec4 {
     /// \return the length of a - b.
     static float distance(const vec4& a, const vec4& b) noexcept {
         return length(a - b);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the minimum values between this and the input vector.
+    /// \param  o       the other vector.
+    /// \return the minimum x,y,z,w values.
+    vec4 min(const vec4& o) const noexcept { return min(*this, o); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the minimum values between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the minimum x,y,z,w values.
+    static vec4 min(const vec4& a, const vec4& b) noexcept {
+        return vec4(
+            std::min(a.m_data[0], b.m_data[0]),
+            std::min(a.m_data[1], b.m_data[1]),
+            std::min(a.m_data[2], b.m_data[2]),
+            std::min(a.m_data[3], b.m_data[3]));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the maximum values between this and the input vector.
+    /// \param  o       the other vector.
+    /// \return the maximum x,y,z,w values.
+    vec4 max(const vec4& o) const noexcept { return max(*this, o); }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Retrieve the maximum values between the 2 supplied vectors.
+    /// \param  a       the first vector.
+    /// \param  b       the second vector.
+    /// \return the maximum x,y,z,w values.
+    static vec4 max(const vec4& a, const vec4& b) noexcept {
+        return vec4(
+            std::max(a.m_data[0], b.m_data[0]),
+            std::max(a.m_data[1], b.m_data[1]),
+            std::max(a.m_data[2], b.m_data[2]),
+            std::max(a.m_data[3], b.m_data[3]));
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Clamp this vector between the 2 supplied ranges.
+    /// \param  low     the lowest values vector.
+    /// \param  high    the highest values vector.
+    /// \return clamped x,y,z,w values between low and high.
+    vec4 clamp(const vec4& low, const vec4& high) const noexcept {
+        return clamp(*this, low, high);
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Clamp the input vector between the 2 supplied ranges.
+    /// \param  low     the lowest values vector.
+    /// \param  high    the highest values vector.
+    /// \return clamped x,y,z,w values between low and high.
+    static vec4
+    clamp(const vec4& value, const vec4& low, const vec4& high) noexcept {
+        return vec4(
+            std::clamp(value.m_data[0], low.m_data[0], high.m_data[0]),
+            std::clamp(value.m_data[1], low.m_data[1], high.m_data[1]),
+            std::clamp(value.m_data[2], low.m_data[2], high.m_data[2]),
+            std::clamp(value.m_data[3], low.m_data[3], high.m_data[3]));
     }
 
     private:
