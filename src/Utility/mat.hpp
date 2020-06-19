@@ -102,10 +102,10 @@ class mat4 {
     /// \param  zFar    the far plane.
     /// \return a perspective projection 4x4 matrix.
     static mat4 perspective(
-        float const& fovY, float const& aspect, float const& zNear,
-        float const& zFar) noexcept {
-        float const rad = fovY;
-        float tanHalfFovy = tanf(rad / static_cast<float>(2));
+        const float& fovY, const float& aspect, const float& zNear,
+        const float& zFar) noexcept {
+        const float rad = fovY;
+        const float tanHalfFovy = tanf(rad / static_cast<float>(2));
 
         mat4 Result;
         Result[0].x() = 1.0F / (aspect * tanHalfFovy);
@@ -113,6 +113,27 @@ class mat4 {
         Result[2].z() = -(zFar + zNear) / (zFar - zNear);
         Result[2].w() = -1.0F;
         Result[3].z() = -(2.0F * zFar * zNear) / (zFar - zNear);
+        return Result;
+    }
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Create an orthographic projection matrix.
+    /// \param  left        the left plane.
+    /// \param  right       the right plane.
+    /// \param  top         the top plane.
+    /// \param  bottom      the bottom plane.
+    /// \param  zNear       the near plane.
+    /// \param  zFar        the far plane.
+    /// \return an orthographic projection 4x4 matrix.
+    static mat4 orthographic(
+        const float& left, const float& right, const float& top,
+        const float& bottom, const float& zNear, const float& zFar) noexcept {
+        mat4 Result;
+        Result[0][0] = 2.0F / (right - left);
+        Result[1][1] = 2.0F / (top - bottom);
+        Result[2][2] = -2.0F / (zFar - zNear);
+        Result[3][0] = -(right + left) / (right - left);
+        Result[3][1] = -(top + bottom) / (top - bottom);
+        Result[3][2] = -(zFar + zNear) / (zFar - zNear);
         return Result;
     }
 

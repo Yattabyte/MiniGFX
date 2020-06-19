@@ -315,6 +315,7 @@ class vec2 {
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp the input vector between the 2 supplied ranges.
+    /// \param  value   the value vector to clamp.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y values between low and high.
@@ -682,6 +683,7 @@ class vec3 {
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp the input vector between the 2 supplied ranges.
+    /// \param  value   the value vector to clamp.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y,z values between low and high.
@@ -1031,6 +1033,7 @@ class vec4 {
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp the input vector between the 2 supplied ranges.
+    /// \param  value   the value vector to clamp.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y,z,w values between low and high.

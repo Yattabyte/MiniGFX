@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MiniGFX
-   &#160;<span id="projectnumber">0.10.0</span>
+   &#160;<span id="projectnumber">0.11.0</span>
    </div>
    <div id="projectbrief">Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.</div>
   </td>
@@ -132,9 +132,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aff103d27b1f35fc8cb7abe1230f599c7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmini_1_1mat4.html">mat4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1mat4.html#aff103d27b1f35fc8cb7abe1230f599c7">lookAt</a> (const <a class="el" href="classmini_1_1vec3.html">vec3</a> &amp;eye, const <a class="el" href="classmini_1_1vec3.html">vec3</a> &amp;center, const <a class="el" href="classmini_1_1vec3.html">vec3</a> &amp;up) noexcept</td></tr>
 <tr class="memdesc:aff103d27b1f35fc8cb7abe1230f599c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a transform matrix looking at a point.  <a href="#aff103d27b1f35fc8cb7abe1230f599c7">More...</a><br /></td></tr>
 <tr class="separator:aff103d27b1f35fc8cb7abe1230f599c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b2f2ab0b6ca853a73a4effe3e9f3a7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmini_1_1mat4.html">mat4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1mat4.html#a07b2f2ab0b6ca853a73a4effe3e9f3a7">perspective</a> (float const &amp;fovY, float const &amp;aspect, float const &amp;zNear, float const &amp;zFar) noexcept</td></tr>
-<tr class="memdesc:a07b2f2ab0b6ca853a73a4effe3e9f3a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a perspective projection matrix.  <a href="#a07b2f2ab0b6ca853a73a4effe3e9f3a7">More...</a><br /></td></tr>
-<tr class="separator:a07b2f2ab0b6ca853a73a4effe3e9f3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e26c0f57017a9f563b2c1e27541f1f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmini_1_1mat4.html">mat4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1mat4.html#ae1e26c0f57017a9f563b2c1e27541f1f">perspective</a> (const float &amp;fovY, const float &amp;aspect, const float &amp;zNear, const float &amp;zFar) noexcept</td></tr>
+<tr class="memdesc:ae1e26c0f57017a9f563b2c1e27541f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a perspective projection matrix.  <a href="#ae1e26c0f57017a9f563b2c1e27541f1f">More...</a><br /></td></tr>
+<tr class="separator:ae1e26c0f57017a9f563b2c1e27541f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484dab199ab9212dd0e7c534f7d99391"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmini_1_1mat4.html">mat4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1mat4.html#a484dab199ab9212dd0e7c534f7d99391">orthographic</a> (const float &amp;left, const float &amp;right, const float &amp;top, const float &amp;bottom, const float &amp;zNear, const float &amp;zFar) noexcept</td></tr>
+<tr class="memdesc:a484dab199ab9212dd0e7c534f7d99391"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an orthographic projection matrix.  <a href="#a484dab199ab9212dd0e7c534f7d99391">More...</a><br /></td></tr>
+<tr class="separator:a484dab199ab9212dd0e7c534f7d99391"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A 4x4 matrix of floats. </p>
@@ -353,8 +356,82 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a07b2f2ab0b6ca853a73a4effe3e9f3a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07b2f2ab0b6ca853a73a4effe3e9f3a7">&#9670;&nbsp;</a></span>perspective()</h2>
+<a id="a484dab199ab9212dd0e7c534f7d99391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a484dab199ab9212dd0e7c534f7d99391">&#9670;&nbsp;</a></span>orthographic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classmini_1_1mat4.html">mat4</a> mini::mat4::orthographic </td>
+          <td>(</td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>left</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>right</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>top</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>bottom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>zNear</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>zFar</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create an orthographic projection matrix. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">left</td><td>the left plane. </td></tr>
+    <tr><td class="paramname">right</td><td>the right plane. </td></tr>
+    <tr><td class="paramname">top</td><td>the top plane. </td></tr>
+    <tr><td class="paramname">bottom</td><td>the bottom plane. </td></tr>
+    <tr><td class="paramname">zNear</td><td>the near plane. </td></tr>
+    <tr><td class="paramname">zFar</td><td>the far plane. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an orthographic projection 4x4 matrix. </dd></dl>
+
+</div>
+</div>
+<a id="ae1e26c0f57017a9f563b2c1e27541f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e26c0f57017a9f563b2c1e27541f1f">&#9670;&nbsp;</a></span>perspective()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -365,25 +442,25 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">static <a class="el" href="classmini_1_1mat4.html">mat4</a> mini::mat4::perspective </td>
           <td>(</td>
-          <td class="paramtype">float const &amp;&#160;</td>
+          <td class="paramtype">const float &amp;&#160;</td>
           <td class="paramname"><em>fovY</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float const &amp;&#160;</td>
+          <td class="paramtype">const float &amp;&#160;</td>
           <td class="paramname"><em>aspect</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float const &amp;&#160;</td>
+          <td class="paramtype">const float &amp;&#160;</td>
           <td class="paramname"><em>zNear</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float const &amp;&#160;</td>
+          <td class="paramtype">const float &amp;&#160;</td>
           <td class="paramname"><em>zFar</em>&#160;</td>
         </tr>
         <tr>
