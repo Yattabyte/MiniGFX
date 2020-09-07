@@ -2,12 +2,12 @@
 ### Mini GFX ###
 ################
 cmake_minimum_required(VERSION 3.9.2)
-project(MiniGFX VERSION 0.11.0 DESCRIPTION "Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.")
+project(MiniGFX VERSION 0.12.0 DESCRIPTION "Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.")
 include(ExternalProject)
 
 # Set mandatory requirements
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED YES) 
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CXX_EXTENSIONS YES)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_PDB_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
