@@ -30,8 +30,8 @@ class IndirectDraw {
     /// \brief  Bind this buffer and also perform an indirect draw call.
     /// \param  drawMode    either GL_TRIANGLES, GL_POINTS, GL_LINES, etc.
     /// \param  indirect    an indirect pointer.
-    void drawCall(const int& drawMode, const void* indirect = nullptr) const
-        noexcept;
+    void drawCall(
+        const int& drawMode, const void* indirect = nullptr) const noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Prepare this buffer for writing, waiting on its sync fence.
     void beginWriting() const noexcept { m_buffer.beginWriting(); }

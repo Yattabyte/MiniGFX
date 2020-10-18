@@ -347,7 +347,8 @@ template <typename DataType> class tvec2 {
     }
 
     private:
-    DataType m_data[2] = { 0.0f, 0.0f }; ///< The underlying data container.
+    DataType m_data[2] = { (DataType)0,
+                           (DataType)0 }; ///< The underlying data container.
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -721,8 +722,8 @@ template <typename DataType> class tvec3 {
     }
 
     private:
-    DataType m_data[3] = { 0.0f, 0.0f,
-                           0.0f }; ///< The underlying data container.
+    DataType m_data[3] = { DataType(0), DataType(0),
+                           DataType(0) }; ///< The underlying data container.
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -1075,8 +1076,8 @@ template <typename DataType> class tvec4 {
     }
 
     private:
-    DataType m_data[4] = { 0.0f, 0.0f, 0.0f,
-                           0.0f }; ///< The underlying data container.
+    DataType m_data[4] = { DataType(0), DataType(0), DataType(0),
+                           DataType(0) }; ///< The underlying data container.
 };
 }; // namespace mini
 

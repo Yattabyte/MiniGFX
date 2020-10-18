@@ -76,8 +76,8 @@ class glBuffer {
     /// \brief  Bind this buffer to a particular shader binding point.
     /// \param  target      the target type of this buffer.
     /// \param  index       the binding point index to use.
-    void bindBufferBase(const GLenum& target, const GLuint& index) const
-        noexcept {
+    void
+    bindBufferBase(const GLenum& target, const GLuint& index) const noexcept {
         glBindBufferBase(target, index, m_bufferID);
     }
 
