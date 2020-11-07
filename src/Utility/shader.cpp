@@ -3,6 +3,9 @@
 
 //////////////////////////////////////////////////////////////////////
 /// Useful Aliases
+using mini::ivec2;
+using mini::ivec3;
+using mini::ivec4;
 using mini::mat4;
 using mini::Shader;
 using mini::vec2;
@@ -87,6 +90,24 @@ void Shader::uniformLocation(const int location, const vec3& vector) const noexc
 
 void Shader::uniformLocation(const int location, const vec4& vector) const noexcept {
     glProgramUniform4fv(m_programID, location, 1U, vector.data());
+}
+
+//////////////////////////////////////////////////////////////////////
+
+void Shader::uniformLocation(const int location, const ivec2& vector) const noexcept {
+    glProgramUniform2iv(m_programID, location, 1U, vector.data());
+}
+
+//////////////////////////////////////////////////////////////////////
+
+void Shader::uniformLocation(const int location, const ivec3& vector) const noexcept {
+    glProgramUniform3iv(m_programID, location, 1U, vector.data());
+}
+
+//////////////////////////////////////////////////////////////////////
+
+void Shader::uniformLocation(const int location, const ivec4& vector) const noexcept {
+    glProgramUniform4iv(m_programID, location, 1U, vector.data());
 }
 
 //////////////////////////////////////////////////////////////////////

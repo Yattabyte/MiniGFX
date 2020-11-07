@@ -60,6 +60,21 @@ class Shader {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Copy data to a specific uniform location.
     /// \param  location    the location in - shader to copy to.
+    /// \param  vector      the data to copy - in.
+    void uniformLocation(const int location, const ivec2& vector) const noexcept;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Copy data to a specific uniform location.
+    /// \param  location    the location in - shader to copy to.
+    /// \param  vector      the data to copy - in.
+    void uniformLocation(const int location, const ivec3& vector) const noexcept;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Copy data to a specific uniform location.
+    /// \param  location    the location in - shader to copy to.
+    /// \param  vector      the data to copy - in.
+    void uniformLocation(const int location, const ivec4& vector) const noexcept;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Copy data to a specific uniform location.
+    /// \param  location    the location in - shader to copy to.
     /// \param  matrix      the data to copy - in.
     void uniformLocation(const int location, const mat4& matrix) const noexcept;
 

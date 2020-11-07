@@ -5,6 +5,7 @@
 /// Useful Aliases
 using mini::Image;
 using mini::vec2;
+using mini::vec4;
 
 //////////////////////////////////////////////////////////////////////
 /// Custom Constructor

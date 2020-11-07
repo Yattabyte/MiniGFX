@@ -2,6 +2,7 @@
 
 //////////////////////////////////////////////////////////////////////
 /// Useful Aliases
+using mini::Image;
 using mini::Texture2D;
 constexpr auto MAX_ANISOTROPY = 16.0F;
 
