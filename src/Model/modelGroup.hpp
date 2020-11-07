@@ -2,7 +2,6 @@
 #ifndef MINIGFX_MODELGROUP_HPP
 #define MINIGFX_MODELGROUP_HPP
 
-#include "Utility/mat.hpp"
 #include "Utility/vec.hpp"
 #include <glad/glad.h>
 #include <vector>
@@ -26,17 +25,11 @@ class ModelGroup {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a model-group container.
     /// \param  count       how many vertices to pre-allocate.
-    ModelGroup(const size_t count = 1024) noexcept;
-    //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy constructor.
-    ModelGroup(const ModelGroup& o) = default;
+    ModelGroup(const size_t count = 1024);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move constructor.
     ModelGroup(ModelGroup&& o) noexcept = default;
 
-    //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy-assignment operator.
-    ModelGroup& operator=(const ModelGroup& p) = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move-assignment operator.
     ModelGroup& operator=(ModelGroup&& p) noexcept = default;
@@ -62,6 +55,15 @@ class ModelGroup {
     GroupEntry addModel(const std::vector<vec3>& data);
 
     private:
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted copy constructor.
+    ModelGroup(const ModelGroup& o) = delete;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted copy-assignment operator.
+    ModelGroup& operator=(const ModelGroup& p) = delete;
+
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
     size_t m_size = 0ULL;     ///< The number of bytes used.
     size_t m_capacity = 0ULL; ///< The total capacity allocated.
     GLuint m_vaoID = 0U;      ///< The OpenGL vertex array object ID.

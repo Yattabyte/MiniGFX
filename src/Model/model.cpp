@@ -1,8 +1,8 @@
 #include "Model/model.hpp"
 
 //////////////////////////////////////////////////////////////////////
-/// Use our shared namespace mini
-using namespace mini;
+/// Useful Aliases
+using mini::Model;
 
 //////////////////////////////////////////////////////////////////////
 /// Custom Destructor
@@ -17,16 +17,13 @@ Model::~Model() {
 /// Custom Constructor
 //////////////////////////////////////////////////////////////////////
 
-Model::Model(const std::vector<vec3>& vertices) noexcept
-    : m_vertexCount(vertices.size()) {
+Model::Model(const std::vector<vec3>& vertices) : m_vertexCount(vertices.size()) {
     // Create GL Objects
     glCreateVertexArrays(1, &m_vaoID);
     glCreateBuffers(1, &m_vboID);
 
     // Load geometry into vertex buffer object
-    glNamedBufferStorage(
-        m_vboID, sizeof(vec3) * vertices.size(), &vertices[0],
-        GL_CLIENT_STORAGE_BIT);
+    glNamedBufferStorage(m_vboID, sizeof(vec3) * vertices.size(), &vertices[0], GL_CLIENT_STORAGE_BIT);
 
     // Connect and set-up the vertex array object
     glEnableVertexArrayAttrib(m_vaoID, 0);
@@ -40,6 +37,5 @@ Model::Model(const std::vector<vec3>& vertices) noexcept
 //////////////////////////////////////////////////////////////////////
 
 void Model::draw(const int& drawMode) const noexcept {
-    glDrawArrays(
-        static_cast<GLenum>(drawMode), 0, static_cast<GLsizei>(m_vertexCount));
+    glDrawArrays(static_cast<GLenum>(drawMode), 0, static_cast<GLsizei>(m_vertexCount));
 }

@@ -1,12 +1,12 @@
 #include "Model/modelGroup.hpp"
 
 //////////////////////////////////////////////////////////////////////
-/// Use our shared namespace mini
-using namespace mini;
+/// Useful Aliases
+using mini::ModelGroup;
 
 //////////////////////////////////////////////////////////////////////
 /// Forward Declarations
-static void wait_on_fence(GLsync& fence) noexcept;
+static void wait_on_fence(GLsync& /*fence*/) noexcept;
 
 //////////////////////////////////////////////////////////////////////
 /// Custom Destructor
@@ -23,14 +23,13 @@ ModelGroup::~ModelGroup() {
 /// Custom Constructor
 //////////////////////////////////////////////////////////////////////
 
-ModelGroup::ModelGroup(const size_t count) noexcept : m_capacity(count) {
+ModelGroup::ModelGroup(const size_t count) : m_capacity(count) {
     // Create GL Objects
     glCreateVertexArrays(1, &m_vaoID);
     glCreateBuffers(1, &m_vboID);
 
     // Load geometry into vertex buffer object
-    glNamedBufferStorage(
-        m_vboID, sizeof(vec3) * count, nullptr, GL_DYNAMIC_STORAGE_BIT);
+    glNamedBufferStorage(m_vboID, sizeof(vec3) * count, nullptr, GL_DYNAMIC_STORAGE_BIT);
 
     // Connect and set-up the vertex array object
     glEnableVertexArrayAttrib(m_vaoID, 0);
@@ -52,8 +51,7 @@ void ModelGroup::resize(const size_t& size) {
         // Create the new VBO's
         GLuint newVBOID = 0;
         glCreateBuffers(1, &newVBOID);
-        glNamedBufferStorage(
-            newVBOID, m_capacity, nullptr, GL_DYNAMIC_STORAGE_BIT);
+        glNamedBufferStorage(newVBOID, m_capacity, nullptr, GL_DYNAMIC_STORAGE_BIT);
 
         // Copy old VBO's
         m_fence = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
@@ -99,14 +97,15 @@ ModelGroup::GroupEntry ModelGroup::addModel(const std::vector<vec3>& data) {
 
 static void wait_on_fence(GLsync& fence) noexcept {
     // Do nothing if unassigned
-    if (fence == nullptr)
+    if (fence == nullptr) {
         return;
+    }
 
     // Wait for data fence to be passed
     GLenum state = GL_UNSIGNALED;
-    while (state != GL_SIGNALED && state != GL_ALREADY_SIGNALED &&
-           state != GL_CONDITION_SATISFIED)
+    while (state != GL_SIGNALED && state != GL_ALREADY_SIGNALED && state != GL_CONDITION_SATISFIED) {
         state = glClientWaitSync(fence, GL_SYNC_FLUSH_COMMANDS_BIT, 1);
+    }
     glDeleteSync(fence);
     fence = nullptr;
 }

@@ -22,8 +22,7 @@ class glDynamicBuffer final : public glBuffer {
     /// \param  mapFlags    bit-field flags.
     glDynamicBuffer(
         const GLsizeiptr& capacity = 256, const void* data = nullptr,
-        const GLbitfield& mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
-                                     GL_MAP_COHERENT_BIT) noexcept;
+        const GLbitfield& mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a new Dynamic buffer, from another buffer.
     /// \param  other   another buffer to copy from.
@@ -31,9 +30,7 @@ class glDynamicBuffer final : public glBuffer {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Assignment constructor.
     /// \param  other   another buffer to move from.
-    glDynamicBuffer(glDynamicBuffer&& other) noexcept {
-        (*this) = std::move(other);
-    }
+    glDynamicBuffer(glDynamicBuffer&& other) noexcept { (*this) = std::move(other); }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Movement operator, for moving another buffer into this one.
@@ -53,17 +50,13 @@ class glDynamicBuffer final : public glBuffer {
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(
-        const GLsizeiptr& offset, const GLsizeiptr& size,
-        const void* data) noexcept;
+    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Write the supplied data to GPU memory.
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write_immediate(
-        const GLsizeiptr& offset, const GLsizeiptr& size,
-        const void* data) noexcept;
+    void write_immediate(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Expands this buffer's container to fit the desired range.
     /// \note   May invalidate the previous underlying data range.
@@ -72,10 +65,12 @@ class glDynamicBuffer final : public glBuffer {
     void expandToFit(const GLsizeiptr& offset, const GLsizeiptr& size) noexcept;
 
     private:
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
     GLsizeiptr m_maxCapacity = 256; ///< Byte-capacity of this buffer.
-    GLbitfield m_mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
-                            GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
-    void* m_bufferPtr = nullptr; ///< Pointer to underlying buffer data.
+    GLbitfield m_mapFlags =
+        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
+    void* m_bufferPtr = nullptr;                                        ///< Pointer to underlying buffer data.
 };
 }; // namespace mini
 

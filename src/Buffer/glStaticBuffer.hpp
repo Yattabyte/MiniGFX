@@ -16,12 +16,11 @@ class glStaticBuffer final : public glBuffer {
     ~glStaticBuffer();
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a static buffer.
-    glStaticBuffer() noexcept = default;
+    glStaticBuffer() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Explicit Instantiation.
     explicit glStaticBuffer(
-        const GLsizeiptr& size, const void* data = 0,
-        const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT) noexcept;
+        const GLsizeiptr& size, const void* data = 0, const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct and copy another static buffer.
     /// \param  other       another buffer to copy from.
@@ -47,14 +46,13 @@ class glStaticBuffer final : public glBuffer {
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(
-        const GLsizeiptr& offset, const GLsizeiptr& size,
-        const void* data) noexcept;
+    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept;
 
     private:
-    size_t m_size = 0ull; ///< Byte-size of this buffer.
-    GLbitfield m_storageFlags =
-        GL_DYNAMIC_STORAGE_BIT; ///< OpenGL map storage flags.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    size_t m_size = 0ull;                               ///< Byte-size of this buffer.
+    GLbitfield m_storageFlags = GL_DYNAMIC_STORAGE_BIT; ///< OpenGL map storage flags.
 };
 }; // namespace mini
 

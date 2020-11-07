@@ -35,13 +35,11 @@ template <typename DataType> class tvec2 {
     constexpr tvec2() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a vector using 1 specific value.
-    constexpr explicit tvec2(const DataType& value) noexcept
-        : m_data{ value, value } {}
+    constexpr explicit tvec2(const DataType& value) noexcept : m_data{ value, value } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a vector using 2 specific attributes.
     /// \param  _x      the x value to use./// \param _y the y value to use.
-    constexpr tvec2(const DataType& _x, const DataType& _y) noexcept
-        : m_data{ _x, _y } {}
+    constexpr tvec2(const DataType& _x, const DataType& _y) noexcept : m_data{ _x, _y } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default copy constructor.
     constexpr tvec2(const tvec2& o) = default;
@@ -59,16 +57,12 @@ template <typename DataType> class tvec2 {
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
     /// \return this vector plus the other vector.
-    constexpr tvec2 operator+(const tvec2& o) const noexcept {
-        return tvec2{ x() + o.x(), y() + o.y() };
-    }
+    constexpr tvec2 operator+(const tvec2& o) const noexcept { return tvec2{ x() + o.x(), y() + o.y() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Add a scalar to this vector
     /// \param  o       the scalar to add.
     /// \return this vector plus the scalar.
-    constexpr tvec2 operator+(const DataType& o) const noexcept {
-        return tvec2{ x() + o, y() + o };
-    }
+    constexpr tvec2 operator+(const DataType& o) const noexcept { return tvec2{ x() + o, y() + o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
@@ -91,16 +85,12 @@ template <typename DataType> class tvec2 {
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
     /// \return this vector minus the other vector.
-    constexpr tvec2 operator-(const tvec2& o) const noexcept {
-        return tvec2{ x() - o.x(), y() - o.y() };
-    }
+    constexpr tvec2 operator-(const tvec2& o) const noexcept { return tvec2{ x() - o.x(), y() - o.y() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract a scalar from this vector.
     /// \param  o       the scalar.
     /// \return this vector minus the scalar.
-    constexpr tvec2 operator-(const DataType& o) const noexcept {
-        return tvec2{ x() - o, y() - o };
-    }
+    constexpr tvec2 operator-(const DataType& o) const noexcept { return tvec2{ x() - o, y() - o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
@@ -123,16 +113,12 @@ template <typename DataType> class tvec2 {
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
     /// \return this vector multiplied by the other vector.
-    constexpr tvec2 operator*(const tvec2& o) const noexcept {
-        return tvec2{ x() * o.x(), y() * o.y() };
-    }
+    constexpr tvec2 operator*(const tvec2& o) const noexcept { return tvec2{ x() * o.x(), y() * o.y() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by a scalar.
     /// \param  o       the scalar.
     /// \return this vector multiplied by the scalar.
-    constexpr tvec2 operator*(const DataType& o) const noexcept {
-        return tvec2{ x() * o, y() * o };
-    }
+    constexpr tvec2 operator*(const DataType& o) const noexcept { return tvec2{ x() * o, y() * o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
@@ -155,16 +141,12 @@ template <typename DataType> class tvec2 {
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
     /// \return this vector divided by the other vector.
-    constexpr tvec2 operator/(const tvec2& o) const noexcept {
-        return tvec2{ x() / o.x(), y() / o.y() };
-    }
+    constexpr tvec2 operator/(const tvec2& o) const noexcept { return tvec2{ x() / o.x(), y() / o.y() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by a scalar.
     /// \param  o       the scalar.
     /// \return this vector divided by the scalar.
-    constexpr tvec2 operator/(const DataType& o) const noexcept {
-        return tvec2{ x() / o, y() / o };
-    }
+    constexpr tvec2 operator/(const DataType& o) const noexcept { return tvec2{ x() / o, y() / o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
@@ -200,30 +182,22 @@ template <typename DataType> class tvec2 {
     /// \brief  Compare against another vector.
     /// \param  o       the other vector.
     /// \return true if this equals the other vector, false otherwise.
-    constexpr bool operator==(const tvec2& o) const noexcept {
-        return x() == o.x() && y() == o.y();
-    }
+    constexpr bool operator==(const tvec2& o) const noexcept { return x() == o.x() && y() == o.y(); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Compare against another vector.
     /// \param  o       the other vector.
     /// \return true if this doesn't equal the other vector, false otherwise.
-    constexpr bool operator!=(const tvec2& o) const noexcept {
-        return !(*this == o);
-    }
+    constexpr bool operator!=(const tvec2& o) const noexcept { return !(*this == o); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Index operator.
     /// \param  i       the index.
     /// \return reference to the data found at index.
-    constexpr DataType& operator[](const size_t& i) noexcept {
-        return m_data[i];
-    }
+    constexpr DataType& operator[](const size_t& i) noexcept { return m_data[i]; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Const Index operator.
     /// \param  i       the index.
     /// \return reference to the data found at index.
-    constexpr const DataType& operator[](const size_t& i) const noexcept {
-        return m_data[i];
-    }
+    constexpr const DataType& operator[](const size_t& i) const noexcept { return m_data[i]; }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Get the X component of this vector.
@@ -265,17 +239,13 @@ template <typename DataType> class tvec2 {
     /// \brief  Calculate the dot product of this vector.
     /// \param  b       the other vector to dot against.
     /// \return dot product of this and the supplied vector.
-    constexpr DataType dot(const tvec2& b) const noexcept {
-        return dot(*this, b);
-    }
+    constexpr DataType dot(const tvec2& b) const noexcept { return dot(*this, b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product the supplied vectors.
     /// \param  a       the first vector to dot against.
     /// \param  b       the second vector to dot against.
     /// \return dot product of a and b.
-    constexpr static DataType dot(const tvec2& a, const tvec2& b) noexcept {
-        return (a.x() * b.x()) + (a.y() * b.y());
-    }
+    constexpr static DataType dot(const tvec2& a, const tvec2& b) noexcept { return (a.x() * b.x()) + (a.y() * b.y()); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the length of this vector.
     /// \return the length of this vector.
@@ -284,17 +254,13 @@ template <typename DataType> class tvec2 {
     /// \brief  Calculate the length of the input vector.
     /// \param  v       the vector to check the length of.
     /// \return the length of the supplied vector.
-    static DataType length(const tvec2& v) noexcept {
-        return std::sqrt((v.x() * v.x()) + (v.y() * v.y()));
-    }
+    static DataType length(const tvec2& v) noexcept { return std::sqrt((v.x() * v.x()) + (v.y() * v.y())); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the distance between the 2 supplied vectors.
     /// \param  a       the first vector.
     /// \param  b       the second vector.
     /// \return the length of a - b.
-    static DataType distance(const tvec2& a, const tvec2& b) noexcept {
-        return length(a - b);
-    }
+    static DataType distance(const tvec2& a, const tvec2& b) noexcept { return length(a - b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve the minimum values between this and the input vector.
     /// \param  o       the other vector.
@@ -306,9 +272,7 @@ template <typename DataType> class tvec2 {
     /// \param  b       the second vector.
     /// \return the minimum x,y values.
     static tvec2 min(const tvec2& a, const tvec2& b) noexcept {
-        return tvec2(
-            std::min(a.m_data[0], b.m_data[0]),
-            std::min(a.m_data[1], b.m_data[1]));
+        return tvec2(std::min(a.m_data[0], b.m_data[0]), std::min(a.m_data[1], b.m_data[1]));
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve the maximum values between this and the input vector.
@@ -321,34 +285,30 @@ template <typename DataType> class tvec2 {
     /// \param  b       the second vector.
     /// \return the maximum x,y values.
     static tvec2 max(const tvec2& a, const tvec2& b) noexcept {
-        return tvec2(
-            std::max(a.m_data[0], b.m_data[0]),
-            std::max(a.m_data[1], b.m_data[1]));
+        return tvec2(std::max(a.m_data[0], b.m_data[0]), std::max(a.m_data[1], b.m_data[1]));
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp this vector between the 2 supplied ranges.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y values between low and high.
-    tvec2 clamp(const tvec2& low, const tvec2& high) const noexcept {
-        return clamp(*this, low, high);
-    }
+    tvec2 clamp(const tvec2& low, const tvec2& high) const noexcept { return clamp(*this, low, high); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp the input vector between the 2 supplied ranges.
     /// \param  value   the value vector to clamp.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y values between low and high.
-    static tvec2
-    clamp(const tvec2& value, const tvec2& low, const tvec2& high) noexcept {
+    static tvec2 clamp(const tvec2& value, const tvec2& low, const tvec2& high) noexcept {
         return tvec2(
             std::clamp(value.m_data[0], low.m_data[0], high.m_data[0]),
             std::clamp(value.m_data[1], low.m_data[1], high.m_data[1]));
     }
 
     private:
-    DataType m_data[2] = { (DataType)0,
-                           (DataType)0 }; ///< The underlying data container.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    DataType m_data[2] = { static_cast<DataType>(0), static_cast<DataType>(0) }; ///< The underlying data container.
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -364,16 +324,13 @@ template <typename DataType> class tvec3 {
     constexpr tvec3() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a vector using 1 specific value.
-    constexpr explicit tvec3(const DataType& value) noexcept
-        : m_data{ value, value, value } {}
+    constexpr explicit tvec3(const DataType& value) noexcept : m_data{ value, value, value } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a vector using 3 specific attributes.
     /// \param _x the x value to use.
     /// \param _y the y value to use.
     /// \param _z the z value to use.
-    constexpr tvec3(
-        const DataType& _x, const DataType& _y, const DataType& _z) noexcept
-        : m_data{ _x, _y, _z } {}
+    constexpr tvec3(const DataType& _x, const DataType& _y, const DataType& _z) noexcept : m_data{ _x, _y, _z } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default copy constructor.
     constexpr tvec3(const tvec3& o) = default;
@@ -391,16 +348,12 @@ template <typename DataType> class tvec3 {
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
     /// \return this vector plus the other vector.
-    constexpr tvec3 operator+(const tvec3& o) const noexcept {
-        return tvec3{ x() + o.x(), y() + o.y(), z() + o.z() };
-    }
+    constexpr tvec3 operator+(const tvec3& o) const noexcept { return tvec3{ x() + o.x(), y() + o.y(), z() + o.z() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Add a scalar to this vector.
     /// \param  o       the scalar
     /// \return this vector plus the scalar.
-    constexpr tvec3 operator+(const DataType& o) const noexcept {
-        return tvec3{ x() + o, y() + o, z() + o };
-    }
+    constexpr tvec3 operator+(const DataType& o) const noexcept { return tvec3{ x() + o, y() + o, z() + o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
@@ -425,16 +378,12 @@ template <typename DataType> class tvec3 {
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
     /// \return this vector minus the other vector.
-    constexpr tvec3 operator-(const tvec3& o) const noexcept {
-        return tvec3{ x() - o.x(), y() - o.y(), z() - o.z() };
-    }
+    constexpr tvec3 operator-(const tvec3& o) const noexcept { return tvec3{ x() - o.x(), y() - o.y(), z() - o.z() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract a scalar from this one.
     /// \param  o       the scalar.
     /// \return this vector minus the scalar.
-    constexpr tvec3 operator-(const DataType& o) const noexcept {
-        return tvec3{ x() - o, y() - o, z() - o };
-    }
+    constexpr tvec3 operator-(const DataType& o) const noexcept { return tvec3{ x() - o, y() - o, z() - o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
@@ -459,16 +408,12 @@ template <typename DataType> class tvec3 {
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
     /// \return this vector multiplied by the other vector.
-    constexpr tvec3 operator*(const tvec3& o) const noexcept {
-        return tvec3{ x() * o.x(), y() * o.y(), z() * o.z() };
-    }
+    constexpr tvec3 operator*(const tvec3& o) const noexcept { return tvec3{ x() * o.x(), y() * o.y(), z() * o.z() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by a scalar.
     /// \param  o       the scalar.
     /// \return this vector multiplied by the scalar.
-    constexpr tvec3 operator*(const DataType& o) const noexcept {
-        return tvec3{ x() * o, y() * o, z() * o };
-    }
+    constexpr tvec3 operator*(const DataType& o) const noexcept { return tvec3{ x() * o, y() * o, z() * o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
@@ -493,16 +438,12 @@ template <typename DataType> class tvec3 {
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
     /// \return this vector divided by the other vector.
-    constexpr tvec3 operator/(const tvec3& o) const noexcept {
-        return tvec3{ x() / o.x(), y() / o.y(), z() / o.z() };
-    }
+    constexpr tvec3 operator/(const tvec3& o) const noexcept { return tvec3{ x() / o.x(), y() / o.y(), z() / o.z() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by a scalar.
     /// \param  o       the scalar.
     /// \return this vector divided by the scalar.
-    constexpr tvec3 operator/(const DataType& o) const noexcept {
-        return tvec3{ x() / o, y() / o, z() / o };
-    }
+    constexpr tvec3 operator/(const DataType& o) const noexcept { return tvec3{ x() / o, y() / o, z() / o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
@@ -526,9 +467,7 @@ template <typename DataType> class tvec3 {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Negative Operator
     /// \return negative version of this vector.
-    constexpr tvec3 operator-() const noexcept {
-        return tvec3{ -x(), -y(), -z() };
-    }
+    constexpr tvec3 operator-() const noexcept { return tvec3{ -x(), -y(), -z() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Compare this vector against another for sorting purposes.
     /// \param  o       the other vector.
@@ -545,30 +484,22 @@ template <typename DataType> class tvec3 {
     /// \brief  Compare against another vector.
     /// \param  o       the other vector.
     /// \return true if this equals the  other vector, false otherwise.
-    constexpr bool operator==(const tvec3& o) const noexcept {
-        return x() == o.x() && y() == o.y() && z() == o.z();
-    }
+    constexpr bool operator==(const tvec3& o) const noexcept { return x() == o.x() && y() == o.y() && z() == o.z(); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Compare against another vector.
     /// \param  o       the other vector.
     /// \return true if this doesn't equal the other vector, false otherwise.
-    constexpr bool operator!=(const tvec3& o) const noexcept {
-        return !(*this == o);
-    }
+    constexpr bool operator!=(const tvec3& o) const noexcept { return !(*this == o); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Index operator.
     /// \param  i       the index.
     /// \return reference to the data found at index;
-    constexpr DataType& operator[](const size_t& i) noexcept {
-        return m_data[i];
-    }
+    constexpr DataType& operator[](const size_t& i) noexcept { return m_data[i]; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Const Index operator.
     /// \param i the index.
     /// \return reference to the data found at index;
-    constexpr const DataType& operator[](const size_t& i) const noexcept {
-        return m_data[i];
-    }
+    constexpr const DataType& operator[](const size_t& i) const noexcept { return m_data[i]; }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Get the X component of this vector.
@@ -611,27 +542,21 @@ template <typename DataType> class tvec3 {
     /// \param  v       the vector to normalize.
     /// \return normalize version of the supplied vector.
     static tvec3 normalize(const tvec3& v) noexcept {
-        const auto length_of_v =
-            std::sqrt((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()));
-        return tvec3{ v.x() / length_of_v, v.y() / length_of_v,
-                      v.z() / length_of_v };
+        const auto length_of_v = std::sqrt((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()));
+        return tvec3{ v.x() / length_of_v, v.y() / length_of_v, v.z() / length_of_v };
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the cross product of this vector.
     /// \param  b       the other vector to cross against.
     /// \return cross product of this and the supplied vector.
-    constexpr tvec3 cross(const tvec3& b) const noexcept {
-        return cross(*this, b);
-    }
+    constexpr tvec3 cross(const tvec3& b) const noexcept { return cross(*this, b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the cross product the supplied vectors.
     /// \param  a       the first vector to cross against.
     /// \param  b       the second vector to cross against.
     /// \return cross product of a and b.
     constexpr static tvec3 cross(const tvec3& a, const tvec3& b) noexcept {
-        return tvec3{ a.y() * b.z() - a.z() * b.y(),
-                      a.z() * b.x() - a.x() * b.z(),
-                      a.x() * b.y() - a.y() * b.x() };
+        return tvec3{ a.y() * b.z() - a.z() * b.y(), a.z() * b.x() - a.x() * b.z(), a.x() * b.y() - a.y() * b.x() };
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the length of this vector.
@@ -649,16 +574,12 @@ template <typename DataType> class tvec3 {
     /// \param  a       the first vector.
     /// \param  b       the second vector.
     /// \return the length of a - b.
-    static DataType distance(const tvec3& a, const tvec3& b) noexcept {
-        return length(a - b);
-    }
+    static DataType distance(const tvec3& a, const tvec3& b) noexcept { return length(a - b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product of this vector.
     /// \param  b       the other vector to dot against.
     /// \return dot product of this and the supplied vector.
-    constexpr DataType dot(const tvec3& b) const noexcept {
-        return dot(*this, b);
-    }
+    constexpr DataType dot(const tvec3& b) const noexcept { return dot(*this, b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the dot product the supplied vectors.
     /// \param  a       the first vector to dot against.
@@ -679,9 +600,7 @@ template <typename DataType> class tvec3 {
     /// \return the minimum x,y,z values.
     static tvec3 min(const tvec3& a, const tvec3& b) noexcept {
         return tvec3(
-            std::min(a.m_data[0], b.m_data[0]),
-            std::min(a.m_data[1], b.m_data[1]),
-            std::min(a.m_data[2], b.m_data[2]));
+            std::min(a.m_data[0], b.m_data[0]), std::min(a.m_data[1], b.m_data[1]), std::min(a.m_data[2], b.m_data[2]));
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve the maximum values between this and the input vector.
@@ -695,26 +614,21 @@ template <typename DataType> class tvec3 {
     /// \return the maximum x,y,z values.
     static tvec3 max(const tvec3& a, const tvec3& b) noexcept {
         return tvec3(
-            std::max(a.m_data[0], b.m_data[0]),
-            std::max(a.m_data[1], b.m_data[1]),
-            std::max(a.m_data[2], b.m_data[2]));
+            std::max(a.m_data[0], b.m_data[0]), std::max(a.m_data[1], b.m_data[1]), std::max(a.m_data[2], b.m_data[2]));
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp this vector between the 2 supplied ranges.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y,z values between low and high.
-    tvec3 clamp(const tvec3& low, const tvec3& high) const noexcept {
-        return clamp(*this, low, high);
-    }
+    tvec3 clamp(const tvec3& low, const tvec3& high) const noexcept { return clamp(*this, low, high); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp the input vector between the 2 supplied ranges.
     /// \param  value   the value vector to clamp.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y,z values between low and high.
-    static tvec3
-    clamp(const tvec3& value, const tvec3& low, const tvec3& high) noexcept {
+    static tvec3 clamp(const tvec3& value, const tvec3& low, const tvec3& high) noexcept {
         return tvec3(
             std::clamp(value.m_data[0], low.m_data[0], high.m_data[0]),
             std::clamp(value.m_data[1], low.m_data[1], high.m_data[1]),
@@ -722,8 +636,10 @@ template <typename DataType> class tvec3 {
     }
 
     private:
-    DataType m_data[3] = { DataType(0), DataType(0),
-                           DataType(0) }; ///< The underlying data container.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    DataType m_data[3] = { static_cast<DataType>(0), static_cast<DataType>(0),
+                           static_cast<DataType>(0) }; ///< The underlying data container.
 };
 
 //////////////////////////////////////////////////////////////////////
@@ -739,17 +655,14 @@ template <typename DataType> class tvec4 {
     constexpr tvec4() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a vector using 1 specific value.
-    constexpr explicit tvec4(const DataType& value) noexcept
-        : m_data{ value, value, value, value } {}
+    constexpr explicit tvec4(const DataType& value) noexcept : m_data{ value, value, value, value } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a vector using 3 specific attributes.
     /// \param _x the x value to use.
     /// \param _y the y value to use.
     /// \param _z the z value to use.
     /// \param _w the z value to use.
-    constexpr tvec4(
-        const DataType& _x, const DataType& _y, const DataType& _z,
-        const DataType& _w) noexcept
+    constexpr tvec4(const DataType& _x, const DataType& _y, const DataType& _z, const DataType& _w) noexcept
         : m_data{ _x, _y, _z, _w } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default copy constructor.
@@ -775,9 +688,7 @@ template <typename DataType> class tvec4 {
     /// \brief  Add a scalar to this one.
     /// \param  o       the scalar.
     /// \return this vector plus the scalar.
-    constexpr tvec4 operator+(const DataType& o) const noexcept {
-        return tvec4{ x() + o, y() + o, z() + o, w() + o };
-    }
+    constexpr tvec4 operator+(const DataType& o) const noexcept { return tvec4{ x() + o, y() + o, z() + o, w() + o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Add another vector to this one.
     /// \param  o       the other vector.
@@ -811,9 +722,7 @@ template <typename DataType> class tvec4 {
     /// \brief  Subtract a scalar from this one.
     /// \param  o       the scalar.
     /// \return this vector minus the scalar.
-    constexpr tvec4 operator-(const DataType& o) const noexcept {
-        return tvec4{ x() - o, y() - o, z() - o, w() - o };
-    }
+    constexpr tvec4 operator-(const DataType& o) const noexcept { return tvec4{ x() - o, y() - o, z() - o, w() - o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Subtract another vector from this one.
     /// \param  o       the other vector.
@@ -847,9 +756,7 @@ template <typename DataType> class tvec4 {
     /// \brief  Multiply by a scalar.
     /// \param  o       the scalar.
     /// \return this vector multiplied by the scalar.
-    constexpr tvec4 operator*(const DataType& o) const noexcept {
-        return tvec4{ x() * o, y() * o, z() * o, w() * o };
-    }
+    constexpr tvec4 operator*(const DataType& o) const noexcept { return tvec4{ x() * o, y() * o, z() * o, w() * o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Multiply by another vector.
     /// \param  o       the other vector.
@@ -883,9 +790,7 @@ template <typename DataType> class tvec4 {
     /// \brief  Divide by a scalar.
     /// \param  o       the scalar.
     /// \return this vector divided by the scalar.
-    constexpr tvec4 operator/(const DataType& o) const noexcept {
-        return tvec4{ x() / o, y() / o, z() / o, w() / o };
-    }
+    constexpr tvec4 operator/(const DataType& o) const noexcept { return tvec4{ x() / o, y() / o, z() / o, w() / o }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Divide by another vector.
     /// \param  o       the other vector.
@@ -911,9 +816,7 @@ template <typename DataType> class tvec4 {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Negative Operator
     /// \return negative version of this vector.
-    constexpr tvec4 operator-() const noexcept {
-        return tvec4{ -x(), -y(), -z(), -w() };
-    }
+    constexpr tvec4 operator-() const noexcept { return tvec4{ -x(), -y(), -z(), -w() }; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Compare against another vector.
     /// \param  o       the other vector.
@@ -925,23 +828,17 @@ template <typename DataType> class tvec4 {
     /// \brief  Compare against another vector.
     /// \param  o       the other vector.
     /// \return true if this doesn't equal the other vector, false otherwise.
-    constexpr bool operator!=(const tvec4& o) const noexcept {
-        return !(*this == o);
-    }
+    constexpr bool operator!=(const tvec4& o) const noexcept { return !(*this == o); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Index operator.
     /// \param  i       the index.
     /// \return reference to the data found at index.
-    constexpr DataType& operator[](const size_t& i) noexcept {
-        return m_data[i];
-    }
+    constexpr DataType& operator[](const size_t& i) noexcept { return m_data[i]; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Const Index operator.
     /// \param  i       the index.
     /// \return reference to the data found at index.
-    constexpr const DataType& operator[](const size_t& i) const noexcept {
-        return m_data[i];
-    }
+    constexpr const DataType& operator[](const size_t& i) const noexcept { return m_data[i]; }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Get the X component of this vector.
@@ -991,11 +888,8 @@ template <typename DataType> class tvec4 {
     /// \param  v       the vector to normalize.
     /// \return normalize version of the supplied vector.
     static tvec4 normalize(const tvec4& v) noexcept {
-        const auto length_of_v = std::sqrt(
-            (v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) +
-            (v.w() * v.w()));
-        return tvec4{ v.x() / length_of_v, v.y() / length_of_v,
-                      v.z() / length_of_v, v.w() / length_of_v };
+        const auto length_of_v = std::sqrt((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) + (v.w() * v.w()));
+        return tvec4{ v.x() / length_of_v, v.y() / length_of_v, v.z() / length_of_v, v.w() / length_of_v };
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the length of this vector.
@@ -1006,18 +900,14 @@ template <typename DataType> class tvec4 {
     /// \param  v       the vector to check the length of.
     /// \return the length of the supplied vector.
     static DataType length(const tvec4& v) noexcept {
-        return std::sqrt(
-            (v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) +
-            (v.w() * v.w()));
+        return std::sqrt((v.x() * v.x()) + (v.y() * v.y()) + (v.z() * v.z()) + (v.w() * v.w()));
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Calculate the distance between the 2 supplied vectors.
     /// \param  a       the first vector.
     /// \param  b       the second vector.
     /// \return the length of a - b.
-    static DataType distance(const tvec4& a, const tvec4& b) noexcept {
-        return length(a - b);
-    }
+    static DataType distance(const tvec4& a, const tvec4& b) noexcept { return length(a - b); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve the minimum values between this and the input vector.
     /// \param  o       the other vector.
@@ -1030,9 +920,7 @@ template <typename DataType> class tvec4 {
     /// \return the minimum x,y,z,w values.
     static tvec4 min(const tvec4& a, const tvec4& b) noexcept {
         return tvec4(
-            std::min(a.m_data[0], b.m_data[0]),
-            std::min(a.m_data[1], b.m_data[1]),
-            std::min(a.m_data[2], b.m_data[2]),
+            std::min(a.m_data[0], b.m_data[0]), std::min(a.m_data[1], b.m_data[1]), std::min(a.m_data[2], b.m_data[2]),
             std::min(a.m_data[3], b.m_data[3]));
     }
     //////////////////////////////////////////////////////////////////////
@@ -1047,9 +935,7 @@ template <typename DataType> class tvec4 {
     /// \return the maximum x,y,z,w values.
     static tvec4 max(const tvec4& a, const tvec4& b) noexcept {
         return tvec4(
-            std::max(a.m_data[0], b.m_data[0]),
-            std::max(a.m_data[1], b.m_data[1]),
-            std::max(a.m_data[2], b.m_data[2]),
+            std::max(a.m_data[0], b.m_data[0]), std::max(a.m_data[1], b.m_data[1]), std::max(a.m_data[2], b.m_data[2]),
             std::max(a.m_data[3], b.m_data[3]));
     }
     //////////////////////////////////////////////////////////////////////
@@ -1057,17 +943,14 @@ template <typename DataType> class tvec4 {
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y,z,w values between low and high.
-    tvec4 clamp(const tvec4& low, const tvec4& high) const noexcept {
-        return clamp(*this, low, high);
-    }
+    tvec4 clamp(const tvec4& low, const tvec4& high) const noexcept { return clamp(*this, low, high); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Clamp the input vector between the 2 supplied ranges.
     /// \param  value   the value vector to clamp.
     /// \param  low     the lowest values vector.
     /// \param  high    the highest values vector.
     /// \return clamped x,y,z,w values between low and high.
-    static tvec4
-    clamp(const tvec4& value, const tvec4& low, const tvec4& high) noexcept {
+    static tvec4 clamp(const tvec4& value, const tvec4& low, const tvec4& high) noexcept {
         return tvec4(
             std::clamp(value.m_data[0], low.m_data[0], high.m_data[0]),
             std::clamp(value.m_data[1], low.m_data[1], high.m_data[1]),
@@ -1076,8 +959,10 @@ template <typename DataType> class tvec4 {
     }
 
     private:
-    DataType m_data[4] = { DataType(0), DataType(0), DataType(0),
-                           DataType(0) }; ///< The underlying data container.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    DataType m_data[4] = { static_cast<DataType>(0), static_cast<DataType>(0), static_cast<DataType>(0),
+                           static_cast<DataType>(0) }; ///< The underlying data container.
 };
 }; // namespace mini
 

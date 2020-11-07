@@ -1,28 +1,27 @@
 #include "Utility/indirectDraw.hpp"
+#include <array>
 
 //////////////////////////////////////////////////////////////////////
-/// Use our shared namespace mini
-using namespace mini;
+/// Useful Aliases
+using mini::IndirectDraw;
 
 //////////////////////////////////////////////////////////////////////
 /// Custom Constructor
 //////////////////////////////////////////////////////////////////////
 
 IndirectDraw::IndirectDraw(
-    const GLuint& count, const GLuint& primitiveCount, const GLuint& first,
-    const GLbitfield& storageFlags) noexcept
+    const GLuint& count, const GLuint& primitiveCount, const GLuint& first, const GLbitfield& storageFlags)
     : m_count(count), m_primitiveCount(primitiveCount), m_first(first) {
     // Populate Buffer
-    const GLuint data[4] = { count, primitiveCount, first, 0 };
-    m_buffer = glStaticBuffer(sizeof(GLuint) * 4, data, storageFlags);
+    const std::array<GLuint, 4> data = { count, primitiveCount, first, 0 };
+    m_buffer = glStaticBuffer(sizeof(GLuint) * 4, data.data(), storageFlags);
 }
 
 //////////////////////////////////////////////////////////////////////
 /// drawCall
 //////////////////////////////////////////////////////////////////////
 
-void IndirectDraw::drawCall(const int& drawMode, const void* indirect) const
-    noexcept {
+void IndirectDraw::drawCall(const int& drawMode, const void* indirect) const noexcept {
     bind();
     glDrawArraysIndirect(drawMode, indirect);
 }
@@ -33,7 +32,7 @@ void IndirectDraw::drawCall(const int& drawMode, const void* indirect) const
 
 void IndirectDraw::setCount(const GLuint& count) noexcept {
     m_count = count;
-    m_buffer.write(0, (GLsizeiptr)(sizeof(GLuint)), &count);
+    m_buffer.write(0, static_cast<GLsizeiptr>(sizeof(GLuint)), &count);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -42,9 +41,7 @@ void IndirectDraw::setCount(const GLuint& count) noexcept {
 
 void IndirectDraw::setPrimitiveCount(const GLuint& primitiveCount) noexcept {
     m_primitiveCount = primitiveCount;
-    m_buffer.write(
-        (GLsizeiptr)(sizeof(GLuint)), (GLsizeiptr)(sizeof(GLuint)),
-        &primitiveCount);
+    m_buffer.write(static_cast<GLsizeiptr>(sizeof(GLuint)), static_cast<GLsizeiptr>(sizeof(GLuint)), &primitiveCount);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -53,7 +50,5 @@ void IndirectDraw::setPrimitiveCount(const GLuint& primitiveCount) noexcept {
 
 void IndirectDraw::setFirst(const GLuint& first) noexcept {
     m_first = first;
-    m_buffer.write(
-        (GLsizeiptr)(sizeof(GLuint)) * 2ULL, (GLsizeiptr)(sizeof(GLuint)),
-        &first);
+    m_buffer.write(static_cast<GLsizeiptr>(sizeof(GLuint)) * 2ULL, static_cast<GLsizeiptr>(sizeof(GLuint)), &first);
 }

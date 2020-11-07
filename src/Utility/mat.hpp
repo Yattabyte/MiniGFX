@@ -18,9 +18,7 @@ class mat4 {
     constexpr mat4() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct an explicit matrix of vectors, row major.
-    constexpr mat4(
-        const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3) noexcept
-        : m_data{ v0, v1, v2, v3 } {}
+    constexpr mat4(const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3) : m_data{ v0, v1, v2, v3 } {}
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default copy constructor.
     constexpr mat4(const mat4& o) = default;
@@ -37,9 +35,7 @@ class mat4 {
     /// \brief  Retrieve the row at the index specified.
     /// \param  index   the row number to retrieve.
     /// \return reference to the row specified.
-    constexpr vec4& operator[](const size_t& index) noexcept {
-        return m_data[index];
-    }
+    constexpr vec4& operator[](const size_t& index) noexcept { return m_data[index]; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Compare against another matrix.
     /// \param  o   the other matrix.
@@ -54,9 +50,7 @@ class mat4 {
     /// \brief  Compare against another matrix.
     /// \param  o   the other vector.
     /// \return true if this doesn't equal the other matrix, false otherwise.
-    constexpr bool operator!=(const mat4& o) const noexcept {
-        return !(*this == o);
-    }
+    constexpr bool operator!=(const mat4& o) const noexcept { return !(*this == o); }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Get a pointer to the underlying data container.
@@ -72,8 +66,7 @@ class mat4 {
     /// \param  center  the center of the target to look at.
     /// \param  up      the up direction.
     /// \return a view matrix looking at center from eye.
-    static mat4
-    lookAt(const vec3& eye, const vec3& center, const vec3& up) noexcept {
+    static mat4 lookAt(const vec3& eye, const vec3& center, const vec3& up) noexcept {
         const auto f = (center - eye).normalize();
         auto u = up.normalize();
         const auto s = (f.cross(u)).normalize();
@@ -101,9 +94,7 @@ class mat4 {
     /// \param  zNear   the near plane.
     /// \param  zFar    the far plane.
     /// \return a perspective projection 4x4 matrix.
-    static mat4 perspective(
-        const float& fovY, const float& aspect, const float& zNear,
-        const float& zFar) noexcept {
+    static mat4 perspective(const float& fovY, const float& aspect, const float& zNear, const float& zFar) noexcept {
         const float rad = fovY;
         const float tanHalfFovy = tanf(rad / static_cast<float>(2));
 
@@ -125,8 +116,8 @@ class mat4 {
     /// \param  zFar        the far plane.
     /// \return an orthographic projection 4x4 matrix.
     static mat4 orthographic(
-        const float& left, const float& right, const float& top,
-        const float& bottom, const float& zNear, const float& zFar) noexcept {
+        const float& left, const float& right, const float& top, const float& bottom, const float& zNear,
+        const float& zFar) noexcept {
         mat4 Result;
         Result[0][0] = 2.0F / (right - left);
         Result[1][1] = 2.0F / (top - bottom);
@@ -138,9 +129,9 @@ class mat4 {
     }
 
     private:
-    vec4 m_data[4]{
-        { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 }
-    }; ///<  Container for the matrix.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    vec4 m_data[4]{ { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } }; ///<  Container for the matrix.
 };
 }; // namespace mini
 

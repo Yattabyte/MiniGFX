@@ -10,8 +10,7 @@ namespace mini {
 /// \class  glMultiVector
 /// \brief  An STL-like vector for OpenGL multi-buffered data.
 /// \tparam T   the type of element to construct an array of.
-template <typename T, int BufferCount = 3>
-class glMultiVector final : public glMultiBuffer<BufferCount> {
+template <typename T, int BufferCount = 3> class glMultiVector final : public glMultiBuffer<BufferCount> {
     public:
     //////////////////////////////////////////////////////////////////////
     /// \brief  Destroy this GL Vector.
@@ -29,8 +28,7 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a GL Vector.
     /// \param  capacity    the starting capacity(1 or more).
-    glMultiVector(const size_t& capacity = 1) noexcept
-        : m_capacity(std::max(1ull, capacity)) {
+    glMultiVector(const size_t& capacity = 1) : m_capacity(std::max(1ull, capacity)) {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
             m_bufferID[x] = 0;
@@ -43,27 +41,20 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
         const auto bufferSize = sizeof(T) * m_capacity;
         glCreateBuffers(BufferCount, m_bufferID);
         for (int x = 0; x < BufferCount; ++x) {
-            glNamedBufferStorage(
-                m_bufferID[x], bufferSize, nullptr,
-                GL_DYNAMIC_STORAGE_BIT | BufferFlags);
-            m_bufferPtr[x] = static_cast<T*>(glMapNamedBufferRange(
-                m_bufferID[x], 0, bufferSize, BufferFlags));
+            glNamedBufferStorage(m_bufferID[x], bufferSize, nullptr, GL_DYNAMIC_STORAGE_BIT | BufferFlags);
+            m_bufferPtr[x] = static_cast<T*>(glMapNamedBufferRange(m_bufferID[x], 0, bufferSize, BufferFlags));
         }
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Move constructor.
     /// \param  other   another buffer to move the data from, to here.
-    glMultiVector(glMultiVector&& other) noexcept {
-        (*this) = std::move(other);
-    }
+    glMultiVector(glMultiVector&& other) noexcept { (*this) = std::move(other); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Copy constructor.
     /// \param  other   another buffer to move the data from, to here.
-    glMultiVector(const glMultiVector& other) noexcept
-        : glMultiVector(other.m_capacity) {
+    glMultiVector(const glMultiVector& other) noexcept : glMultiVector(other.m_capacity) {
         for (int x = 0; x < BufferCount; ++x)
-            glCopyNamedBufferSubData(
-                other.m_bufferID[x], m_bufferID[x], 0, 0, m_capacity);
+            glCopyNamedBufferSubData(other.m_bufferID[x], m_bufferID[x], 0, 0, m_capacity);
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -93,17 +84,14 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
     glMultiVector& operator=(const glMultiVector& other) noexcept {
         m_capacity = other.m_capacity;
         for (int x = 0; x < BufferCount; ++x)
-            glCopyNamedBufferSubData(
-                other.m_bufferID[x], m_bufferID[x], 0, 0, m_capacity);
+            glCopyNamedBufferSubData(other.m_bufferID[x], m_bufferID[x], 0, 0, m_capacity);
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve a reference to the element at the index specified.
     /// \param  index   an index to the element desired.
     /// \return reference to the element desired.
-    T& operator[](const size_t& index) noexcept {
-        return m_bufferPtr[m_index][index];
-    }
+    T& operator[](const size_t& index) noexcept { return m_bufferPtr[m_index][index]; }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Resizes the internal capacity of this vector.
@@ -128,14 +116,11 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
                 // Create new buffer
                 GLuint newBuffer = 0;
                 glCreateBuffers(1, &newBuffer);
-                glNamedBufferStorage(
-                    newBuffer, newByteSize, nullptr,
-                    GL_DYNAMIC_STORAGE_BIT | BufferFlags);
+                glNamedBufferStorage(newBuffer, newByteSize, nullptr, GL_DYNAMIC_STORAGE_BIT | BufferFlags);
 
                 // Copy old buffer
                 if (oldByteSize)
-                    glCopyNamedBufferSubData(
-                        m_bufferID[x], newBuffer, 0, 0, oldByteSize);
+                    glCopyNamedBufferSubData(m_bufferID[x], newBuffer, 0, 0, oldByteSize);
 
                 // Delete old buffer
                 glUnmapNamedBuffer(m_bufferID[x]);
@@ -143,8 +128,7 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
 
                 // Migrate new buffer
                 m_bufferID[x] = newBuffer;
-                m_bufferPtr[x] = (T*)(glMapNamedBufferRange(
-                    m_bufferID[x], 0, newByteSize, BufferFlags));
+                m_bufferPtr[x] = (T*)(glMapNamedBufferRange(m_bufferID[x], 0, newByteSize, BufferFlags));
             }
         }
     }
@@ -154,11 +138,12 @@ class glMultiVector final : public glMultiBuffer<BufferCount> {
     size_t getLength() const noexcept { return m_capacity; }
 
     private:
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
     size_t m_capacity = 0; ///< Byte-Capacity of this buffer.
     constexpr const static GLbitfield BufferFlags =
-        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
-        GL_MAP_COHERENT_BIT;       ///< OpenGL map storage flags.
-    T* m_bufferPtr[BufferCount]{}; /// < Pointer to buffer data.
+        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
+    T* m_bufferPtr[BufferCount]{};                                      /// < Pointer to buffer data.
 };
 }; // namespace mini
 

@@ -15,7 +15,7 @@ template <int BufferCount = 3> class glMultiBuffer {
     virtual ~glMultiBuffer() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default constructor.
-    glMultiBuffer() noexcept = default;
+    glMultiBuffer() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Move constructor.
     glMultiBuffer(glMultiBuffer&&) noexcept = default;
@@ -36,10 +36,9 @@ template <int BufferCount = 3> class glMultiBuffer {
     static void WaitForFence(GLsync& fence) noexcept {
         while (fence) {
             GLbitfield waitFlags = 0;
-            if (const auto waitReturn = glClientWaitSync(fence, waitFlags, 1);
-                waitReturn == GL_SIGNALED ||
-                waitReturn == GL_ALREADY_SIGNALED ||
-                waitReturn == GL_CONDITION_SATISFIED) {
+            if (const auto waitReturn = glClientWaitSync(fence, waitFlags, 1); waitReturn == GL_SIGNALED ||
+                                                                               waitReturn == GL_ALREADY_SIGNALED ||
+                                                                               waitReturn == GL_CONDITION_SATISFIED) {
                 glDeleteSync(fence);
                 fence = nullptr;
                 return;
@@ -58,33 +57,30 @@ template <int BufferCount = 3> class glMultiBuffer {
     /// \brief  Signal that this multi-buffer is finished being written to.
     void endWriting() const noexcept {
         if (!m_writeFence[m_index])
-            m_writeFence[m_index] =
-                glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
+            m_writeFence[m_index] = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Signal that this multi-buffer is finished being read from.
     void endReading() noexcept {
         if (!m_readFence[m_index])
-            m_readFence[m_index] =
-                glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
+            m_readFence[m_index] = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
         m_index = (m_index + 1) % BufferCount;
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Bind this buffer to the target specified.
     /// \param  target  the target type of this buffer.
-    void bindBuffer(const GLenum& target) const noexcept {
-        glBindBuffer(target, m_bufferID[m_index]);
-    }
+    void bindBuffer(const GLenum& target) const noexcept { glBindBuffer(target, m_bufferID[m_index]); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Bind this buffer to a particular shader binding point.
     /// \param  target  the target type of this buffer.
     /// \param  index   the binding point index to use.
-    void
-    bindBufferBase(const GLenum& target, const GLuint& index) const noexcept {
+    void bindBufferBase(const GLenum& target, const GLuint& index) const noexcept {
         glBindBufferBase(target, index, m_bufferID[m_index]);
     }
 
     protected:
+    //////////////////////////////////////////////////////////////////////
+    /// Protected Attributes
     mutable GLsync m_writeFence[BufferCount]{}; ///< Fence for writing data.
     mutable GLsync m_readFence[BufferCount]{};  ///< Fence for reading data.
     GLuint m_bufferID[BufferCount]{};           ///< OpenGL object IDs.

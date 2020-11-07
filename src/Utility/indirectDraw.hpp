@@ -11,8 +11,11 @@ namespace mini {
 class IndirectDraw {
     public:
     //////////////////////////////////////////////////////////////////////
+    /// \brief  Default Destructor
+    ~IndirectDraw() = default;
+    //////////////////////////////////////////////////////////////////////
     /// \brief  Default Constructor.
-    IndirectDraw() noexcept = default;
+    IndirectDraw() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct an Indirect Draw Object.
     /// \param  count           the number of vertices to draw.
@@ -21,7 +24,13 @@ class IndirectDraw {
     /// \param  storageFlags    storage type flag.
     IndirectDraw(
         const GLuint& count, const GLuint& primitiveCount, const GLuint& first,
-        const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT) noexcept;
+        const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT);
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Move constructor.
+    IndirectDraw(IndirectDraw&&) noexcept = default;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Move assignment.
+    IndirectDraw& operator=(IndirectDraw&&) noexcept = default;
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Bind this draw call to the OpenGL indirect buffer target.
@@ -30,8 +39,7 @@ class IndirectDraw {
     /// \brief  Bind this buffer and also perform an indirect draw call.
     /// \param  drawMode    either GL_TRIANGLES, GL_POINTS, GL_LINES, etc.
     /// \param  indirect    an indirect pointer.
-    void drawCall(
-        const int& drawMode, const void* indirect = nullptr) const noexcept;
+    void drawCall(const int& drawMode, const void* indirect = nullptr) const noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Prepare this buffer for writing, waiting on its sync fence.
     void beginWriting() const noexcept { m_buffer.beginWriting(); }
@@ -55,9 +63,17 @@ class IndirectDraw {
     void setFirst(const GLuint& first) noexcept;
 
     private:
-    glStaticBuffer m_buffer; ///< The container for draw call data.
-    GLuint m_count = 0, m_primitiveCount = 0,
-           m_first = 0; ///< Open GL Attributes
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted copy constructor.
+    IndirectDraw(const IndirectDraw&) noexcept = delete;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted assignment operator.
+    IndirectDraw& operator=(const IndirectDraw&) noexcept = delete;
+
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    glStaticBuffer m_buffer;                               ///< The container for draw call data.
+    GLuint m_count = 0, m_primitiveCount = 0, m_first = 0; ///< Open GL Attributes
 };
 }; // namespace mini
 

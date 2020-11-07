@@ -10,8 +10,7 @@ namespace mini {
 //////////////////////////////////////////////////////////////////////
 /// \class  glStaticMultiBuffer
 /// \brief  Encapsulates an OpenGL multi-buffer that is fixed in size.
-template <int BufferCount = 3>
-class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
+template <int BufferCount = 3> class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
     public:
     //////////////////////////////////////////////////////////////////////
     /// \brief  Wait on this buffers fences, then destroy it.
@@ -27,7 +26,7 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default Constructor.
-    glStaticMultiBuffer() noexcept {
+    glStaticMultiBuffer() {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
             m_bufferID[x] = 0;
@@ -42,8 +41,7 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
     /// \param  data            optional data buffer, must be at least as large.
     /// \param  storageFlags    optional bit - field flags.
     explicit glStaticMultiBuffer(
-        const GLsizeiptr& size, const void* data = nullptr,
-        const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT) noexcept
+        const GLsizeiptr& size, const void* data = nullptr, const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT)
         : m_size(size) {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
@@ -55,19 +53,15 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
 
         glCreateBuffers(BufferCount, m_bufferID);
         for (int x = 0; x < BufferCount; ++x) {
-            glNamedBufferStorage(
-                m_bufferID[x], m_size, data, storageFlags | m_mapFlags);
-            m_bufferPtr[x] =
-                glMapNamedBufferRange(m_bufferID[x], 0, m_size, m_mapFlags);
+            glNamedBufferStorage(m_bufferID[x], m_size, data, storageFlags | m_mapFlags);
+            m_bufferPtr[x] = glMapNamedBufferRange(m_bufferID[x], 0, m_size, m_mapFlags);
             if (data)
-                std::memcpy(
-                    static_cast<unsigned char*>(m_bufferPtr[x]), data, size);
+                std::memcpy(static_cast<unsigned char*>(m_bufferPtr[x]), data, size);
         }
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a new Static Multi-Buffer, from another buffer.
-    glStaticMultiBuffer(const glStaticMultiBuffer& other) noexcept
-        : glStaticMultiBuffer(other.m_size, 0) {
+    glStaticMultiBuffer(const glStaticMultiBuffer& other) noexcept : glStaticMultiBuffer(other.m_size, 0) {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
             m_bufferID[x] = 0;
@@ -77,14 +71,11 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
         }
 
         for (int x = 0; x < BufferCount; ++x)
-            glCopyNamedBufferSubData(
-                other.m_bufferID[x], m_bufferID[x], 0, 0, m_size);
+            glCopyNamedBufferSubData(other.m_bufferID[x], m_bufferID[x], 0, 0, m_size);
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Move Constructor.
-    glStaticMultiBuffer(glStaticMultiBuffer&& other) noexcept {
-        (*this) = std::move(other);
-    }
+    glStaticMultiBuffer(glStaticMultiBuffer&& other) noexcept { (*this) = std::move(other); }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Copy GL object from 1 instance in to another.
@@ -93,8 +84,7 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
             m_size = other.m_size;
             m_mapFlags = other.m_mapFlags;
             for (int x = 0; x < BufferCount; ++x)
-                glCopyNamedBufferSubData(
-                    other.m_bufferID[x], m_bufferID[x], 0, 0, other.m_size);
+                glCopyNamedBufferSubData(other.m_bufferID[x], m_bufferID[x], 0, 0, other.m_size);
         }
         return *this;
     }
@@ -127,19 +117,17 @@ class glStaticMultiBuffer final : public glMultiBuffer<BufferCount> {
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(
-        const GLsizeiptr& offset, const GLsizeiptr& size,
-        const void* data) noexcept {
-        std::memcpy(
-            static_cast<unsigned char*>(m_bufferPtr[m_index]) + offset, data,
-            size);
+    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+        std::memcpy(static_cast<unsigned char*>(m_bufferPtr[m_index]) + offset, data, size);
     }
 
     private:
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
     size_t m_size = 0ull; ///< Byte-size of this buffer.
-    GLbitfield m_mapFlags = GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
-                            GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
-    void* m_bufferPtr[BufferCount]{};            ///< Pointer to buffer data.
+    GLbitfield m_mapFlags =
+        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
+    void* m_bufferPtr[BufferCount]{};                                   ///< Pointer to buffer data.
 };
 }; // namespace mini
 

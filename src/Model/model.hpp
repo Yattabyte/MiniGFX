@@ -2,7 +2,6 @@
 #ifndef MINIGFX_MODEL_HPP
 #define MINIGFX_MODEL_HPP
 
-#include "Utility/mat.hpp"
 #include "Utility/vec.hpp"
 #include <glad/glad.h>
 #include <vector>
@@ -19,17 +18,11 @@ class Model {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a model given a vertex set.
     /// \param  vertices    the vertices to use(as triangles).
-    explicit Model(const std::vector<vec3>& vertices) noexcept;
-    //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy constructor.
-    Model(const Model& o) = default;
+    explicit Model(const std::vector<vec3>& vertices);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move constructor.
     Model(Model&& o) noexcept = default;
 
-    //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy-assignment operator.
-    Model& operator=(const Model& p) = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move-assignment operator.
     Model& operator=(Model&& p) noexcept = default;
@@ -47,6 +40,15 @@ class Model {
     size_t vertexCount() const noexcept { return m_vertexCount; }
 
     private:
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted copy constructor.
+    Model(const Model& o) = delete;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Default copy-assignment operator.
+    Model& operator=(const Model& p) = delete;
+
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
     size_t m_vertexCount = 0ULL; ///< The number of vertices in this model.
     GLuint m_vaoID = 0U;         ///< The OpenGL vertex array object ID.
     GLuint m_vboID = 0U;         ///< The OpenGL vertex buffer object ID.

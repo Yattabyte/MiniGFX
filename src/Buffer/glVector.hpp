@@ -26,26 +26,21 @@ template <typename T> class glVector final : public glBuffer {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a GL Vector.
     /// \param  capacity    the starting capacity (1 or more).
-    glVector(const size_t& capacity = 1) noexcept
-        : m_capacity(std::max(1ull, capacity)) {
+    glVector(const size_t& capacity = 1) : m_capacity(std::max(1ull, capacity)) {
         const auto bufferSize = sizeof(T) * m_capacity;
         glCreateBuffers(1, &m_bufferID);
-        glNamedBufferStorage(
-            m_bufferID, bufferSize, nullptr,
-            GL_DYNAMIC_STORAGE_BIT | BufferFlags);
-        m_bufferPtr = static_cast<T*>(
-            glMapNamedBufferRange(m_bufferID, 0, bufferSize, BufferFlags));
+        glNamedBufferStorage(m_bufferID, bufferSize, nullptr, GL_DYNAMIC_STORAGE_BIT | BufferFlags);
+        m_bufferPtr = static_cast<T*>(glMapNamedBufferRange(m_bufferID, 0, bufferSize, BufferFlags));
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Move constructor.
-    /// \param  other   another buffer to move the data from,
-    to here.glVector(glVector&& other) noexcept { (*this) = std::move(other); }
+    /// \param  other   another buffer to move the data from, to here.
+    glVector(glVector&& other) noexcept { (*this) = std::move(other); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Copy constructor.
     /// \param  other   another buffer to move the data from, to here.
     glVector(const glVector& other) noexcept : glVector(other.m_capacity) {
-        glCopyNamedBufferSubData(
-            other.m_bufferID, m_bufferID, 0, 0, m_capacity);
+        glCopyNamedBufferSubData(other.m_bufferID, m_bufferID, 0, 0, m_capacity);
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -71,8 +66,7 @@ template <typename T> class glVector final : public glBuffer {
     /// \param  other   another buffer to copy the data from, to here.
     glVector& operator=(const glVector& other) noexcept {
         m_capacity = other.m_capacity;
-        glCopyNamedBufferSubData(
-            other.m_bufferID, m_bufferID, 0, 0, m_capacity);
+        glCopyNamedBufferSubData(other.m_bufferID, m_bufferID, 0, 0, m_capacity);
         return *this;
     }
     //////////////////////////////////////////////////////////////////////
@@ -103,14 +97,11 @@ template <typename T> class glVector final : public glBuffer {
             // Create new buffer
             GLuint newBuffer = 0;
             glCreateBuffers(1, &newBuffer);
-            glNamedBufferStorage(
-                newBuffer, newByteSize, nullptr,
-                GL_DYNAMIC_STORAGE_BIT | BufferFlags);
+            glNamedBufferStorage(newBuffer, newByteSize, nullptr, GL_DYNAMIC_STORAGE_BIT | BufferFlags);
 
             // Copy old buffer
             if (oldByteSize)
-                glCopyNamedBufferSubData(
-                    m_bufferID, newBuffer, 0, 0, oldByteSize);
+                glCopyNamedBufferSubData(m_bufferID, newBuffer, 0, 0, oldByteSize);
 
             // Delete old buffer
             glUnmapNamedBuffer(m_bufferID);
@@ -118,8 +109,7 @@ template <typename T> class glVector final : public glBuffer {
 
             // Migrate new buffer
             m_bufferID = newBuffer;
-            m_bufferPtr = (T*)(glMapNamedBufferRange(
-                m_bufferID, 0, newByteSize, BufferFlags));
+            m_bufferPtr = (T*)(glMapNamedBufferRange(m_bufferID, 0, newByteSize, BufferFlags));
         }
     }
     //////////////////////////////////////////////////////////////////////
@@ -128,11 +118,12 @@ template <typename T> class glVector final : public glBuffer {
     size_t getLength() const noexcept { return m_capacity; }
 
     private:
-    size_t m_capacity = 0; ///< Byte-capacity of this buffer.
-    constexpr const static GLbitfield BufferFlags =
-        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT |
-        GL_MAP_COHERENT_BIT;  ///< OpenGL map storage flags.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    size_t m_capacity = 0;    ///< Byte-capacity of this buffer.
     T* m_bufferPtr = nullptr; ///< Pointer to the underlying data.
+    constexpr GLbitfield BufferFlags =
+        GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT; ///< OpenGL map storage flags.
 };
 }; // namespace mini
 

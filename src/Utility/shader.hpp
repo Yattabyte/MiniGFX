@@ -23,19 +23,11 @@ class Shader {
     /// \brief  Construct a shader program.
     /// \param  vertexSource    the source code for the vertex shader.
     /// \param  fragmentSource  the source code for the fragment shader.
-    Shader(
-        const std::string& vertexSource,
-        const std::string& fragmentSource) noexcept;
-    //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy constructor.
-    Shader(const Shader& o) = delete;
+    Shader(const std::string& vertexSource, const std::string& fragmentSource);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move constructor.
     Shader(Shader&& o) noexcept = default;
 
-    //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy-assignment operator.
-    Shader& operator=(const Shader& p) = delete;
     /// \brief  Default move-assignment operator.
     Shader& operator=(Shader&& p) noexcept = default;
 
@@ -54,25 +46,30 @@ class Shader {
     /// \brief  Copy data to a specific uniform location.
     /// \param  location    the location in - shader to copy to.
     /// \param  vector      the data to copy - in.
-    void
-    uniformLocation(const int& location, const vec3& vector) const noexcept;
+    void uniformLocation(const int& location, const vec3& vector) const noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Copy data to a specific uniform location.
     /// \param  location    the location in - shader to copy to.
     /// \param  vector      the data to copy - in.
-    void
-    uniformLocation(const int& location, const vec4& vector) const noexcept;
+    void uniformLocation(const int& location, const vec4& vector) const noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Copy data to a specific uniform location.
     /// \param  location    the location in - shader to copy to.
     /// \param  matrix      the data to copy - in.
-    void
-    uniformLocation(const int& location, const mat4& matrix) const noexcept;
+    void uniformLocation(const int& location, const mat4& matrix) const noexcept;
 
     private:
-    std::string m_log; ///< Error log.
-    GLuint m_vertexID = 0U, m_fragmentID = 0U,
-           m_programID = 0U; ///< OpenGL object ID's.
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted copy constructor.
+    Shader(const Shader& o) = delete;
+    //////////////////////////////////////////////////////////////////////
+    /// \brief  Deleted copy-assignment operator.
+    Shader& operator=(const Shader& p) = delete;
+
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    std::string m_log;                                           ///< Error log.
+    GLuint m_vertexID = 0U, m_fragmentID = 0U, m_programID = 0U; ///< OpenGL object ID's.
 };
 }; // namespace mini
 

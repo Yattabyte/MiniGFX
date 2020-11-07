@@ -43,9 +43,7 @@ class Image {
     /// \param  fillPolicy      directive to fill solid, checkered, etc.
     /// \param  primaryColor    the primary color to use.
     /// \param  secondaryColor  the secondary color to use.
-    void fill(
-        const Fill_Policy& fillPolicy, const vec4& primaryColor,
-        const vec4& secondaryColor);
+    void fill(const Fill_Policy& fillPolicy, const vec4& primaryColor, const vec4& secondaryColor);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Generate an image with pixels of the supplied policy.
     /// \param  size            the size to make the image.
@@ -53,9 +51,8 @@ class Image {
     /// \param  primaryColor    the primary color to use.
     /// \param  secondaryColor  the secondary color to use.
     /// \return an image using  the supplied directives.
-    static Image generate(
-        const vec2& size, const Fill_Policy& fillPolicy,
-        const vec4& primaryColor, const vec4& secondaryColor);
+    static Image
+    generate(const vec2& size, const Fill_Policy& fillPolicy, const vec4& primaryColor, const vec4& secondaryColor);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve a pointer to the underlying pixel data.
     /// \return pointer to underlying pixel data.
@@ -67,14 +64,15 @@ class Image {
 
     private:
     //////////////////////////////////////////////////////////////////////
-    /// \brief  Default copy constructor.
+    /// \brief  Deleted copy constructor.
     Image(const Image& o) = delete;
-    /// \brief  Default copy-assignment operator.
+    /// \brief  Deleted copy-assignment operator.
     Image& operator=(const Image& p) = delete;
 
-    std::unique_ptr<float[]>
-        m_pixelData; ///<  Pointer to the underlying pixel data.
-    vec2 m_size;     ///< Dimensions of the image.
+    //////////////////////////////////////////////////////////////////////
+    /// Private Attributes
+    std::unique_ptr<float[]> m_pixelData; ///<  Pointer to the underlying pixel data.
+    vec2 m_size;                          ///< Dimensions of the image.
 };
 }; // namespace mini
 

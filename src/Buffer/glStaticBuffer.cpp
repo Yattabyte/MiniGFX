@@ -2,25 +2,24 @@
 #include <utility>
 
 //////////////////////////////////////////////////////////////////////
-/// Use our shared namespace mini
-using namespace mini;
+/// Useful Aliases
+using mini::glStaticBuffer;
 
 //////////////////////////////////////////////////////////////////////
 /// Custom Destructor
 //////////////////////////////////////////////////////////////////////
 
 glStaticBuffer::~glStaticBuffer() {
-    if (m_bufferID != 0)
+    if (m_bufferID != 0) {
         glDeleteBuffers(1, &m_bufferID);
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
 /// Custom Constructor
 //////////////////////////////////////////////////////////////////////
 
-glStaticBuffer::glStaticBuffer(
-    const GLsizeiptr& size, const void* data,
-    const GLbitfield& storageFlags) noexcept
+glStaticBuffer::glStaticBuffer(const GLsizeiptr& size, const void* data, const GLbitfield& storageFlags)
     : m_size(size), m_storageFlags(storageFlags) {
     glCreateBuffers(1, &m_bufferID);
     glNamedBufferStorage(m_bufferID, size, data, storageFlags);
@@ -35,21 +34,17 @@ glStaticBuffer::glStaticBuffer(const glStaticBuffer& other) noexcept
 
 //////////////////////////////////////////////////////////////////////
 
-glStaticBuffer::glStaticBuffer(glStaticBuffer&& other) noexcept {
-    (*this) = std::move(other);
-}
+glStaticBuffer::glStaticBuffer(glStaticBuffer&& other) noexcept { (*this) = std::move(other); }
 
 //////////////////////////////////////////////////////////////////////
 /// operator=
 //////////////////////////////////////////////////////////////////////
 
-glStaticBuffer&
-glStaticBuffer::operator=(const glStaticBuffer& other) noexcept {
+glStaticBuffer& glStaticBuffer::operator=(const glStaticBuffer& other) noexcept {
     if (this != &other) {
         m_size = other.m_size;
         m_storageFlags = other.m_storageFlags;
-        glCopyNamedBufferSubData(
-            other.m_bufferID, m_bufferID, 0, 0, other.m_size);
+        glCopyNamedBufferSubData(other.m_bufferID, m_bufferID, 0, 0, other.m_size);
     }
     return *this;
 }
@@ -72,8 +67,6 @@ glStaticBuffer& glStaticBuffer::operator=(glStaticBuffer&& other) noexcept {
 /// write
 //////////////////////////////////////////////////////////////////////
 
-void glStaticBuffer::write(
-    const GLsizeiptr& offset, const GLsizeiptr& size,
-    const void* data) noexcept {
+void glStaticBuffer::write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
     glNamedBufferSubData(m_bufferID, offset, size, data);
 }

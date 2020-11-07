@@ -15,7 +15,7 @@ class glBuffer {
     virtual ~glBuffer() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default constructor.
-    glBuffer() noexcept = default;
+    glBuffer() = default;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Move constructor.
     glBuffer(glBuffer&&) noexcept = default;
@@ -36,10 +36,9 @@ class glBuffer {
     static void WaitForFence(GLsync& fence) noexcept {
         while (fence) {
             GLbitfield waitFlags = 0;
-            if (const auto waitReturn = glClientWaitSync(fence, waitFlags, 1);
-                waitReturn == GL_SIGNALED ||
-                waitReturn == GL_ALREADY_SIGNALED ||
-                waitReturn == GL_CONDITION_SATISFIED) {
+            if (const auto waitReturn = glClientWaitSync(fence, waitFlags, 1); waitReturn == GL_SIGNALED ||
+                                                                               waitReturn == GL_ALREADY_SIGNALED ||
+                                                                               waitReturn == GL_CONDITION_SATISFIED) {
                 glDeleteSync(fence);
                 fence = nullptr;
                 return;
@@ -69,22 +68,21 @@ class glBuffer {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Bind this buffer to the target specified.
     /// \param  target      the target type of this buffer.
-    void bindBuffer(const GLenum& target) const noexcept {
-        glBindBuffer(target, m_bufferID);
-    }
+    void bindBuffer(const GLenum& target) const noexcept { glBindBuffer(target, m_bufferID); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Bind this buffer to a particular shader binding point.
     /// \param  target      the target type of this buffer.
     /// \param  index       the binding point index to use.
-    void
-    bindBufferBase(const GLenum& target, const GLuint& index) const noexcept {
+    void bindBufferBase(const GLenum& target, const GLuint& index) const noexcept {
         glBindBufferBase(target, index, m_bufferID);
     }
 
     protected:
+    //////////////////////////////////////////////////////////////////////
+    /// Protected Attributes
     mutable GLsync m_writeFence = nullptr; ///< Fence for safely writing data.
     mutable GLsync m_readFence = nullptr;  ///< Fence for safely reading data.
-    GLuint m_bufferID = 0; ///< OpenGL object ID for this buffer.
+    GLuint m_bufferID = 0;                 ///< OpenGL object ID for this buffer.
 };
 }; // namespace mini
 
