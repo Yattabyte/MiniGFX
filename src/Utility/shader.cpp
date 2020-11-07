@@ -69,18 +69,18 @@ bool Shader::valid() const noexcept {
 /// uniformLocation
 //////////////////////////////////////////////////////////////////////
 
-void Shader::uniformLocation(const int& location, const vec3& vector) const noexcept {
+void Shader::uniformLocation(const int location, const vec3& vector) const noexcept {
     glProgramUniform3fv(m_programID, location, 1U, vector.data());
 }
 
 //////////////////////////////////////////////////////////////////////
 
-void Shader::uniformLocation(const int& location, const vec4& vector) const noexcept {
+void Shader::uniformLocation(const int location, const vec4& vector) const noexcept {
     glProgramUniform4fv(m_programID, location, 1U, vector.data());
 }
 
 //////////////////////////////////////////////////////////////////////
 
-void Shader::uniformLocation(const int& location, const mat4& matrix) const noexcept {
+void Shader::uniformLocation(const int location, const mat4& matrix) const noexcept {
     glProgramUniformMatrix4fv(m_programID, location, 1, GL_FALSE, matrix.data());
 }

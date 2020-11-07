@@ -23,15 +23,15 @@ class Texture2D {
     /// \param  anisotropy      whether to use anisotropic filtering.
     /// \param  mipmap          whether to apply mipmapping.
     Texture2D(
-        const float* pixelData, const GLsizei& width, const GLsizei& height, const bool& linear, const bool& anisotropy,
-        const bool& mipmap);
+        const float* pixelData, const GLsizei width, const GLsizei height, const bool linear, const bool anisotropy,
+        const bool mipmap);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a Texture using an Image object.
     /// \param  image           the image to use.
     /// \param  linear          whether to apply linear filtering.
     /// \param  anisotropy      whether to use anisotropic filtering.
     /// \param  mipmap          whether to apply mipmapping.
-    Texture2D(const Image& image, const bool& linear, const bool& anisotropy, const bool& mipmap);
+    Texture2D(const Image& image, const bool linear, const bool anisotropy, const bool mipmap);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move constructor.
     Texture2D(Texture2D&&) noexcept = default;
@@ -43,7 +43,7 @@ class Texture2D {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Makes this texture active at a specific texture unit.
     /// \param  textureUnit     the texture unit to make this texture active at.
-    void bind(const unsigned int& textureUnit) const noexcept { glBindTextureUnit(textureUnit, m_glTexID); }
+    void bind(const unsigned int textureUnit) const noexcept { glBindTextureUnit(textureUnit, m_glTexID); }
 
     private:
     //////////////////////////////////////////////////////////////////////

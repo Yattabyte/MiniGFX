@@ -10,8 +10,8 @@ constexpr auto MAX_ANISOTROPY = 16.0F;
 //////////////////////////////////////////////////////////////////////
 
 Texture2D::Texture2D(
-    const float* pixelData, const GLsizei& width, const GLsizei& height, const bool& linear, const bool& anisotropy,
-    const bool& mipmap) {
+    const float* pixelData, const GLsizei width, const GLsizei height, const bool linear, const bool anisotropy,
+    const bool mipmap) {
     // Create Texture & storage
     glCreateTextures(GL_TEXTURE_2D, 1, &m_glTexID);
     glTextureStorage2D(m_glTexID, 1, GL_RGBA16F, width, height);
@@ -38,7 +38,7 @@ Texture2D::Texture2D(
 
 //////////////////////////////////////////////////////////////////////
 
-Texture2D::Texture2D(const Image& image, const bool& linear, const bool& anisotropy, const bool& mipmap)
+Texture2D::Texture2D(const Image& image, const bool linear, const bool anisotropy, const bool mipmap)
     : Texture2D(
           image.data(), static_cast<GLsizei>(image.size().x()), static_cast<GLsizei>(image.size().y()), linear,
           anisotropy, mipmap) {}

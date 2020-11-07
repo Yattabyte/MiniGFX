@@ -67,6 +67,6 @@ glStaticBuffer& glStaticBuffer::operator=(glStaticBuffer&& other) noexcept {
 /// write
 //////////////////////////////////////////////////////////////////////
 
-void glStaticBuffer::write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+void glStaticBuffer::write(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept {
     glNamedBufferSubData(m_bufferID, offset, size, data);
 }

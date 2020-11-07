@@ -10,7 +10,7 @@ using mini::IndirectDraw;
 //////////////////////////////////////////////////////////////////////
 
 IndirectDraw::IndirectDraw(
-    const GLuint& count, const GLuint& primitiveCount, const GLuint& first, const GLbitfield& storageFlags)
+    const GLuint& count, const GLuint& primitiveCount, const GLuint& first, const GLbitfield storageFlags)
     : m_count(count), m_primitiveCount(primitiveCount), m_first(first) {
     // Populate Buffer
     const std::array<GLuint, 4> data = { count, primitiveCount, first, 0 };
@@ -21,7 +21,7 @@ IndirectDraw::IndirectDraw(
 /// drawCall
 //////////////////////////////////////////////////////////////////////
 
-void IndirectDraw::drawCall(const int& drawMode, const void* indirect) const noexcept {
+void IndirectDraw::drawCall(const int drawMode, const void* indirect) const noexcept {
     bind();
     glDrawArraysIndirect(drawMode, indirect);
 }
@@ -30,7 +30,7 @@ void IndirectDraw::drawCall(const int& drawMode, const void* indirect) const noe
 /// setCount
 //////////////////////////////////////////////////////////////////////
 
-void IndirectDraw::setCount(const GLuint& count) noexcept {
+void IndirectDraw::setCount(const GLuint count) noexcept {
     m_count = count;
     m_buffer.write(0, static_cast<GLsizeiptr>(sizeof(GLuint)), &count);
 }
@@ -39,7 +39,7 @@ void IndirectDraw::setCount(const GLuint& count) noexcept {
 /// setPrimitiveCount
 //////////////////////////////////////////////////////////////////////
 
-void IndirectDraw::setPrimitiveCount(const GLuint& primitiveCount) noexcept {
+void IndirectDraw::setPrimitiveCount(const GLuint primitiveCount) noexcept {
     m_primitiveCount = primitiveCount;
     m_buffer.write(static_cast<GLsizeiptr>(sizeof(GLuint)), static_cast<GLsizeiptr>(sizeof(GLuint)), &primitiveCount);
 }
@@ -48,7 +48,7 @@ void IndirectDraw::setPrimitiveCount(const GLuint& primitiveCount) noexcept {
 /// setFirst
 //////////////////////////////////////////////////////////////////////
 
-void IndirectDraw::setFirst(const GLuint& first) noexcept {
+void IndirectDraw::setFirst(const GLuint first) noexcept {
     m_first = first;
     m_buffer.write(static_cast<GLsizeiptr>(sizeof(GLuint)) * 2ULL, static_cast<GLsizeiptr>(sizeof(GLuint)), &first);
 }

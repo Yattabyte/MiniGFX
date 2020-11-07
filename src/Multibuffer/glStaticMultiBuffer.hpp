@@ -41,7 +41,7 @@ template <int BufferCount = 3> class glStaticMultiBuffer final : public glMultiB
     /// \param  data            optional data buffer, must be at least as large.
     /// \param  storageFlags    optional bit - field flags.
     explicit glStaticMultiBuffer(
-        const GLsizeiptr& size, const void* data = nullptr, const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT)
+        const GLsizeiptr& size, const void* data = nullptr, const GLbitfield storageFlags = GL_DYNAMIC_STORAGE_BIT)
         : m_size(size) {
         // Zero-initialize our starting variables
         for (int x = 0; x < BufferCount; ++x) {
@@ -117,7 +117,7 @@ template <int BufferCount = 3> class glStaticMultiBuffer final : public glMultiB
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+    void write(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept {
         std::memcpy(static_cast<unsigned char*>(m_bufferPtr[m_index]) + offset, data, size);
     }
 

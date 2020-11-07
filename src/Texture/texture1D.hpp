@@ -20,8 +20,7 @@ class Texture1D {
     /// \param  linear          whether to apply linear filtering.
     /// \param  anisotropy      whether to use anisotropic filtering.
     /// \param  mipmap          whether to apply mipmapping.
-    Texture1D(
-        const float* pixelData, const GLsizei& width, const bool& linear, const bool& anisotropy, const bool& mipmap);
+    Texture1D(const float* pixelData, const GLsizei width, const bool linear, const bool anisotropy, const bool mipmap);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Disallow asset move constructor.
     Texture1D(Texture1D&&) noexcept = default;
@@ -33,7 +32,7 @@ class Texture1D {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Makes this texture active at a specific texture unit.
     /// \param  textureUnit     the texture unit to make this texture active at.
-    void bind(const unsigned int& textureUnit) const noexcept { glBindTextureUnit(textureUnit, m_glTexID); }
+    void bind(const unsigned int textureUnit) const noexcept { glBindTextureUnit(textureUnit, m_glTexID); }
 
     private:
     //////////////////////////////////////////////////////////////////////

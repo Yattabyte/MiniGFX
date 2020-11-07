@@ -23,8 +23,8 @@ class Texture3D {
     /// \param  anisotropy      whether to use anisotropic filtering.
     /// \param  mipmap          whether to apply mipmapping.
     Texture3D(
-        const float* pixelData, const GLsizei& width, const GLsizei& depth, const GLsizei& height, const bool& linear,
-        const bool& anisotropy, const bool& mipmap);
+        const float* pixelData, const GLsizei width, const GLsizei depth, const GLsizei height, const bool linear,
+        const bool anisotropy, const bool mipmap);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default asset move constructor.
     Texture3D(Texture3D&&) noexcept = default;
@@ -36,7 +36,7 @@ class Texture3D {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Makes this texture active at a specific texture unit.
     /// \param  textureUnit     the texture unit to make this texture active at.
-    void bind(const unsigned int& textureUnit) const noexcept { glBindTextureUnit(textureUnit, m_glTexID); }
+    void bind(const unsigned int textureUnit) const noexcept { glBindTextureUnit(textureUnit, m_glTexID); }
 
     private:
     //////////////////////////////////////////////////////////////////////

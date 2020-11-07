@@ -33,7 +33,7 @@ class Model {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Draw this model.
     /// \param  drawMode    either GL_TRIANGLES, GL_POINTS, GL_LINES, etc.
-    void draw(const int& drawMode) const noexcept;
+    void draw(const int drawMode) const noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve this model's vertex count.
     /// \return the model's vertex count.

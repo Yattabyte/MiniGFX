@@ -73,7 +73,7 @@ template <typename T> class glVector final : public glBuffer {
     /// \brief Retrieve a reference to the element at the index specified.
     /// \param  index   an index to the element desired.
     /// \return reference to the element desired.
-    T& operator[](const size_t& index) noexcept { return m_bufferPtr[index]; }
+    T& operator[](const size_t index) noexcept { return m_bufferPtr[index]; }
 
     //////////////////////////////////////////////////////////////////////
     /// \brief  Resizes the internal capacity of this vector.
@@ -81,7 +81,7 @@ template <typename T> class glVector final : public glBuffer {
     /// \note   Currently, only grows, never shrinks.
     /// \note   May stall waiting for old buffers to finish, invalidate them.
     /// \param	newCapacity		the new desired capacity.
-    void resize(const size_t& newCapacity) noexcept {
+    void resize(const size_t newCapacity) noexcept {
         // See if we must expand this container
         if (newCapacity > m_capacity) {
             // Calculate old and new byte sizes

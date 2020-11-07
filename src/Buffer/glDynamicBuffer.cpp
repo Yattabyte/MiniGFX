@@ -72,7 +72,7 @@ glDynamicBuffer& glDynamicBuffer::operator=(const glDynamicBuffer& other) noexce
 /// write
 //////////////////////////////////////////////////////////////////////
 
-void glDynamicBuffer::write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+void glDynamicBuffer::write(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept {
     expandToFit(offset, size);
     std::memcpy(static_cast<unsigned char*>(m_bufferPtr) + offset, data, size);
 }
@@ -81,7 +81,7 @@ void glDynamicBuffer::write(const GLsizeiptr& offset, const GLsizeiptr& size, co
 /// write_immediate
 //////////////////////////////////////////////////////////////////////
 
-void glDynamicBuffer::write_immediate(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+void glDynamicBuffer::write_immediate(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept {
     expandToFit(offset, size);
     glNamedBufferSubData(m_bufferID, offset, size, data);
 }
@@ -90,7 +90,7 @@ void glDynamicBuffer::write_immediate(const GLsizeiptr& offset, const GLsizeiptr
 /// expandToFit
 //////////////////////////////////////////////////////////////////////
 
-void glDynamicBuffer::expandToFit(const GLsizeiptr& offset, const GLsizeiptr& size) noexcept {
+void glDynamicBuffer::expandToFit(const GLsizeiptr offset, const GLsizeiptr size) noexcept {
     if (offset + size > m_maxCapacity) {
         // Create new buffer large enough to fit old data + new data
         const GLsizeiptr oldSize = m_maxCapacity;

@@ -35,7 +35,7 @@ class mat4 {
     /// \brief  Retrieve the row at the index specified.
     /// \param  index   the row number to retrieve.
     /// \return reference to the row specified.
-    constexpr vec4& operator[](const size_t& index) noexcept { return m_data[index]; }
+    constexpr vec4& operator[](const size_t index) noexcept { return m_data[index]; }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Compare against another matrix.
     /// \param  o   the other matrix.
@@ -94,7 +94,7 @@ class mat4 {
     /// \param  zNear   the near plane.
     /// \param  zFar    the far plane.
     /// \return a perspective projection 4x4 matrix.
-    static mat4 perspective(const float& fovY, const float& aspect, const float& zNear, const float& zFar) noexcept {
+    static mat4 perspective(const float fovY, const float aspect, const float zNear, const float zFar) noexcept {
         const float rad = fovY;
         const float tanHalfFovy = tanf(rad / static_cast<float>(2));
 
@@ -116,8 +116,8 @@ class mat4 {
     /// \param  zFar        the far plane.
     /// \return an orthographic projection 4x4 matrix.
     static mat4 orthographic(
-        const float& left, const float& right, const float& top, const float& bottom, const float& zNear,
-        const float& zFar) noexcept {
+        const float left, const float right, const float top, const float bottom, const float zNear,
+        const float zFar) noexcept {
         mat4 Result;
         Result[0][0] = 2.0F / (right - left);
         Result[1][1] = 2.0F / (top - bottom);

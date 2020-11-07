@@ -23,7 +23,7 @@ ModelGroup::~ModelGroup() {
 /// Custom Constructor
 //////////////////////////////////////////////////////////////////////
 
-ModelGroup::ModelGroup(const size_t count) : m_capacity(count) {
+ModelGroup::ModelGroup(const size_t& count) : m_capacity(count) {
     // Create GL Objects
     glCreateVertexArrays(1, &m_vaoID);
     glCreateBuffers(1, &m_vboID);
@@ -42,7 +42,7 @@ ModelGroup::ModelGroup(const size_t count) : m_capacity(count) {
 /// resize
 //////////////////////////////////////////////////////////////////////
 
-void ModelGroup::resize(const size_t& size) {
+void ModelGroup::resize(const size_t size) {
     if (size > m_capacity) {
         // Create new set of VBO's large enough to fit old data + desired data
         const auto delta = size - m_size;

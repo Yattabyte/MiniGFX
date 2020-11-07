@@ -25,7 +25,7 @@ class ModelGroup {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Construct a model-group container.
     /// \param  count       how many vertices to pre-allocate.
-    ModelGroup(const size_t count = 1024);
+    ModelGroup(const size_t& count = 1024);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Default move constructor.
     ModelGroup(ModelGroup&& o) noexcept = default;
@@ -41,13 +41,13 @@ class ModelGroup {
     /// \brief  Draw this model.
     /// \param  drawMode    either GL_TRIANGLES, GL_POINTS, GL_LINES, etc.
     /// \param  entry       range of the container to draw.
-    static void draw(const int& drawMode, const GroupEntry& entry) noexcept {
+    static void draw(const int drawMode, const GroupEntry& entry) noexcept {
         glDrawArrays(static_cast<GLenum>(drawMode), entry.offset, entry.count);
     }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Expand the container to at least this size.
     /// \param  size        the new size to use(if larger).
-    void resize(const size_t& size);
+    void resize(const size_t size);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Add a model to the end of the container.
     /// \param  data        the geometric data to use.

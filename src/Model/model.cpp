@@ -36,6 +36,6 @@ Model::Model(const std::vector<vec3>& vertices) : m_vertexCount(vertices.size())
 /// draw
 //////////////////////////////////////////////////////////////////////
 
-void Model::draw(const int& drawMode) const noexcept {
+void Model::draw(const int drawMode) const noexcept {
     glDrawArrays(static_cast<GLenum>(drawMode), 0, static_cast<GLsizei>(m_vertexCount));
 }

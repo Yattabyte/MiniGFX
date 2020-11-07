@@ -46,7 +46,7 @@ class glStaticBuffer final : public glBuffer {
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept;
+    void write(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept;
 
     private:
     //////////////////////////////////////////////////////////////////////

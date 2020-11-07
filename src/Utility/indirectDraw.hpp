@@ -24,7 +24,7 @@ class IndirectDraw {
     /// \param  storageFlags    storage type flag.
     IndirectDraw(
         const GLuint& count, const GLuint& primitiveCount, const GLuint& first,
-        const GLbitfield& storageFlags = GL_DYNAMIC_STORAGE_BIT);
+        const GLbitfield storageFlags = GL_DYNAMIC_STORAGE_BIT);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Move constructor.
     IndirectDraw(IndirectDraw&&) noexcept = default;
@@ -39,7 +39,7 @@ class IndirectDraw {
     /// \brief  Bind this buffer and also perform an indirect draw call.
     /// \param  drawMode    either GL_TRIANGLES, GL_POINTS, GL_LINES, etc.
     /// \param  indirect    an indirect pointer.
-    void drawCall(const int& drawMode, const void* indirect = nullptr) const noexcept;
+    void drawCall(const int drawMode, const void* indirect = nullptr) const noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Prepare this buffer for writing, waiting on its sync fence.
     void beginWriting() const noexcept { m_buffer.beginWriting(); }
@@ -52,15 +52,15 @@ class IndirectDraw {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Specify how many vertices will be rendered.
     /// \param  count   the vertex count.
-    void setCount(const GLuint& count) noexcept;
+    void setCount(const GLuint count) noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Specify how many primitives will be rendered.
     /// \param  primitiveCount  the number of primitives to be rendered.
-    void setPrimitiveCount(const GLuint& primitiveCount) noexcept;
+    void setPrimitiveCount(const GLuint primitiveCount) noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Specify the offset to the first vertex to be rendered.
     /// \param  first   the offset to the first rendered vertex.
-    void setFirst(const GLuint& first) noexcept;
+    void setFirst(const GLuint first) noexcept;
 
     private:
     //////////////////////////////////////////////////////////////////////

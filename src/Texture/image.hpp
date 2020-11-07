@@ -43,7 +43,7 @@ class Image {
     /// \param  fillPolicy      directive to fill solid, checkered, etc.
     /// \param  primaryColor    the primary color to use.
     /// \param  secondaryColor  the secondary color to use.
-    void fill(const Fill_Policy& fillPolicy, const vec4& primaryColor, const vec4& secondaryColor);
+    void fill(const Fill_Policy fillPolicy, const vec4& primaryColor, const vec4& secondaryColor);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Generate an image with pixels of the supplied policy.
     /// \param  size            the size to make the image.
@@ -52,7 +52,7 @@ class Image {
     /// \param  secondaryColor  the secondary color to use.
     /// \return an image using  the supplied directives.
     static Image
-    generate(const vec2& size, const Fill_Policy& fillPolicy, const vec4& primaryColor, const vec4& secondaryColor);
+    generate(const vec2& size, const Fill_Policy fillPolicy, const vec4& primaryColor, const vec4& secondaryColor);
     //////////////////////////////////////////////////////////////////////
     /// \brief  Retrieve a pointer to the underlying pixel data.
     /// \return pointer to underlying pixel data.

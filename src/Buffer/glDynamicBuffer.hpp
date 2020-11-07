@@ -44,25 +44,25 @@ class glDynamicBuffer final : public glBuffer {
     //////////////////////////////////////////////////////////////////////
     /// \brief  Expand this buffer to fit the size provided.
     /// \param  size        the size to expand up to(if not already larger).
-    void setMaxSize(const GLsizeiptr& size) noexcept { expandToFit(0, size); }
+    void setMaxSize(const GLsizeiptr size) noexcept { expandToFit(0, size); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Write the supplied data to GPU memory.
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept;
+    void write(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Write the supplied data to GPU memory.
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write_immediate(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept;
+    void write_immediate(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept;
     //////////////////////////////////////////////////////////////////////
     /// \brief  Expands this buffer's container to fit the desired range.
     /// \note   May invalidate the previous underlying data range.
     /// \param  offset      byte offset from the  beginning.
     /// \param  size        the size of the data to write.
-    void expandToFit(const GLsizeiptr& offset, const GLsizeiptr& size) noexcept;
+    void expandToFit(const GLsizeiptr offset, const GLsizeiptr size) noexcept;
 
     private:
     //////////////////////////////////////////////////////////////////////

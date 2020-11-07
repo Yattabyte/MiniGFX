@@ -19,7 +19,7 @@ Image::Image(const std::vector<float>& pixelData, const vec2& size)
 /// fill
 //////////////////////////////////////////////////////////////////////
 
-void Image::fill(const Fill_Policy& fillPolicy, const vec4& primaryColor, const vec4& secondaryColor) {
+void Image::fill(const Fill_Policy fillPolicy, const vec4& primaryColor, const vec4& secondaryColor) {
     (*this) = generate(m_size, fillPolicy, primaryColor, secondaryColor);
 }
 
@@ -28,7 +28,7 @@ void Image::fill(const Fill_Policy& fillPolicy, const vec4& primaryColor, const 
 //////////////////////////////////////////////////////////////////////
 
 Image Image::generate(
-    const vec2& size, const Fill_Policy& fillPolicy, const vec4& primaryColor, const vec4& secondaryColor) {
+    const vec2& size, const Fill_Policy fillPolicy, const vec4& primaryColor, const vec4& secondaryColor) {
     const auto pixelCount = static_cast<size_t>(size.x()) * static_cast<size_t>(size.y());
     const auto componentCount = pixelCount * 4ULL;
     std::vector<float> pixelData(componentCount);

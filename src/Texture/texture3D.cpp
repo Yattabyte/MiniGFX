@@ -10,8 +10,8 @@ constexpr auto MAX_ANISOTROPY = 16.0F;
 //////////////////////////////////////////////////////////////////////
 
 Texture3D::Texture3D(
-    const float* pixelData, const GLsizei& width, const GLsizei& depth, const GLsizei& height, const bool& linear,
-    const bool& anisotropy, const bool& mipmap) {
+    const float* pixelData, const GLsizei width, const GLsizei depth, const GLsizei height, const bool linear,
+    const bool anisotropy, const bool mipmap) {
     // Create Texture & storage
     glCreateTextures(GL_TEXTURE_3D, 1, &m_glTexID);
     glTextureStorage3D(m_glTexID, 1, GL_RGBA16F, width, height, depth);

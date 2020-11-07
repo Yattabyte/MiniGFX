@@ -90,13 +90,13 @@ template <int BufferCount = 3> class glDynamicMultiBuffer final : public glMulti
     //////////////////////////////////////////////////////////////////////
     /// \brief  Expand this buffer to fit the size provided.
     /// \param  size        the size to expand up to(if not already larger).
-    void setMaxSize(const GLsizeiptr& size) noexcept { expandToFit(0, size); }
+    void setMaxSize(const GLsizeiptr size) noexcept { expandToFit(0, size); }
     //////////////////////////////////////////////////////////////////////
     /// \brief  Write the supplied data to GPU memory.
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+    void write(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept {
         expandToFit(offset, size);
         std::memcpy(static_cast<unsigned char*>(m_bufferPtr[this->m_index]) + offset, data, size);
     }
@@ -105,7 +105,7 @@ template <int BufferCount = 3> class glDynamicMultiBuffer final : public glMulti
     /// \param  offset      byte offset from the beginning.
     /// \param  size        the size of the data to write.
     /// \param  data        the data to write.
-    void write_immediate(const GLsizeiptr& offset, const GLsizeiptr& size, const void* data) noexcept {
+    void write_immediate(const GLsizeiptr offset, const GLsizeiptr size, const void* data) noexcept {
         expandToFit(offset, size);
 
         for (const auto& buffer : this->m_bufferID)
@@ -116,7 +116,7 @@ template <int BufferCount = 3> class glDynamicMultiBuffer final : public glMulti
     /// \note   May invalidate the previous underlying data range.
     /// \param  offset      byte offset from the  beginning.
     /// \param  size        the size of the data to write.
-    void expandToFit(const GLsizeiptr& offset, const GLsizeiptr& size) noexcept {
+    void expandToFit(const GLsizeiptr offset, const GLsizeiptr size) noexcept {
         if (offset + size > m_maxCapacity) {
             // Create new buffer large enough to fit old data + new data
             const GLsizeiptr oldSize = m_maxCapacity;
