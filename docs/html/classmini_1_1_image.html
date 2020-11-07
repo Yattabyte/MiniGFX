@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MiniGFX
-   &#160;<span id="projectnumber">0.11.0</span>
+   &#160;<span id="projectnumber">0.13.5</span>
    </div>
    <div id="projectbrief">Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.</div>
   </td>
@@ -100,7 +100,7 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a53f88bd6be5a37f3811ebaa40c985483">Image</a> ()=default</td></tr>
 <tr class="memdesc:a53f88bd6be5a37f3811ebaa40c985483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor. <br /></td></tr>
 <tr class="separator:a53f88bd6be5a37f3811ebaa40c985483"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f68bc38d2abdf1a0f8229ff1ac70af9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a9f68bc38d2abdf1a0f8229ff1ac70af9">Image</a> (const std::vector&lt; float &gt; &amp;pixelData, const <a class="el" href="classmini_1_1vec2.html">vec2</a> &amp;<a class="el" href="classmini_1_1_image.html#a238a25d708f4f463d10eccf4e16ed293">size</a>)</td></tr>
+<tr class="memitem:a9f68bc38d2abdf1a0f8229ff1ac70af9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a9f68bc38d2abdf1a0f8229ff1ac70af9">Image</a> (const std::vector&lt; float &gt; &amp;pixelData, const <a class="el" href="classmini_1_1tvec2.html">vec2</a> &amp;<a class="el" href="classmini_1_1_image.html#a238a25d708f4f463d10eccf4e16ed293">size</a>)</td></tr>
 <tr class="memdesc:a9f68bc38d2abdf1a0f8229ff1ac70af9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an image with a specific size and pixels.  <a href="#a9f68bc38d2abdf1a0f8229ff1ac70af9">More...</a><br /></td></tr>
 <tr class="separator:a9f68bc38d2abdf1a0f8229ff1ac70af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb31415655c7efbbf3c93452f08898e4"><td class="memItemLeft" align="right" valign="top"><a id="afb31415655c7efbbf3c93452f08898e4"></a>
@@ -111,21 +111,21 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classmini_1_1_image.html">Image</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a0301607eb6e82b510f8a312a8c42268f">operator=</a> (<a class="el" href="classmini_1_1_image.html">Image</a> &amp;&amp;p) noexcept=default</td></tr>
 <tr class="memdesc:a0301607eb6e82b510f8a312a8c42268f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default move-assignment operator. <br /></td></tr>
 <tr class="separator:a0301607eb6e82b510f8a312a8c42268f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8efb4467a566884fe96659bb3deb1dc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a8efb4467a566884fe96659bb3deb1dc7">fill</a> (const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a> &amp;fillPolicy, const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;primaryColor, const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;secondaryColor)</td></tr>
-<tr class="memdesc:a8efb4467a566884fe96659bb3deb1dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill this image with pixels of the supplied policy.  <a href="#a8efb4467a566884fe96659bb3deb1dc7">More...</a><br /></td></tr>
-<tr class="separator:a8efb4467a566884fe96659bb3deb1dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae826b6e6d83a39bc553d3dfd7acb5530"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#ae826b6e6d83a39bc553d3dfd7acb5530">fill</a> (const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a> fillPolicy, const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;primaryColor, const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;secondaryColor)</td></tr>
+<tr class="memdesc:ae826b6e6d83a39bc553d3dfd7acb5530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill this image with pixels of the supplied policy.  <a href="#ae826b6e6d83a39bc553d3dfd7acb5530">More...</a><br /></td></tr>
+<tr class="separator:ae826b6e6d83a39bc553d3dfd7acb5530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35d0fd115a7677f59414f95400bef9af"><td class="memItemLeft" align="right" valign="top">const float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a35d0fd115a7677f59414f95400bef9af">data</a> () const noexcept</td></tr>
 <tr class="memdesc:a35d0fd115a7677f59414f95400bef9af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a pointer to the underlying pixel data.  <a href="#a35d0fd115a7677f59414f95400bef9af">More...</a><br /></td></tr>
 <tr class="separator:a35d0fd115a7677f59414f95400bef9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a238a25d708f4f463d10eccf4e16ed293"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmini_1_1vec2.html">vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a238a25d708f4f463d10eccf4e16ed293">size</a> () const noexcept</td></tr>
+<tr class="memitem:a238a25d708f4f463d10eccf4e16ed293"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmini_1_1tvec2.html">vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a238a25d708f4f463d10eccf4e16ed293">size</a> () const noexcept</td></tr>
 <tr class="memdesc:a238a25d708f4f463d10eccf4e16ed293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the image size.  <a href="#a238a25d708f4f463d10eccf4e16ed293">More...</a><br /></td></tr>
 <tr class="separator:a238a25d708f4f463d10eccf4e16ed293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a56b62a244c7e677d061255007a70afbf"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmini_1_1_image.html">Image</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#a56b62a244c7e677d061255007a70afbf">generate</a> (const <a class="el" href="classmini_1_1vec2.html">vec2</a> &amp;<a class="el" href="classmini_1_1_image.html#a238a25d708f4f463d10eccf4e16ed293">size</a>, const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a> &amp;fillPolicy, const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;primaryColor, const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;secondaryColor)</td></tr>
-<tr class="memdesc:a56b62a244c7e677d061255007a70afbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an image with pixels of the supplied policy.  <a href="#a56b62a244c7e677d061255007a70afbf">More...</a><br /></td></tr>
-<tr class="separator:a56b62a244c7e677d061255007a70afbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb07044008c6aa1a832feb3bb0380763"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmini_1_1_image.html">Image</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_image.html#aeb07044008c6aa1a832feb3bb0380763">generate</a> (const <a class="el" href="classmini_1_1tvec2.html">vec2</a> &amp;<a class="el" href="classmini_1_1_image.html#a238a25d708f4f463d10eccf4e16ed293">size</a>, const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a> fillPolicy, const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;primaryColor, const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;secondaryColor)</td></tr>
+<tr class="memdesc:aeb07044008c6aa1a832feb3bb0380763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an image with pixels of the supplied policy.  <a href="#aeb07044008c6aa1a832feb3bb0380763">More...</a><br /></td></tr>
+<tr class="separator:aeb07044008c6aa1a832feb3bb0380763"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A way of expressing and manipulating image data. </p>
@@ -145,7 +145,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1vec2.html">vec2</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1tvec2.html">vec2</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -157,6 +157,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct an image with a specific size and pixels. </p>
+<p>Custom Constructor.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pixelData</td><td>the image pixels. </td></tr>
@@ -192,12 +193,13 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieve a pointer to the underlying pixel data. </p>
+<p>data</p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to underlying pixel data. </dd></dl>
 
 </div>
 </div>
-<a id="a8efb4467a566884fe96659bb3deb1dc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8efb4467a566884fe96659bb3deb1dc7">&#9670;&nbsp;</a></span>fill()</h2>
+<a id="ae826b6e6d83a39bc553d3dfd7acb5530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae826b6e6d83a39bc553d3dfd7acb5530">&#9670;&nbsp;</a></span>fill()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,19 +207,19 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Image::fill </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a>&#160;</td>
           <td class="paramname"><em>fillPolicy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;&#160;</td>
           <td class="paramname"><em>primaryColor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;&#160;</td>
           <td class="paramname"><em>secondaryColor</em>&#160;</td>
         </tr>
         <tr>
@@ -229,6 +231,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Fill this image with pixels of the supplied policy. </p>
+<p>fill</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">fillPolicy</td><td>directive to fill solid, checkered, etc. </td></tr>
@@ -240,8 +243,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a56b62a244c7e677d061255007a70afbf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56b62a244c7e677d061255007a70afbf">&#9670;&nbsp;</a></span>generate()</h2>
+<a id="aeb07044008c6aa1a832feb3bb0380763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb07044008c6aa1a832feb3bb0380763">&#9670;&nbsp;</a></span>generate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,25 +255,25 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classmini_1_1_image.html">Image</a> Image::generate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1vec2.html">vec2</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1tvec2.html">vec2</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1_image.html#a4de63751d5670de2616b9eef6607fcc8">Fill_Policy</a>&#160;</td>
           <td class="paramname"><em>fillPolicy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;&#160;</td>
           <td class="paramname"><em>primaryColor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classmini_1_1vec4.html">vec4</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmini_1_1tvec4.html">vec4</a> &amp;&#160;</td>
           <td class="paramname"><em>secondaryColor</em>&#160;</td>
         </tr>
         <tr>
@@ -287,6 +290,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate an image with pixels of the supplied policy. </p>
+<p>generate</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">size</td><td>the size to make the image. </td></tr>
@@ -310,7 +314,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmini_1_1vec2.html">vec2</a> Image::size </td>
+          <td class="memname"><a class="el" href="classmini_1_1tvec2.html">vec2</a> Image::size </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -324,6 +328,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieve the image size. </p>
+<p>size</p>
 <dl class="section return"><dt>Returns</dt><dd>the size of the image. </dd></dl>
 
 </div>

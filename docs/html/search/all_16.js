@@ -9,6 +9,7 @@ var searchData=
   ['_7eglstaticmultibuffer',['~glStaticMultiBuffer',['../classmini_1_1gl_static_multi_buffer.html#aa827dfb93349049608bf9b41127a35a6',1,'mini::glStaticMultiBuffer']]],
   ['_7eglvector',['~glVector',['../classmini_1_1gl_vector.html#a3e775ee6060eae75e0067fe3caf7bc66',1,'mini::glVector']]],
   ['_7eimage',['~Image',['../classmini_1_1_image.html#a91f66b74248ab2b0599a6843c709aba5',1,'mini::Image']]],
+  ['_7eindirectdraw',['~IndirectDraw',['../classmini_1_1_indirect_draw.html#a4b2e51f2ce14cecfbff7b9d76bbbe8b5',1,'mini::IndirectDraw']]],
   ['_7emat4',['~mat4',['../classmini_1_1mat4.html#af932125d134badd4ac275c90b9819b50',1,'mini::mat4']]],
   ['_7emodel',['~Model',['../classmini_1_1_model.html#ad6ebd2062a0b823db841a0b88baac4c0',1,'mini::Model']]],
   ['_7emodelgroup',['~ModelGroup',['../classmini_1_1_model_group.html#a2606a8a2324d520c13072a91fa95af9a',1,'mini::ModelGroup']]],
@@ -16,7 +17,7 @@ var searchData=
   ['_7etexture1d',['~Texture1D',['../classmini_1_1_texture1_d.html#a352d69362fae099d9c5cfbb491865057',1,'mini::Texture1D']]],
   ['_7etexture2d',['~Texture2D',['../classmini_1_1_texture2_d.html#a7b880ae4707aa51728e7d0eff25f99bd',1,'mini::Texture2D']]],
   ['_7etexture3d',['~Texture3D',['../classmini_1_1_texture3_d.html#a306b60105e2aaa2dfc5c1dfb3b737124',1,'mini::Texture3D']]],
-  ['_7evec2',['~vec2',['../classmini_1_1vec2.html#a37828d22a051375f41dd238bc48bba3c',1,'mini::vec2']]],
-  ['_7evec3',['~vec3',['../classmini_1_1vec3.html#a87e756db63a604c3f5fb4ae610c7868e',1,'mini::vec3']]],
-  ['_7evec4',['~vec4',['../classmini_1_1vec4.html#ad6a1092c91f889a0af788e3ba19ae7c3',1,'mini::vec4']]]
+  ['_7etvec2',['~tvec2',['../classmini_1_1tvec2.html#ad061846f1508c6b300c55fcfd9ddc31b',1,'mini::tvec2']]],
+  ['_7etvec3',['~tvec3',['../classmini_1_1tvec3.html#a11d2f3b086ed5d560126d4463b8eaf03',1,'mini::tvec3']]],
+  ['_7etvec4',['~tvec4',['../classmini_1_1tvec4.html#af249ce38c5f054bfc9a7b7b8d670613d',1,'mini::tvec4']]]
 ];

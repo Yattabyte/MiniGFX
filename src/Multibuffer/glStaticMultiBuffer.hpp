@@ -3,6 +3,7 @@
 #define MINIGFX_GLSTATICMULTIBUFFER_HPP
 
 #include "Multibuffer/glMultiBuffer.hpp"
+#include <cstring>
 #include <stddef.h>
 #include <utility>
 

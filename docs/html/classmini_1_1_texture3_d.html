@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MiniGFX
-   &#160;<span id="projectnumber">0.11.0</span>
+   &#160;<span id="projectnumber">0.13.5</span>
    </div>
    <div id="projectbrief">Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.</div>
   </td>
@@ -86,24 +86,29 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#a306b60105e2aaa2dfc5c1dfb3b737124">~Texture3D</a> ()</td></tr>
 <tr class="memdesc:a306b60105e2aaa2dfc5c1dfb3b737124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Texture. <br /></td></tr>
 <tr class="separator:a306b60105e2aaa2dfc5c1dfb3b737124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6f90f01165e642553558920b650b377"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#ad6f90f01165e642553558920b650b377">Texture3D</a> (const float *pixelData, const GLsizei &amp;width, const GLsizei &amp;depth, const GLsizei &amp;height, const bool &amp;linear, const bool &amp;anisotropy, const bool &amp;mipmap) noexcept</td></tr>
-<tr class="memdesc:ad6f90f01165e642553558920b650b377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Texture with a given size and data.  <a href="#ad6f90f01165e642553558920b650b377">More...</a><br /></td></tr>
-<tr class="separator:ad6f90f01165e642553558920b650b377"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3127c0928798eda3227bad419750700d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#a3127c0928798eda3227bad419750700d">bind</a> (const unsigned int &amp;textureUnit) const noexcept</td></tr>
-<tr class="memdesc:a3127c0928798eda3227bad419750700d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes this texture active at a specific texture unit.  <a href="#a3127c0928798eda3227bad419750700d">More...</a><br /></td></tr>
-<tr class="separator:a3127c0928798eda3227bad419750700d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b911c2e3d78955b17a463f56a0773b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#a2b911c2e3d78955b17a463f56a0773b1">Texture3D</a> (const float *pixelData, const GLsizei width, const GLsizei depth, const GLsizei height, const bool linear, const bool anisotropy, const bool mipmap)</td></tr>
+<tr class="memdesc:a2b911c2e3d78955b17a463f56a0773b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a Texture with a given size and data.  <a href="#a2b911c2e3d78955b17a463f56a0773b1">More...</a><br /></td></tr>
+<tr class="separator:a2b911c2e3d78955b17a463f56a0773b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dde786efbf11ea0401fb1be37cff164"><td class="memItemLeft" align="right" valign="top"><a id="a3dde786efbf11ea0401fb1be37cff164"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#a3dde786efbf11ea0401fb1be37cff164">Texture3D</a> (<a class="el" href="classmini_1_1_texture3_d.html">Texture3D</a> &amp;&amp;) noexcept=default</td></tr>
+<tr class="memdesc:a3dde786efbf11ea0401fb1be37cff164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default asset move constructor. <br /></td></tr>
+<tr class="separator:a3dde786efbf11ea0401fb1be37cff164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd6406c0205f8b2962b114dd20334351"><td class="memItemLeft" align="right" valign="top"><a id="acd6406c0205f8b2962b114dd20334351"></a>
+<a class="el" href="classmini_1_1_texture3_d.html">Texture3D</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#acd6406c0205f8b2962b114dd20334351">operator=</a> (<a class="el" href="classmini_1_1_texture3_d.html">Texture3D</a> &amp;&amp;) noexcept=default</td></tr>
+<tr class="memdesc:acd6406c0205f8b2962b114dd20334351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default asset move assignment. <br /></td></tr>
+<tr class="separator:acd6406c0205f8b2962b114dd20334351"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac1732414f77f53bac41ce0fbc969f44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmini_1_1_texture3_d.html#aac1732414f77f53bac41ce0fbc969f44">bind</a> (const unsigned int textureUnit) const noexcept</td></tr>
+<tr class="memdesc:aac1732414f77f53bac41ce0fbc969f44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes this texture active at a specific texture unit.  <a href="#aac1732414f77f53bac41ce0fbc969f44">More...</a><br /></td></tr>
+<tr class="separator:aac1732414f77f53bac41ce0fbc969f44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A wrapper around an OpenGL texture object. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad6f90f01165e642553558920b650b377"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6f90f01165e642553558920b650b377">&#9670;&nbsp;</a></span>Texture3D()</h2>
+<a id="a2b911c2e3d78955b17a463f56a0773b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b911c2e3d78955b17a463f56a0773b1">&#9670;&nbsp;</a></span>Texture3D()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Texture3D::Texture3D </td>
@@ -114,37 +119,37 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const GLsizei &amp;&#160;</td>
+          <td class="paramtype">const GLsizei&#160;</td>
           <td class="paramname"><em>width</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const GLsizei &amp;&#160;</td>
+          <td class="paramtype">const GLsizei&#160;</td>
           <td class="paramname"><em>depth</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const GLsizei &amp;&#160;</td>
+          <td class="paramtype">const GLsizei&#160;</td>
           <td class="paramname"><em>height</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramtype">const bool&#160;</td>
           <td class="paramname"><em>linear</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramtype">const bool&#160;</td>
           <td class="paramname"><em>anisotropy</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramtype">const bool&#160;</td>
           <td class="paramname"><em>mipmap</em>&#160;</td>
         </tr>
         <tr>
@@ -153,11 +158,6 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Construct a Texture with a given size and data. </p>
@@ -178,8 +178,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3127c0928798eda3227bad419750700d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3127c0928798eda3227bad419750700d">&#9670;&nbsp;</a></span>bind()</h2>
+<a id="aac1732414f77f53bac41ce0fbc969f44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac1732414f77f53bac41ce0fbc969f44">&#9670;&nbsp;</a></span>bind()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,7 +190,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void mini::Texture3D::bind </td>
           <td>(</td>
-          <td class="paramtype">const unsigned int &amp;&#160;</td>
+          <td class="paramtype">const unsigned int&#160;</td>
           <td class="paramname"><em>textureUnit</em></td><td>)</td>
           <td> const</td>
         </tr>

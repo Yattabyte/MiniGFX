@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MiniGFX
-   &#160;<span id="projectnumber">0.11.0</span>
+   &#160;<span id="projectnumber">0.13.5</span>
    </div>
    <div id="projectbrief">Helper classes, abstractions, and interfaces to assist in OpenGL rendering applications.</div>
   </td>
@@ -76,14 +76,17 @@ $(function() {
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#aa81ce310f4b5734266d00652f0ee7d06">beginWriting</a>() const noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a90014b5fd91db3b9c42d7246356bb6f2">bind</a>() const noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a0ed1e267b5e6e2dd6fe82c19ddc8e57b">drawCall</a>(const int &amp;drawMode, const void *indirect=nullptr) const noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#aca91f84a2de81ca3ea23822422029a0e">drawCall</a>(const int drawMode, const void *indirect=nullptr) const noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a6c27ab19c4890be711bd1cae1d722c5f">endReading</a>() noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a4ee77db71284bab7eb53385926b2b153">endWriting</a>() const noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a83bd3cb09ae890a05b0e5f08c906ba70">IndirectDraw</a>() noexcept=default</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#af43564389e8813184b4d68c349ee78a2">IndirectDraw</a>(const GLuint &amp;count, const GLuint &amp;primitiveCount, const GLuint &amp;first, const GLbitfield &amp;storageFlags=GL_DYNAMIC_STORAGE_BIT) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#af6bc1d4b5be939f94ad84a73747ed422">setCount</a>(const GLuint &amp;count) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#af42ffbc605dbf580d1107cd7cb8ed7fd">setFirst</a>(const GLuint &amp;first) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#afaa66bf87ef706c5fee8307f1ab978eb">setPrimitiveCount</a>(const GLuint &amp;primitiveCount) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#abbe7f683bcb1bf3074b7f67efc9d8cec">IndirectDraw</a>()=default</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#aca84ee3970891b723827fc10ab7f4206">IndirectDraw</a>(const GLuint &amp;count, const GLuint &amp;primitiveCount, const GLuint &amp;first, const GLbitfield storageFlags=GL_DYNAMIC_STORAGE_BIT)</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a329fca3ac2514a0640700599e227c6c0">IndirectDraw</a>(IndirectDraw &amp;&amp;) noexcept=default</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#af5e5b1b669e37f6a860ce5cad26ba294">operator=</a>(IndirectDraw &amp;&amp;) noexcept=default</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a2e1181c5a5c9857e06eb0f7512778640">setCount</a>(const GLuint count) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a26a6831f37bfe50f02130d8c3df5cc7c">setFirst</a>(const GLuint first) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a6ced20fb7c8cbfb8c0949368d5af92f1">setPrimitiveCount</a>(const GLuint primitiveCount) noexcept</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html#a4b2e51f2ce14cecfbff7b9d76bbbe8b5">~IndirectDraw</a>()=default</td><td class="entry"><a class="el" href="classmini_1_1_indirect_draw.html">mini::IndirectDraw</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
